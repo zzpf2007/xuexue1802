@@ -1,0 +1,1343 @@
+PHPUnit 4.8.15 by Sebastian Bergmann and contributors.
+
+..Nodename:     No route found for "GET /organizationCategory.do" (404 Not Found)
+
+        
+            
+                
+                    
+
+                
+                    
+                        
+                            
+                                
+
+                            
+                                
+                                    
+                                        OK
+                                    
+                                
+                            
+                        
+                   
+                
+            
+
+            
+                    
+    
+        
+            
+        
+            
+                
+
+            
+                No route found for "GET /organizationCategory.do"
+            
+
+            
+                404 Not Found - NotFoundHttpException
+            
+
+                                        1 linked Exception:
+                    
+                                ResourceNotFoundException »
+                            
+                                            
+            
+            
+                
+        
+    
+
+
+    
+            
+            [2/2]
+            NotFoundHttpException: No route found for "GET /organizationCategory.do" 
+                    
+    
+    
+    
+                
+    
+    in vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php at line 159 
+        
+                        $message .= sprintf(' (from "%s")', $referer);
+            }
+
+            throw new NotFoundHttpException($message, $e);
+        } catch (MethodNotAllowedException $e) {
+            $message = sprintf('No route found for "%s %s": Method Not Allowed (Allow: %s)', $request->getMethod(), $request->getPathInfo(), implode(', ', $e->getAllowedMethods()));
+
+            
+                    
+                    at
+    
+        RouterListener
+        ->onKernelRequest
+    
+    (object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+
+            
+                    
+                    at
+    
+        
+        call_user_func
+    
+    (array(object(RouterListener), 'onKernelRequest'), object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/WrappedListener.php at line 61 
+        
+        
+        $e = $this->stopwatch->start($this->name, 'event_listener');
+
+        call_user_func($this->listener, $event, $eventName, $this->dispatcher ?: $dispatcher);
+
+        if ($e->isStarted()) {
+            $e->stop();
+            
+                    
+                    at
+    
+        WrappedListener
+        ->__invoke
+    
+    (object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+
+            
+                    
+                    at
+    
+        
+        call_user_func
+    
+    (object(WrappedListener), object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php at line 160 
+        
+            protected function doDispatch($listeners, $eventName, Event $event)
+    {
+        foreach ($listeners as $listener) {
+            call_user_func($listener, $event, $eventName, $this);
+            if ($event->isPropagationStopped()) {
+                break;
+            }
+            
+                    
+                    at
+    
+        EventDispatcher
+        ->doDispatch
+    
+    (array(object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener)), 'kernel.request', object(GetResponseEvent))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php at line 48 
+        
+                $event->setName($eventName);
+
+        if ($listeners = $this->getListeners($eventName)) {
+            $this->doDispatch($listeners, $eventName, $event);
+        }
+
+        return $event;
+            
+                    
+                    at
+    
+        EventDispatcher
+        ->dispatch
+    
+    ('kernel.request', object(GetResponseEvent))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/TraceableEventDispatcher.php at line 124 
+        
+        
+        $e = $this->stopwatch->start($eventName, 'section');
+
+        $this->dispatcher->dispatch($eventName, $event);
+
+        if ($e->isStarted()) {
+            $e->stop();
+            
+                    
+                    at
+    
+        TraceableEventDispatcher
+        ->dispatch
+    
+    ('kernel.request', object(GetResponseEvent))
+
+    
+    in app/bootstrap.php.cache at line 3098 
+        
+        {
+$this->requestStack->push($request);
+$event = new GetResponseEvent($this, $request, $type);
+$this->dispatcher->dispatch(KernelEvents::REQUEST, $event);
+if ($event->hasResponse()) {
+return $this->filterResponse($event->getResponse(), $request, $type);
+}
+            
+                    
+                    at
+    
+        HttpKernel
+        ->handleRaw
+    
+    (object(Request), '1')
+
+    
+    in app/bootstrap.php.cache at line 3071 
+        
+        {
+$request->headers->set('X-Php-Ob-Level', ob_get_level());
+try {
+return $this->handleRaw($request, $type);
+} catch (\Exception $e) {
+if (false === $catch) {
+$this->finishRequest($request, $type);
+            
+                    
+                    at
+    
+        HttpKernel
+        ->handle
+    
+    (object(Request), '1', true)
+
+    
+    in app/bootstrap.php.cache at line 3222 
+        
+        $this->container->enterScope('request');
+$this->container->set('request', $request,'request');
+try {
+$response = parent::handle($request, $type, $catch);
+} catch (\Exception $e) {
+$this->container->set('request', null,'request');
+$this->container->leaveScope('request');
+            
+                    
+                    at
+    
+        ContainerAwareHttpKernel
+        ->handle
+    
+    (object(Request), '1', true)
+
+    
+    in app/bootstrap.php.cache at line 2444 
+        
+        if (false === $this->booted) {
+$this->boot();
+}
+return $this->getHttpKernel()->handle($request, $type, $catch);
+}
+protected function getHttpKernel()
+{
+            
+                    
+                    at
+    
+        Kernel
+        ->handle
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Client.php at line 81 
+        
+             */
+    protected function doRequest($request)
+    {
+        $response = $this->kernel->handle($request);
+
+        if ($this->kernel instanceof TerminableInterface) {
+            $this->kernel->terminate($request, $response);
+            
+                    
+                    at
+    
+        Client
+        ->doRequest
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Client.php at line 131 
+        
+                    $this->kernel->getContainer()->get('profiler')->enable();
+        }
+
+        return parent::doRequest($request);
+    }
+
+    /**
+            
+                    
+                    at
+    
+        Client
+        ->doRequest
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/BrowserKit/Client.php at line 327 
+        
+                if ($this->insulated) {
+            $this->response = $this->doRequestInProcess($this->request);
+        } else {
+            $this->response = $this->doRequest($this->request);
+        }
+
+        $this->internalResponse = $this->filterResponse($this->response);
+            
+                    
+                    at
+    
+        Client
+        ->request
+    
+    ('GET', 'http://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree')
+
+    
+    in src/AppBundle/Tests/Controller/DefaultControllerTest.php at line 26 
+        
+            {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', 'http://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree');
+
+        print_r("Nodename: " . $crawler->first()->text());
+
+            
+                    
+                    at
+    
+        DefaultControllerTest
+        ->testServer
+    
+    ()
+
+            
+                    
+                    at
+    
+        ReflectionMethod
+        ->invokeArgs
+    
+    (object(DefaultControllerTest), array())
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php at line 909 
+        
+                    $testResult = $method->invokeArgs(
+                $this,
+                array_merge($this->data, $this->dependencyInput)
+            );
+        } catch (Throwable $_e) {
+            $e = $_e;
+        } catch (Exception $_e) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestCase
+        ->runTest
+    
+    ()
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php at line 768 
+        
+                    }
+
+            $this->assertPreConditions();
+            $this->testResult = $this->runTest();
+            $this->verifyMockObjects();
+            $this->assertPostConditions();
+
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestCase
+        ->runBare
+    
+    ()
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestResult.php at line 612 
+        
+                        $invoker = new PHP_Invoker;
+                $invoker->invoke(array($test, 'runBare'), array(), $_timeout);
+            } else {
+                $test->runBare();
+            }
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            $failure = true;
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestResult
+        ->run
+    
+    (object(DefaultControllerTest))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php at line 724 
+        
+                    $php = PHPUnit_Util_PHP::factory();
+            $php->runTestJob($template->render(), $this, $result);
+        } else {
+            $result->run($this);
+        }
+
+        if ($this->useErrorHandler !== null) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestCase
+        ->run
+    
+    (object(PHPUnit_Framework_TestResult))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php at line 747 
+        
+                        $test->setRunTestInSeparateProcess($this->runTestInSeparateProcess);
+            }
+
+            $test->run($result);
+        }
+
+        foreach ($hookMethods['afterClass'] as $afterClassMethod) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestSuite
+        ->run
+    
+    (object(PHPUnit_Framework_TestResult))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php at line 747 
+        
+                        $test->setRunTestInSeparateProcess($this->runTestInSeparateProcess);
+            }
+
+            $test->run($result);
+        }
+
+        foreach ($hookMethods['afterClass'] as $afterClassMethod) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestSuite
+        ->run
+    
+    (object(PHPUnit_Framework_TestResult))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/TextUI/TestRunner.php at line 440 
+        
+                    $suite->setRunTestInSeparateProcess($arguments['processIsolation']);
+        }
+
+        $suite->run($result);
+
+        unset($suite);
+        $result->flushListeners();
+            
+                    
+                    at
+    
+        PHPUnit_TextUI_TestRunner
+        ->doRun
+    
+    (object(PHPUnit_Framework_TestSuite), array('listGroups' => false, 'loader' => null, 'useDefaultConfiguration' => true, 'configuration' => '/home/prodmgr/projects/php/symfony/ehelele1019/app/phpunit.xml.dist', 'testSuffixes' => array('Test.php', '.phpt')))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php at line 149 
+        
+                unset($this->arguments['testFile']);
+
+        try {
+            $result = $runner->doRun($suite, $this->arguments);
+        } catch (PHPUnit_Framework_Exception $e) {
+            print $e->getMessage() . "\n";
+        }
+            
+                    
+                    at
+    
+        PHPUnit_TextUI_Command
+        ->run
+    
+    (array('/usr/local/bin/phpunit', '-c', 'app'), true)
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php at line 100 
+        
+            {
+        $command = new static;
+
+        return $command->run($_SERVER['argv'], $exit);
+    }
+
+    /**
+            
+                    
+                    at
+    
+        PHPUnit_TextUI_Command
+        ::main
+    
+    ()
+
+    
+    in /usr/local/bin/phpunit at line 545 
+        
+                exit;
+    }
+
+    PHPUnit_TextUI_Command::main();
+}
+
+__HALT_COMPILER(); ?>
+            
+            
+    
+            
+            [1/2]
+            ResourceNotFoundException:  
+                    
+    
+    
+    
+                
+    
+    in app/cache/test/appTestUrlMatcher.php at line 160 
+        
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'web_test_index')), array (  '_controller' => 'AppBundle\\Controller\\WebTest\\HomeController::indexAction',));
+        }
+
+        throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
+    }
+}
+
+
+            
+                    
+                    at
+    
+        appTestUrlMatcher
+        ->match
+    
+    ('/organizationCategory.do')
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/Routing/Matcher/UrlMatcher.php at line 112 
+        
+            {
+        $this->request = $request;
+
+        $ret = $this->match($request->getPathInfo());
+
+        $this->request = null;
+
+            
+                    
+                    at
+    
+        UrlMatcher
+        ->matchRequest
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/Routing/Router.php at line 256 
+        
+                    return $matcher->match($request->getPathInfo());
+        }
+
+        return $matcher->matchRequest($request);
+    }
+
+    /**
+            
+                    
+                    at
+    
+        Router
+        ->matchRequest
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php at line 137 
+        
+                try {
+            // matching a request is more powerful than matching a URL path + context, so try that first
+            if ($this->matcher instanceof RequestMatcherInterface) {
+                $parameters = $this->matcher->matchRequest($request);
+            } else {
+                $parameters = $this->matcher->match($request->getPathInfo());
+            }
+            
+                    
+                    at
+    
+        RouterListener
+        ->onKernelRequest
+    
+    (object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+
+            
+                    
+                    at
+    
+        
+        call_user_func
+    
+    (array(object(RouterListener), 'onKernelRequest'), object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/WrappedListener.php at line 61 
+        
+        
+        $e = $this->stopwatch->start($this->name, 'event_listener');
+
+        call_user_func($this->listener, $event, $eventName, $this->dispatcher ?: $dispatcher);
+
+        if ($e->isStarted()) {
+            $e->stop();
+            
+                    
+                    at
+    
+        WrappedListener
+        ->__invoke
+    
+    (object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+
+            
+                    
+                    at
+    
+        
+        call_user_func
+    
+    (object(WrappedListener), object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php at line 160 
+        
+            protected function doDispatch($listeners, $eventName, Event $event)
+    {
+        foreach ($listeners as $listener) {
+            call_user_func($listener, $event, $eventName, $this);
+            if ($event->isPropagationStopped()) {
+                break;
+            }
+            
+                    
+                    at
+    
+        EventDispatcher
+        ->doDispatch
+    
+    (array(object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener)), 'kernel.request', object(GetResponseEvent))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php at line 48 
+        
+                $event->setName($eventName);
+
+        if ($listeners = $this->getListeners($eventName)) {
+            $this->doDispatch($listeners, $eventName, $event);
+        }
+
+        return $event;
+            
+                    
+                    at
+    
+        EventDispatcher
+        ->dispatch
+    
+    ('kernel.request', object(GetResponseEvent))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/TraceableEventDispatcher.php at line 124 
+        
+        
+        $e = $this->stopwatch->start($eventName, 'section');
+
+        $this->dispatcher->dispatch($eventName, $event);
+
+        if ($e->isStarted()) {
+            $e->stop();
+            
+                    
+                    at
+    
+        TraceableEventDispatcher
+        ->dispatch
+    
+    ('kernel.request', object(GetResponseEvent))
+
+    
+    in app/bootstrap.php.cache at line 3098 
+        
+        {
+$this->requestStack->push($request);
+$event = new GetResponseEvent($this, $request, $type);
+$this->dispatcher->dispatch(KernelEvents::REQUEST, $event);
+if ($event->hasResponse()) {
+return $this->filterResponse($event->getResponse(), $request, $type);
+}
+            
+                    
+                    at
+    
+        HttpKernel
+        ->handleRaw
+    
+    (object(Request), '1')
+
+    
+    in app/bootstrap.php.cache at line 3071 
+        
+        {
+$request->headers->set('X-Php-Ob-Level', ob_get_level());
+try {
+return $this->handleRaw($request, $type);
+} catch (\Exception $e) {
+if (false === $catch) {
+$this->finishRequest($request, $type);
+            
+                    
+                    at
+    
+        HttpKernel
+        ->handle
+    
+    (object(Request), '1', true)
+
+    
+    in app/bootstrap.php.cache at line 3222 
+        
+        $this->container->enterScope('request');
+$this->container->set('request', $request,'request');
+try {
+$response = parent::handle($request, $type, $catch);
+} catch (\Exception $e) {
+$this->container->set('request', null,'request');
+$this->container->leaveScope('request');
+            
+                    
+                    at
+    
+        ContainerAwareHttpKernel
+        ->handle
+    
+    (object(Request), '1', true)
+
+    
+    in app/bootstrap.php.cache at line 2444 
+        
+        if (false === $this->booted) {
+$this->boot();
+}
+return $this->getHttpKernel()->handle($request, $type, $catch);
+}
+protected function getHttpKernel()
+{
+            
+                    
+                    at
+    
+        Kernel
+        ->handle
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Client.php at line 81 
+        
+             */
+    protected function doRequest($request)
+    {
+        $response = $this->kernel->handle($request);
+
+        if ($this->kernel instanceof TerminableInterface) {
+            $this->kernel->terminate($request, $response);
+            
+                    
+                    at
+    
+        Client
+        ->doRequest
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Client.php at line 131 
+        
+                    $this->kernel->getContainer()->get('profiler')->enable();
+        }
+
+        return parent::doRequest($request);
+    }
+
+    /**
+            
+                    
+                    at
+    
+        Client
+        ->doRequest
+    
+    (object(Request))
+
+    
+    in vendor/symfony/symfony/src/Symfony/Component/BrowserKit/Client.php at line 327 
+        
+                if ($this->insulated) {
+            $this->response = $this->doRequestInProcess($this->request);
+        } else {
+            $this->response = $this->doRequest($this->request);
+        }
+
+        $this->internalResponse = $this->filterResponse($this->response);
+            
+                    
+                    at
+    
+        Client
+        ->request
+    
+    ('GET', 'http://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree')
+
+    
+    in src/AppBundle/Tests/Controller/DefaultControllerTest.php at line 26 
+        
+            {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', 'http://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree');
+
+        print_r("Nodename: " . $crawler->first()->text());
+
+            
+                    
+                    at
+    
+        DefaultControllerTest
+        ->testServer
+    
+    ()
+
+            
+                    
+                    at
+    
+        ReflectionMethod
+        ->invokeArgs
+    
+    (object(DefaultControllerTest), array())
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php at line 909 
+        
+                    $testResult = $method->invokeArgs(
+                $this,
+                array_merge($this->data, $this->dependencyInput)
+            );
+        } catch (Throwable $_e) {
+            $e = $_e;
+        } catch (Exception $_e) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestCase
+        ->runTest
+    
+    ()
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php at line 768 
+        
+                    }
+
+            $this->assertPreConditions();
+            $this->testResult = $this->runTest();
+            $this->verifyMockObjects();
+            $this->assertPostConditions();
+
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestCase
+        ->runBare
+    
+    ()
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestResult.php at line 612 
+        
+                        $invoker = new PHP_Invoker;
+                $invoker->invoke(array($test, 'runBare'), array(), $_timeout);
+            } else {
+                $test->runBare();
+            }
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            $failure = true;
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestResult
+        ->run
+    
+    (object(DefaultControllerTest))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php at line 724 
+        
+                    $php = PHPUnit_Util_PHP::factory();
+            $php->runTestJob($template->render(), $this, $result);
+        } else {
+            $result->run($this);
+        }
+
+        if ($this->useErrorHandler !== null) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestCase
+        ->run
+    
+    (object(PHPUnit_Framework_TestResult))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php at line 747 
+        
+                        $test->setRunTestInSeparateProcess($this->runTestInSeparateProcess);
+            }
+
+            $test->run($result);
+        }
+
+        foreach ($hookMethods['afterClass'] as $afterClassMethod) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestSuite
+        ->run
+    
+    (object(PHPUnit_Framework_TestResult))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php at line 747 
+        
+                        $test->setRunTestInSeparateProcess($this->runTestInSeparateProcess);
+            }
+
+            $test->run($result);
+        }
+
+        foreach ($hookMethods['afterClass'] as $afterClassMethod) {
+            
+                    
+                    at
+    
+        PHPUnit_Framework_TestSuite
+        ->run
+    
+    (object(PHPUnit_Framework_TestResult))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/TextUI/TestRunner.php at line 440 
+        
+                    $suite->setRunTestInSeparateProcess($arguments['processIsolation']);
+        }
+
+        $suite->run($result);
+
+        unset($suite);
+        $result->flushListeners();
+            
+                    
+                    at
+    
+        PHPUnit_TextUI_TestRunner
+        ->doRun
+    
+    (object(PHPUnit_Framework_TestSuite), array('listGroups' => false, 'loader' => null, 'useDefaultConfiguration' => true, 'configuration' => '/home/prodmgr/projects/php/symfony/ehelele1019/app/phpunit.xml.dist', 'testSuffixes' => array('Test.php', '.phpt')))
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php at line 149 
+        
+                unset($this->arguments['testFile']);
+
+        try {
+            $result = $runner->doRun($suite, $this->arguments);
+        } catch (PHPUnit_Framework_Exception $e) {
+            print $e->getMessage() . "\n";
+        }
+            
+                    
+                    at
+    
+        PHPUnit_TextUI_Command
+        ->run
+    
+    (array('/usr/local/bin/phpunit', '-c', 'app'), true)
+
+    
+    in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php at line 100 
+        
+            {
+        $command = new static;
+
+        return $command->run($_SERVER['argv'], $exit);
+    }
+
+    /**
+            
+                    
+                    at
+    
+        PHPUnit_TextUI_Command
+        ::main
+    
+    ()
+
+    
+    in /usr/local/bin/phpunit at line 545 
+        
+                exit;
+    }
+
+    PHPUnit_TextUI_Command::main();
+}
+
+__HALT_COMPILER(); ?>
+            
+            
+
+    
+        
+            
+                Logs 
+                
+                            
+                    
+                        1 error
+                    
+                
+                    
+
+        
+            
+            ERROR - Uncaught PHP Exception Symfony\Component\HttpKernel\Exception\NotFoundHttpException: "No route found for "GET /organizationCategory.do"" at /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php line 159
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.request" to listener "Symfony\Component\EventDispatcher\Debug\WrappedListener::__invoke".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Symfony\Bundle\FrameworkBundle\DataCollector\RouterDataCollector::onKernelController".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Symfony\Component\HttpKernel\DataCollector\RequestDataCollector::onKernelController".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener::onKernelController".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Sensio\Bundle\FrameworkExtraBundle\EventListener\ParamConverterListener::onKernelController".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Sensio\Bundle\FrameworkExtraBundle\EventListener\HttpCacheListener::onKernelController".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Sensio\Bundle\FrameworkExtraBundle\EventListener\SecurityListener::onKernelController".
+        
+            
+            DEBUG - Notified event "kernel.controller" to listener "Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener::onKernelController".
+        
+    
+    
+
+
+
+    
+        Stack Trace (Plain Text) 
+            
+
+    
+[1] Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /organizationCategory.do"
+    at n/a
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php line 159
+
+    at Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+        in  line 
+
+    at call_user_func(array(object(RouterListener), 'onKernelRequest'), object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/WrappedListener.php line 61
+
+    at Symfony\Component\EventDispatcher\Debug\WrappedListener->__invoke(object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+        in  line 
+
+    at call_user_func(object(WrappedListener), object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php line 160
+
+    at Symfony\Component\EventDispatcher\EventDispatcher->doDispatch(array(object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener)), 'kernel.request', object(GetResponseEvent))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php line 48
+
+    at Symfony\Component\EventDispatcher\EventDispatcher->dispatch('kernel.request', object(GetResponseEvent))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/TraceableEventDispatcher.php line 124
+
+    at Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher->dispatch('kernel.request', object(GetResponseEvent))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 3098
+
+    at Symfony\Component\HttpKernel\HttpKernel->handleRaw(object(Request), '1')
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 3071
+
+    at Symfony\Component\HttpKernel\HttpKernel->handle(object(Request), '1', true)
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 3222
+
+    at Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle(object(Request), '1', true)
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 2444
+
+    at Symfony\Component\HttpKernel\Kernel->handle(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Client.php line 81
+
+    at Symfony\Component\HttpKernel\Client->doRequest(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Client.php line 131
+
+    at Symfony\Bundle\FrameworkBundle\Client->doRequest(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/BrowserKit/Client.php line 327
+
+    at Symfony\Component\BrowserKit\Client->request('GET', 'http://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree')
+        in /home/prodmgr/projects/php/symfony/ehelele1019/src/AppBundle/Tests/Controller/DefaultControllerTest.php line 26
+
+    at AppBundle\Tests\Controller\DefaultControllerTest->testServer()
+        in  line 
+
+    at ReflectionMethod->invokeArgs(object(DefaultControllerTest), array())
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php line 909
+
+    at PHPUnit_Framework_TestCase->runTest()
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php line 768
+
+    at PHPUnit_Framework_TestCase->runBare()
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestResult.php line 612
+
+    at PHPUnit_Framework_TestResult->run(object(DefaultControllerTest))
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php line 724
+
+    at PHPUnit_Framework_TestCase->run(object(PHPUnit_Framework_TestResult))
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php line 747
+
+    at PHPUnit_Framework_TestSuite->run(object(PHPUnit_Framework_TestResult))
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php line 747
+
+    at PHPUnit_Framework_TestSuite->run(object(PHPUnit_Framework_TestResult))
+        in phar:///usr/local/bin/phpunit/phpunit/TextUI/TestRunner.php line 440
+
+    at PHPUnit_TextUI_TestRunner->doRun(object(PHPUnit_Framework_TestSuite), array('listGroups' => false, 'loader' => null, 'useDefaultConfiguration' => true, 'configuration' => '/home/prodmgr/projects/php/symfony/ehelele1019/app/phpunit.xml.dist', 'testSuffixes' => array('Test.php', '.phpt')))
+        in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php line 149
+
+    at PHPUnit_TextUI_Command->run(array('/usr/local/bin/phpunit', '-c', 'app'), true)
+        in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php line 100
+
+    at PHPUnit_TextUI_Command::main()
+        in /usr/local/bin/phpunit line 545
+
+[2] Symfony\Component\Routing\Exception\ResourceNotFoundException: 
+    at n/a
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/cache/test/appTestUrlMatcher.php line 160
+
+    at appTestUrlMatcher->match('/organizationCategory.do')
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/Routing/Matcher/UrlMatcher.php line 112
+
+    at Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/Routing/Router.php line 256
+
+    at Symfony\Component\Routing\Router->matchRequest(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php line 137
+
+    at Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+        in  line 
+
+    at call_user_func(array(object(RouterListener), 'onKernelRequest'), object(GetResponseEvent), 'kernel.request', object(TraceableEventDispatcher))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/WrappedListener.php line 61
+
+    at Symfony\Component\EventDispatcher\Debug\WrappedListener->__invoke(object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+        in  line 
+
+    at call_user_func(object(WrappedListener), object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php line 160
+
+    at Symfony\Component\EventDispatcher\EventDispatcher->doDispatch(array(object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener), object(WrappedListener)), 'kernel.request', object(GetResponseEvent))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/EventDispatcher.php line 48
+
+    at Symfony\Component\EventDispatcher\EventDispatcher->dispatch('kernel.request', object(GetResponseEvent))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/TraceableEventDispatcher.php line 124
+
+    at Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher->dispatch('kernel.request', object(GetResponseEvent))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 3098
+
+    at Symfony\Component\HttpKernel\HttpKernel->handleRaw(object(Request), '1')
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 3071
+
+    at Symfony\Component\HttpKernel\HttpKernel->handle(object(Request), '1', true)
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 3222
+
+    at Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle(object(Request), '1', true)
+        in /home/prodmgr/projects/php/symfony/ehelele1019/app/bootstrap.php.cache line 2444
+
+    at Symfony\Component\HttpKernel\Kernel->handle(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Client.php line 81
+
+    at Symfony\Component\HttpKernel\Client->doRequest(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Client.php line 131
+
+    at Symfony\Bundle\FrameworkBundle\Client->doRequest(object(Request))
+        in /home/prodmgr/projects/php/symfony/ehelele1019/vendor/symfony/symfony/src/Symfony/Component/BrowserKit/Client.php line 327
+
+    at Symfony\Component\BrowserKit\Client->request('GET', 'http://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree')
+        in /home/prodmgr/projects/php/symfony/ehelele1019/src/AppBundle/Tests/Controller/DefaultControllerTest.php line 26
+
+    at AppBundle\Tests\Controller\DefaultControllerTest->testServer()
+        in  line 
+
+    at ReflectionMethod->invokeArgs(object(DefaultControllerTest), array())
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php line 909
+
+    at PHPUnit_Framework_TestCase->runTest()
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php line 768
+
+    at PHPUnit_Framework_TestCase->runBare()
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestResult.php line 612
+
+    at PHPUnit_Framework_TestResult->run(object(DefaultControllerTest))
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestCase.php line 724
+
+    at PHPUnit_Framework_TestCase->run(object(PHPUnit_Framework_TestResult))
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php line 747
+
+    at PHPUnit_Framework_TestSuite->run(object(PHPUnit_Framework_TestResult))
+        in phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php line 747
+
+    at PHPUnit_Framework_TestSuite->run(object(PHPUnit_Framework_TestResult))
+        in phar:///usr/local/bin/phpunit/phpunit/TextUI/TestRunner.php line 440
+
+    at PHPUnit_TextUI_TestRunner->doRun(object(PHPUnit_Framework_TestSuite), array('listGroups' => false, 'loader' => null, 'useDefaultConfiguration' => true, 'configuration' => '/home/prodmgr/projects/php/symfony/ehelele1019/app/phpunit.xml.dist', 'testSuffixes' => array('Test.php', '.phpt')))
+        in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php line 149
+
+    at PHPUnit_TextUI_Command->run(array('/usr/local/bin/phpunit', '-c', 'app'), true)
+        in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php line 100
+
+    at PHPUnit_TextUI_Command::main()
+        in /usr/local/bin/phpunit line 545
+
+
+    
+
+
+//<![CDATA[
+    function toggle(id, clazz) {
+        var el = document.getElementById(id),
+            current = el.style.display,
+            i;
+
+        if (clazz) {
+            var tags = document.getElementsByTagName('*');
+            for (i = tags.length - 1; i >= 0 ; i--) {
+                if (tags[i].className === clazz) {
+                    tags[i].style.display = 'none';
+                }
+            }
+        }
+
+        el.style.display = current === 'none' ? 'block' : 'none';
+    }
+
+    function switchIcons(id1, id2) {
+        var icon1, icon2, display1, display2;
+
+        icon1 = document.getElementById(id1);
+        icon2 = document.getElementById(id2);
+
+        display1 = icon1.style.display;
+        display2 = icon2.style.display;
+
+        icon1.style.display = display2;
+        icon2.style.display = display1;
+    }
+//]]>
+        
+    .Fhttp://www.ablesky.com/organizationCategory.do?action=listOrgInteriorCategoryTree&organizationId=8778&optDate=1446185687&accessToken=c716f6a659f177980fb5f962ff3f86c6........
+
+Time: 2.15 seconds, Memory: 71.75Mb
+
+There was 1 failure:
+
+1) AppBundle\Tests\Controller\DefaultControllerTest::testAbleSkyGet
+Failed asserting that 404 matches expected 200.
+
+/home/prodmgr/projects/php/symfony/ehelele1019/src/AppBundle/Tests/Controller/DefaultControllerTest.php:65
+
+FAILURES!
+Tests: 12, Assertions: 8, Failures: 1.

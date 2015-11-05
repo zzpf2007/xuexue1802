@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p>
+      论坛!
+    </p>
+    {{ include('front/posts/common/recent_list.html.twig', { 'posts': posts }) }}
+{% endblock %}

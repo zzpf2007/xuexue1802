@@ -1,0 +1,10 @@
+<ul>
+  {% for item in posts %}
+    <li>
+      {{ item.id }} || {{ item.title }} || {{ item.content }} || 
+      <a href="{{ path('show_post_path', {'id': item.id}) }}">
+        view
+      </a>
+    </li>
+  {% endfor %}
+</ul>

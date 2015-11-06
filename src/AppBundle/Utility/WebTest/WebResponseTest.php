@@ -10,9 +10,10 @@ use AppBundle\Utility\WebUtility\WebJson;
 
 class WebResponseTest extends RunTestMode {
   function runTest() {
-    $ret = $this->getTest();
-    $ret = $this->getTest02();
-    $ret = $this->getTest03();
+    // $ret = $this->getTest();
+    // $ret = $this->getTest02();
+    // $ret = $this->getTest03();
+    $ret = $this->getTest04();
     return $ret;
   }
 
@@ -86,4 +87,68 @@ class WebResponseTest extends RunTestMode {
     // $data = $content_json->{'success'};
     // return new Response("Content: " . $data );
   }
+
+  function getTest04() {
+    $restClient = $this->restClient; 
+    $url = 'http://xkt.jzcnw.com/kecheng/detail_966796';
+    $response = $restClient->get($url);
+    $content = $response->getContent();
+
+    // list($page,$pageInfo) = $this->load_with_curl($url);
+
+    $opts = array('output-xhtml' => true,
+            'numeric-entities' => true);
+    $xml = tidy_repair_string($content, $opts, 'utf8');
+    $doc = new \DOMDocument();
+    // $doc->setEncoding("UTF8");
+    $doc->loadXML($xml);
+    $xpath = new \DOMXPath($doc);
+    $xpath->registerNamespace('xhtml','http://www.w3.org/1999/xhtml');
+    $titles = $xpath->query('//xhtml:span[@class="course-tit"]');
+    $course_ids = $xpath->query('//xhtml:a/@data-coursecontentid');
+
+    $listTitle = array();
+    $listId = array();
+
+    foreach ($titles as $node) {
+        $link = $node->nodeValue;
+        print $link . '</br>';
+    }
+
+    foreach ($course_ids as $node) {
+        $link = $node->nodeValue;
+        print $link . '</br>';
+    }
+
+    // $doc = new \DOMDocument();
+    // $opts = array('output-xhtml' => true,
+    //                 // Prevent DOMDocument from being confused about entities
+    //                 'numeric-entities' => true);
+    // $doc->loadXML(tidy_repair_string( utf8_encode($content), $opts ));
+    // // $doc->loadXML( $content );
+    // $xpath = new \DOMXPath($doc);
+    // $body = $doc->getElementsByTagName('body')->item(0);
+
+    // $ret = "";
+
+    // foreach ($xpath->query("descendant-or-self::text()", $body) as $textNode) {
+    //     $ret = $ret . $textNode->wholeText;
+    //   }
+
+    // return $ret;
+  }
+
+    function load_with_curl($url, $method = 'GET') {
+        $c = curl_init($url);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+        if ($method == 'GET') {
+            curl_setopt($c,CURLOPT_FOLLOWLOCATION, true);
+        }
+        else if ($method == 'HEAD') {
+            curl_setopt($c, CURLOPT_NOBODY, true);
+            curl_setopt($c, CURLOPT_HEADER, true);
+        }
+        $response = curl_exec($c);
+        return array($response, curl_getinfo($c));
+    }
 }

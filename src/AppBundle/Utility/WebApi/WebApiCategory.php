@@ -41,11 +41,27 @@ class WebApiCategory
       case ( 'child' ) :
         $retJson = $this->getChildResponse();
         break;
+      case ( 'detail') :
+        $retJson = $this->getDetailResponse();
+        break;
       default : 
         $retJson = '';
     }
     // WebAuto::pEcho('getMobileJson response', $retJson);
     return $retJson;
+  }
+
+  private function getDetailResponse()
+  {
+    $retResponse = "";
+    $category = $this->getCategoryItem();
+    $categoryId = $category->getAbleskyId() ? $category->getAbleskyId() : 999990;
+
+    $timeExpired = CheckData::dateExpired($category->getUpdated());
+
+    if ( $timeExpired ) {
+      $url = WebAuto::webBuildGetCoursesURL($categoryId);
+    }
   }
 
   private function getChildResponse()

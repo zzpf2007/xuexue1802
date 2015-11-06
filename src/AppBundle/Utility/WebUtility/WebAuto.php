@@ -105,4 +105,9 @@ class WebAuto
     $time = $time2 [0];  
     return $time;
   }
+
+  public static function getHtmlContent()
+  {
+    
+  }
 }

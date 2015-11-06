@@ -22,9 +22,16 @@ user_api_path:
   defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::userAction }
   methods: [POST]
 
-web_api_path:
+api_category_path:
   path: '/api/school/categories/{id}'
   defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::categoryActoin, id: 1 }
+  requirements:
+    page:  \d{1, 6}
+  methods: [GET]
+
+api_course_path:
+  path: '/api/school/courses/{id}'
+  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::courseAction, id: null }
   requirements:
     page:  \d{1, 6}
   methods: [GET]

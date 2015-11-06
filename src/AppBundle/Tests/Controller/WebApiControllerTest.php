@@ -33,4 +33,9 @@ class WebApiControllerTest extends WebTestCase
 
       // print_r("/n WebApiControllerTest:testGetCoursesByCategoryId:$content: " . $content);
     }
+
+    public function testGetCoursesDetails()
+    {
+      
+    }
 }

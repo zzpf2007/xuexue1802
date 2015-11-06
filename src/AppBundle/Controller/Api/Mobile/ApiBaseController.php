@@ -40,6 +40,11 @@ class ApiBaseController extends Controller
       return new Response(CheckString::check( $result ));
     }
 
+    public function courseAction(Request $request, $id)
+    {
+      return new Response(CheckString::check( $id ));
+    }
+
     public function handleCategoryResponse( $categoryId = null )
     {
       $category = $this->findCategory( $categoryId );

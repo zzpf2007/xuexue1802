@@ -38,7 +38,7 @@ class WebJson
       // }
 
       $id = $value->{'id'};
-      $categoryName = $value->{'categoryName'};
+      $categoryName = trim( $value->{'categoryName'} );
       // $categoryName = utf8_encode($value->{'categoryName'});
       $children = $value->{'children'}->{'list'};
 
@@ -46,7 +46,7 @@ class WebJson
 
       foreach ($children as $item) {
         $id = $item->{'id'};
-        $categoryName = $item->{'categoryName'};
+        $categoryName = trim( $item->{'categoryName'} );
         // $categoryName = utf8_encode($item->{'categoryName'});
         // $children = $item->{'children'}->{'list'};         
         $ret = $ret . "{ \"id\": $id, \"categoryName\": \"$categoryName\", \"children\": [] }, ";

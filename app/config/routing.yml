@@ -20,7 +20,8 @@ show_path:
 user_api_path:
   path: '/api/user'
   defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::userAction }
-  methods: [POST]
+  # methods: [POST]
+  methods: [GET]
 
 api_category_path:
   path: '/api/school/categories/{id}'
@@ -39,3 +40,6 @@ api_course_path:
 web_test_index:
   path: /web/{name}
   defaults: {_controller: 'AppBundle\Controller\WebTest\HomeController::indexAction'}
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

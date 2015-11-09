@@ -1,0 +1,66 @@
+<?php
+// src/AppBundle/Entity/Category.php
+namespace AppBundle\Entity;
+
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Doctrine\ORM\Mapping as ORM;
+/**
+  * @ORM\Entity
+  * @ORM\Table(name="course")
+  */
+class Course
+{
+    /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
+
+    /**
+    * @ORM\Column(type="integer")
+    * @ORM\Id
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
+
+    /**
+    * @ORM\Column(type="integer")
+    */
+    protected $ablesky_id;
+
+    /**
+    * @ORM\Column(type="text")
+    */
+    protected $raw_json;
+
+    /**
+    * @ORM\Column(type="text")
+    */
+    protected $mobile_json;
+
+    /**
+    * @ORM\Column(type="string", length=100)
+    */
+    protected $md5;
+
+    /**
+    * @ORM\Column(type="string", length=10)
+    */
+    protected $type;
+
+    private $isSave;
+
+    public function __construct() {
+        $this->isSave = false;
+    }
+
+
+    public function getSave()
+    {
+        return $this->isSave;
+    }
+    public function setSave()
+    {
+        $this->isSave = true;
+    }
+}

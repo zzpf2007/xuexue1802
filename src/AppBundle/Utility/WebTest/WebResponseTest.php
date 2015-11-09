@@ -112,13 +112,34 @@ class WebResponseTest extends RunTestMode {
 
     foreach ($titles as $node) {
         $link = $node->nodeValue;
-        print $link . '</br>';
+        $listTitle[] = $link;
+        // print $link . '||';
     }
 
     foreach ($course_ids as $node) {
         $link = $node->nodeValue;
-        print $link . '</br>';
+        $listId[] = $link;
+        // print $link . '||';
     }
+
+    $listRet = array();
+    $retResult = '{ "Result" : [';
+    // $retResult = '';
+
+    for ( $i = 0; $i < count( $listTitle ); $i++ ) {
+        // print $listId[$i];
+        // $id = $listId[$i]; $title = $listTitle[$i];
+        // $listTemp = array( "id" => $listId[$i], "title" => $listTitle[$i] );
+        // print $listTitle[$i];
+        // $listRet[] = $listTemp;
+        $ret = '{ "id" : "' . $listId[$i] . '", "title" : "' . $listTitle[$i] . '"},';
+        $retResult = $retResult . $ret;
+    }
+
+    $retResult = rtrim(trim($retResult), ',') . ' ]}';
+    return $retResult;
+
+    // return json_encode($listRet);
 
     // $doc = new \DOMDocument();
     // $opts = array('output-xhtml' => true,

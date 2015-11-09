@@ -8,18 +8,18 @@ class WebApiFactory {
   private function __construct() {
   }
 
-  static function getInstance( $name, $restClient ) {
+  static function getInstance( $name, $container, $itemId ) {
     switch ( $name ) {
-      case ( 'categories' ):
-        return new WebApiCategory($restClient);
+      case ( 'course' ):
+        return new WebApiCourse($container, $itemId);
       default:
-        return new WebApiDefault($restClient);
+        return new WebApiDefault($container);
     }
   }
 }
 
 class WebApiDefault extends WebApiMode {
   function getResult() {
-    return "Default class: getResult();";
+    return "Default empty result!";
   }
 }

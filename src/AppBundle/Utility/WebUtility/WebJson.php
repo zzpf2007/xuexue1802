@@ -22,9 +22,11 @@ class WebJson
     return json_encode($str, JSON_PRETTY_PRINT);
   }
 
-  public static function parseJsonString( $result )
+  public static function parseJsonString( $tResult )
   {
-    $result = WebJson::stringToJson($result);
+    $result = WebJson::stringToJson($tResult);
+
+    if ( !isset($result->{'result'}) ) return $tResult;
 
     $result = $result->{'result'}->{'list'};
     $ret = '{ "result": [';
@@ -74,5 +76,13 @@ class WebJson
 
     $ret = rtrim(trim($ret), ',') . ']}';
     return $ret;
+  }
+
+  public static function strRemoveSpace( $str )
+  {
+    $str = preg_replace('/\s(?=\s)/', '', $str); 
+    $str = preg_replace('/[\n\r\t]/', ' ', $str); 
+
+    return $str;
   }
 }

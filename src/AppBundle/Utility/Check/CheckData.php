@@ -4,7 +4,8 @@ namespace AppBundle\Utility\Check;
 
 class CheckData {
   public static function dateExpired( $timestamp ) {
-    $expired = false;
+    $expired = true;
+    
     if ( $timestamp ) {
       $timenow = time();
 
@@ -12,11 +13,9 @@ class CheckData {
       $timeInterval = 60 * 15;
       // $timeInterval = 20;
       $diff = $timenow - $timestamp->getTimestamp();
-      if ( $diff > $timeInterval ){
-        $expired = true;
+      if ( $diff < $timeInterval ){
+        $expired = false;
       }
-    } else {
-      $expired = true;
     }
 
     return $expired;

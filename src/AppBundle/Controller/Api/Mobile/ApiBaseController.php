@@ -53,7 +53,9 @@ class ApiBaseController extends Controller
 
     public function courseAction(Request $request, $id)
     {
-      $result = $this->handleCourseResponse( $id );
+      // $result = $this->handleCourseResponse( $id );
+      $webApiCourse = WebApiFactory::getInstance('course', $this->container, $id );
+      $result = $webApiCourse->getResult();
       return new Response(CheckString::check( $result ));
     }
 
@@ -156,7 +158,7 @@ class ApiBaseController extends Controller
       $course = $this->findCourse( $course_id );
       $restClient = $this->container->get('ci.restclient');
 
-      $retResult = '{ "Result" : [';
+      $retResult = '{ "result" : [';
 
       if ( $course ) {
         $url = 'http://www.ablesky.com/kecheng/detail_' . $course->getAbleskyId();
@@ -189,7 +191,9 @@ class ApiBaseController extends Controller
         $listRet = array();
 
         for ( $i = 0; $i < count( $listTitle ); $i++ ) {
-            $ret = '{ "id" : "' . $listId[$i] . '", "title" : "' . $listTitle[$i] . '"},';
+            // $ret = '{ "id" : "' . $listId[$i] . '", "title" : "' . $listTitle[$i] . '"},';
+            $ret = sprintf( '{ "id" : "%s", "title" : "%s"},', $listId[$i], $listTitle[$i]);
+
             $retResult = $retResult . $ret;
         }        
       }

@@ -9,21 +9,42 @@ use AppBundle\Utility\WebUtility\WebAuto;
 use AppBundle\Utility\WebUtility\WebJson;
 use AppBundle\Utility\Check\CheckData;
 use AppBundle\Entity\Category;
+use AppBundle\Utility\WebApi\WebResponse\CategoryRootResponse;
+use AppBundle\Utility\WebApi\WebResponse\CategoryChildResponse;
 
 class WebApiCategory02 extends WebApiMode
 {
   private $category;
+  private $webResponse;
 
   public function __construct( $container, $itemId = null ) 
   {
     parent::__construct($container);
     $this->category = $this->getCategory( $itemId );
+    $this->webResponse = $this->getResponseObject();
+  }
+
+  private function getResponseObject()
+  {
+    $categoryType = $this->category->getType();
+    $responseObj;
+
+    switch ( $categoryType ) {
+      case ( 'root' ) :
+        $responseObj = new CategoryRootResponse(); break;
+      case ( 'child' ) :
+        $responseObj = new CategoryChildResponse(); break;
+      default : 
+        $responseObj = new CategoryRootResponse();
+    } 
+
+    return $responseObj;
   }
 
   public function getResult() 
   {
-    $retResult = $this->handleCategoryRequest();
-    return $retResult;
+    // $retResult = $this->handleCategoryRequest();
+    return $this->webResponse->getResponse();
   }
 
   private function handleCategoryRequest() 
@@ -34,12 +55,16 @@ class WebApiCategory02 extends WebApiMode
 
     switch ( $categoryType ) {
       case ( 'root' ) :
-        $retResult = $this->getRootResponse(); break;
+        // $retResult = $this->getRootResponse(); break;
+        $this->webResponse = new CategoryRootResponse(); break;
       case ( 'child' ) :
-        $retResult = $this->getChildResponse(); break;
+        $this->webResponse = new CategoryChildResponse(); break;
+        // $retResult = $this->getChildResponse(); break;
       default : 
         $retResult = '';
     }
+
+    $retResult = $this->webResponse->getResponse();
 
     return $retResult;
   }

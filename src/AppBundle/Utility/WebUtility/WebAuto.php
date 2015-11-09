@@ -13,7 +13,7 @@ class WebAuto
 
   public static function pEcho($name, $string)
   {
-    if ( WebAuto::DEBUG )echo "$name: $string</br>";
+    if ( WebAuto::DEBUG ) echo "$name: $string</br>";
   }
 
   public static function makeUp()

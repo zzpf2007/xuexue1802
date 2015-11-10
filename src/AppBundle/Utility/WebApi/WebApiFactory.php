@@ -9,12 +9,16 @@ class WebApiFactory {
   }
 
   static function getInstance( $name, $container, $itemId ) {
+    $webApiObject;
     switch ( $name ) {
       case ( 'course' ):
-        return new WebApiCourse($container, $itemId);
+        $webApiObject = new WebApiCourse($container, $itemId); break;
+      case ( 'category' ):
+        $webApiObject = new WebApiCategory02($container, $itemId); break;
       default:
-        return new WebApiDefault($container);
+        $webApiObject = new WebApiDefault($container);        
     }
+    return $webApiObject;
   }
 }
 

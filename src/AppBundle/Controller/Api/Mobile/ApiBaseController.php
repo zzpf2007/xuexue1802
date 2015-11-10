@@ -47,13 +47,14 @@ class ApiBaseController extends Controller
 
     public function categoryActoin(Request $request, $id)
     {
-      $result = $this->handleCategoryResponse( $id );
+      // $result = $this->handleCategoryResponse( $id );
+      $webApi = WebApiFactory::getInstance('category', $this->container, $id );
+      $result = $webApi->getResult();
       return new Response(CheckString::check( $result ));
     }
 
     public function courseAction(Request $request, $id)
     {
-      // $result = $this->handleCourseResponse( $id );
       $webApiCourse = WebApiFactory::getInstance('course', $this->container, $id );
       $result = $webApiCourse->getResult();
       return new Response(CheckString::check( $result ));
@@ -137,67 +138,4 @@ class ApiBaseController extends Controller
       return $category;
     }
 
-    public function findCourse( $course_id = null )
-    {
-      $courseRepo = $this->getDoctrine()
-                         ->getRepository('AppBundle:Course');
-      $course = null;
-      if ( $course_id ) {        
-        $course = $courseRepo->findOneBy( array('ablesky_id' => $course_id), array('updatedAt' => 'DESC') );
-        if ( !$course ) {
-          $course = new Course();
-          $course->setAbleskyId($course_id);
-        }
-      }
-
-      return $course;
-    }
-
-    public function handleCourseResponse( $course_id = null )
-    {
-      $course = $this->findCourse( $course_id );
-      $restClient = $this->container->get('ci.restclient');
-
-      $retResult = '{ "result" : [';
-
-      if ( $course ) {
-        $url = 'http://www.ablesky.com/kecheng/detail_' . $course->getAbleskyId();
-
-        $response = $restClient->get($url);
-        $content = $response->getContent();
-        $opts = array('output-xhtml' => true,
-                      'numeric-entities' => true);
-        $xml = tidy_repair_string($content, $opts, 'utf8');
-        $doc = new \DOMDocument();
-        $doc->loadXML($xml);
-        $xpath = new \DOMXPath($doc);
-        $xpath->registerNamespace('xhtml','http://www.w3.org/1999/xhtml');
-        $titles = $xpath->query('//xhtml:span[@class="course-tit"]');
-        $course_ids = $xpath->query('//xhtml:a/@data-coursecontentid');
-
-        $listTitle = array();
-        $listId = array();
-
-        foreach ($titles as $node) {
-            $link = $node->nodeValue;
-            $listTitle[] = $link;
-        }
-
-        foreach ($course_ids as $node) {
-            $link = $node->nodeValue;
-            $listId[] = $link;
-        }
-
-        $listRet = array();
-
-        for ( $i = 0; $i < count( $listTitle ); $i++ ) {
-            // $ret = '{ "id" : "' . $listId[$i] . '", "title" : "' . $listTitle[$i] . '"},';
-            $ret = sprintf( '{ "id" : "%s", "title" : "%s"},', $listId[$i], $listTitle[$i]);
-
-            $retResult = $retResult . $ret;
-        }        
-      }
-      $retResult = rtrim(trim($retResult), ',') . ' ]}';
-      return $retResult;
-    }
 }

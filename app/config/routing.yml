@@ -25,7 +25,7 @@ user_api_path:
 
 api_category_path:
   path: '/api/school/categories/{id}'
-  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::categoryActoin, id: 1 }
+  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::categoryActoin, id: null }
   requirements:
     page:  \d{1, 6}
   methods: [GET]

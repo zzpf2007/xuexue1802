@@ -2,7 +2,7 @@
 // src/AppBundle/Entity/Category.php
 namespace AppBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
 /**
   * @ORM\Entity
@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
   */
 class Category
 {
+
+    /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
+
   /**
     * @ORM\Column(type="integer")
     * @ORM\Id
@@ -41,22 +48,6 @@ class Category
     * @ORM\Column(type="string", length=10)
     */
   protected $type;
-
-  /**
-    * @var \DateTime $created
-    *
-    * @Gedmo\Timestampable(on="create")
-    * @ORM\Column(type="datetime")
-    */
-  private $created;
-
-  /**
-    * @var \DateTime $updated
-    *
-    * @Gedmo\Timestampable(on="update")
-    * @ORM\Column(type="datetime")
-    */
-  private $updated;
 
   private $isSave;
 
@@ -194,43 +185,6 @@ class Category
         return $this->type;
     }
 
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return Category
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     *
-     * @return Category
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
 
     public function getSave()
     {

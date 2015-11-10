@@ -53,6 +53,7 @@ class WebApiCourse extends WebApiMode
     $url = $this->buildURL();
     $response = $restClient->get($url);
     $content = $response->getContent();
+    var_dump($content);
     $opts = array('output-xhtml' => true,
                   'numeric-entities' => true);
     $xml = tidy_repair_string($content, $opts, 'utf8');
@@ -62,7 +63,12 @@ class WebApiCourse extends WebApiMode
     $xpath->registerNamespace('xhtml','http://www.w3.org/1999/xhtml');
 
     $titles = $xpath->query('//xhtml:span[@class="course-tit"]');
+    // $courseIds = $xpath->query('//xhtml:a[@data-coursecontentid]');
     $courseIds = $xpath->query('//xhtml:a/@data-coursecontentid');
+    // $courseIds = $xpath->query('//xhtml:a[@class="study-start"]');
+    
+    // var_dump($courseIds);
+    // print $courseIds;
      
     $listId = $this->getNodeList($courseIds);
     $listTitle = $this->getNodeList($titles);
@@ -77,7 +83,7 @@ class WebApiCourse extends WebApiMode
   {
     $listResult = array();
     foreach ($listNodes as $node) {
-      $node->nodeValue;
+      // print $node->nodeValue;
       $listResult[] = $node->nodeValue;
     }
     return $listResult;
@@ -116,6 +122,8 @@ class WebApiCourse extends WebApiMode
   private function buildURL()
   {
     return sprintf('http://www.ablesky.com/kecheng/detail_%s', $this->course->getAbleskyId());
+    
+    // return sprintf('http://xuekaotong.net/kecheng/detail_%s', $this->course->getAbleskyId());
   }
 
   private function saveCourse($mobileJson)

@@ -13,7 +13,23 @@ class FrontController extends Controller
 {
     public function indexAction(Request $request)
     {
-      return $this->render('front/index.html.twig');
+        return $this->render('front/index.html.twig');
+    }
+
+    public function userAction(Request $request)
+    {
+        var_dump($request);
+        $userRepo = $this->getDoctrine()
+                   ->getRepository('AppBundle:User');
+
+        $users = $userRepo->findAll();
+
+        $result = '';
+        foreach( $users as $user ) {
+            $result = $result . sprintf("username: %s, email: %s </br>", $user->getUsername(), $user->getEmail() );
+        }
+
+        return new Response( "Users List:</br>" . $result );
     }
 
     public function showAction(Request $request)

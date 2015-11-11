@@ -5,10 +5,13 @@ namespace AppBundle\Utility\WebApi\User;
 use AppBundle\Utility\WebApi\User\UserMode;
 use AppBundle\Utility\WebApi\User\UserApiUtil;
 use AppBundle\Utility\WebUtility\WebAuto;
+use AppBundle\Entity\User;
 
 class Register extends UserMode
 {
   private $requestData;
+  private $user;
+
   public function __construct( $container, $data )
   {
     parent::__construct( $container );
@@ -18,6 +21,7 @@ class Register extends UserMode
   public function getResult()
   {
     $result = $this->postAbleSkyResponse( $this->buildPayloadData() );
+    $this->checkResponseValidAndSaveUser( $result );
     return $result;
   }
 
@@ -36,6 +40,9 @@ class Register extends UserMode
     // $retArray['username'] = 'test_webschool_01';
     // $retArray['password'] = 'password1802';
     // $retArray['email'] = 'test_webschool_01@test.com';
+
+
+    $this->createUser( $retArray['username'], $retArray['password'], $retArray['email'] );
     return $retArray;
   }
 
@@ -49,5 +56,29 @@ class Register extends UserMode
     if ( isset($jsonObj->{'email'}) ) $retArray['email'] = $jsonObj->{'email'};
 
     return $retArray;
+  }
+
+  private function createUser( $username, $password, $email )
+  {
+    $newUser = new User();
+    $newUser->setUsername( $username );
+    $newUser->setPassword( $username );
+    $newUser->setEmail( $email );
+
+    $this->user = $newUser;
+  }
+
+  private function checkResponseValidAndSaveUser( $result )
+  {
+    $retJson = json_decode( $result );
+
+    if ( isset( $retJson->{'result'} ) ) {
+      if ( isset( $retJson->{'result'}->{'code'} ) ) {
+        $code = $retJson->{'result'}->{'code'};
+        if ( $code == '0' ) {
+          $this->saveToDB( $this->user );
+        }
+      }
+    }
   }
 }

@@ -14,7 +14,7 @@ class WebApiFactory {
       case ( 'course' ):
         $webApiObject = new WebApiCourse($container, $itemId); break;
       case ( 'category' ):
-        $webApiObject = new WebApiCategory02($container, $itemId); break;
+        $webApiObject = new WebApiCategory($container, $itemId); break;
       default:
         $webApiObject = new WebApiDefault($container);        
     }

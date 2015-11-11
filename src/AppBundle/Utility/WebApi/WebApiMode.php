@@ -13,12 +13,12 @@ abstract class WebApiMode {
 
   abstract function getResult();
 
-  public function getDoctrine()
+  protected function getDoctrine()
   {
-      if (!$this->container->has('doctrine')) {
-          throw new \LogicException('The DoctrineBundle is not registered in your application.');
-      }
+    if (!$this->container->has('doctrine')) {
+        throw new \LogicException('The DoctrineBundle is not registered in your application.');
+    }
 
-      return $this->container->get('doctrine');
+    return $this->container->get('doctrine');
   }
 }

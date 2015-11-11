@@ -36,7 +36,7 @@ class WebApiCourse extends WebApiMode
     $retResult = '';
     $timeExpired = CheckData::dateExpired( $this->course->getUpdatedAt() );
 
-    $timeExpired = true;
+    // $timeExpired = true;
 
     if ( $this->course && $timeExpired ) {
       $retResult = $this->getAbleSkyResponse();
@@ -53,7 +53,7 @@ class WebApiCourse extends WebApiMode
     $url = $this->buildURL();
     $response = $restClient->get($url);
     $content = $response->getContent();
-    var_dump($content);
+    // var_dump($content);
     $opts = array('output-xhtml' => true,
                   'numeric-entities' => true);
     $xml = tidy_repair_string($content, $opts, 'utf8');

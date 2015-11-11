@@ -8,34 +8,50 @@ use AppBundle\Utility\WebUtility\WebAuto;
 
 class WebApiControllerTest extends WebTestCase
 {
-    public function testCategory()
-    {
-      // $client = static::createClient();
-      // $url = '/api/school/categories';
+  public function testUserApi()
+  {
+    $client = static::createClient();
+    $url = '/api/user';
 
-      // $crawler = $client->request('GET', $url);
+    // $payload = '{ "data":{"type":"register"} }';
+    $payload = array();
+    $payload['data'] = '{"type":"register"}';
+    $crawler = $client->request('POST', $url, $payload );
 
-      // $this->assertEquals(200, $client->getResponse()->getStatusCode());
-      // $content = $client->getResponse()->getContent();
+    $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    $content = $client->getResponse()->getContent();
 
-      // print_r("/n WebApiControllerTest:testCategory:$content: " . $content);
-    }
+    print_r("/n WebApiControllerTest:testUserApi:$content: " . $content);
+  }
 
-    public function testGetCoursesByCategoryId()
-    {
-      // $client = static::createClient();
-      // $url = '/api/school/categories/207470';
+  public function testCategory()
+  {
+    // $client = static::createClient();
+    // $url = '/api/school/categories';
 
-      // $crawler = $client->request('GET', $url);
+    // $crawler = $client->request('GET', $url);
 
-      // $this->assertEquals(200, $client->getResponse()->getStatusCode());
-      // $content = $client->getResponse()->getContent();
+    // $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    // $content = $client->getResponse()->getContent();
 
-      // print_r("/n WebApiControllerTest:testGetCoursesByCategoryId:$content: " . $content);
-    }
+    // print_r("/n WebApiControllerTest:testCategory:$content: " . $content);
+  }
 
-    public function testGetCoursesDetails()
-    {
-      
-    }
+  public function testGetCoursesByCategoryId()
+  {
+    // $client = static::createClient();
+    // $url = '/api/school/categories/207470';
+
+    // $crawler = $client->request('GET', $url);
+
+    // $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    // $content = $client->getResponse()->getContent();
+
+    // print_r("/n WebApiControllerTest:testGetCoursesByCategoryId:$content: " . $content);
+  }
+
+  public function testGetCoursesDetails()
+  {
+    
+  }
 }

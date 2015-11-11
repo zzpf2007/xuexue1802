@@ -10,7 +10,7 @@ class CheckData {
       $timenow = time();
 
       // 20 mins
-      $timeInterval = 60 * 15;
+      $timeInterval = 60 * 60 * 4;
       // $timeInterval = 20;
       $diff = $timenow - $timestamp->getTimestamp();
       if ( $diff < $timeInterval ){

@@ -20,8 +20,10 @@ class Register extends UserMode
   
   public function getResult()
   {
-    $result = $this->postAbleSkyResponse( $this->buildPayloadData() );
-    $this->checkResponseValidAndSaveUser( $result );
+    // $result = $this->postAbleSkyResponse( $this->buildPayloadData() );
+    // $this->checkResponseValidAndSaveUser( $result );
+
+    $this->saveUserResult();
     return $result;
   }
 
@@ -80,5 +82,11 @@ class Register extends UserMode
         }
       }
     }
+  }
+
+  private function saveUserResult()
+  {
+    $this->saveToDB( $this->user );
+    return '{ "result" : { "message" : "succeed!", "code" : "0" }  }';
   }
 }

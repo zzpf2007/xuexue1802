@@ -40,16 +40,18 @@ abstract class UserMode
   protected function buildSuccessResponse()
   {
     $retArray = '';
-    $succArray = array( 'code' => 0, 'message' => '请求成功' );
-    $dataString = json_encode( $succArray );
-    $retArray['result'] = $dataString;
+    // $succArray = array( 'code' => 0, 'message' => '请求成功' );
+    // $dataString = json_encode( $succArray, JSON_UNESCAPED_UNICODE );
+    $dataString = '{ "message":"请求成功", "code":"0" }';
+    // $retArray['result'] = $dataString;
 
     list( $timestamp, $accessToken ) = $this->getTimestampAccessToken( $dataString );
     
     $retArray['timestamp'] = $timestamp;
     $retArray['accessToken'] = $accessToken;
 
-    return json_encode( $retArray );
+    // return json_encode( $retArray );
+    return sprintf('{ "result": %s, "timestamp": "%s", "accessToken": "%s"}', $dataString, $timestamp, $accessToken);
   }
 
   protected function getTimestampAccessToken ( $dataString )

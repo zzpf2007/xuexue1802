@@ -25,6 +25,11 @@ class Register extends UserMode
 
     $this->buildPayloadData();
     $result = $this->saveUserResult();
+
+    $logger = $this->container->get( 'my_service.logger' );
+    $logger->debug( date('Y-m-d H:i:s') );
+    $logger->debug( $result );
+
     return $result;
   }
 

@@ -18,7 +18,6 @@ class FrontController extends Controller
 
     public function userAction(Request $request)
     {
-        var_dump($request);
         $userRepo = $this->getDoctrine()
                    ->getRepository('AppBundle:User');
 
@@ -26,7 +25,7 @@ class FrontController extends Controller
 
         $result = '';
         foreach( $users as $user ) {
-            $result = $result . sprintf("username: %s, email: %s </br>", $user->getUsername(), $user->getEmail() );
+            $result = $result . sprintf("username: %s, email: %s, mobile: %s </br>", $user->getUsername(), $user->getEmail(), $user->getMobile() );
         }
 
         return new Response( "Users List:</br>" . $result );

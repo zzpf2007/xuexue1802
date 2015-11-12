@@ -24,4 +24,33 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+    * @ORM\Column(type="string", length=20)
+    */
+    protected $mobile = '';
+
+    /**
+     * Set mobile
+     *
+     * @param integer $mobile
+     *
+     * @return Category
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return integer
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
 }

@@ -24,8 +24,8 @@ front_users_path:
 user_api_path:
   path: '/api/user'
   defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::userAction }
-  # methods: [POST]
-  methods: [GET]
+  methods: [POST]
+  # methods: [GET]
 
 api_category_path:
   path: '/api/school/categories/{id}'

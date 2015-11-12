@@ -15,9 +15,19 @@ class ApiBaseController extends Controller
 {
     public function userAction(Request $request)
     {
+      $result = '';
+
       list( $type, $data ) = UserApiUtil::buildRequest( $request );
+
+      $logger = $this->get('my_service.logger');
+      $logger->debug( date('Y-m-d H:i:s') );
+      $logger->debug( urldecode( $request->getQueryString() ) );
+
+      // var_dump( urldecode( $request->getQueryString() ) );
+      // print urldecode( $request->getQueryString() );
       $webApi = UserApiFactory::getInstance( $type, $data, $this->container );
       $result = $webApi->getResult();
+
 
       return new Response($result);
     }

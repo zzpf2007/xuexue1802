@@ -11,11 +11,13 @@ class Register extends UserMode
 {
   private $requestData;
   private $user;
+  private $logger;
 
   public function __construct( $container, $data )
   {
     parent::__construct( $container );
     $this->requestData = $data;
+    $this->logger = $this->container->get( 'my_service.logger' );
   }
   
   public function getResult()
@@ -26,9 +28,8 @@ class Register extends UserMode
     $this->buildPayloadData();
     $result = $this->saveUserResult();
 
-    $logger = $this->container->get( 'my_service.logger' );
-    $logger->debug( date('Y-m-d H:i:s') );
-    $logger->debug( $result );
+    $this->logger->debug( date('Y-m-d H:i:s') );
+    $this->logger->debug( $result );
 
     return $result;
   }

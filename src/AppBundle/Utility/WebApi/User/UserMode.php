@@ -28,16 +28,37 @@ abstract class UserMode
   {
     $retArray = array();
     $retArray['data'] = json_encode( $data );
+
+    list( $timestamp, $accessToken ) = $this->getTimestampAccessToken( $retArray['data'] );
     
-    $timestamp = time() * 1000;
     $retArray['timestamp'] = $timestamp;
-
-    $access_key = WebAuto::ABLE_SKY_KEY;
-
-    $accessToken = md5( $retArray['data'] . "|" . $timestamp . "|" . $access_key );
     $retArray['accessToken'] = $accessToken;
 
     return $retArray;
+  }
+
+  protected function buildSuccessResponse()
+  {
+    $retArray = '';
+    $succArray = array( 'code' => 0, 'message' => '请求成功' );
+    $dataString = json_encode( $succArray );
+    $retArray['result'] = $dataString;
+
+    list( $timestamp, $accessToken ) = $this->getTimestampAccessToken( $dataString );
+    
+    $retArray['timestamp'] = $timestamp;
+    $retArray['accessToken'] = $accessToken;
+
+    return json_encode( $retArray );
+  }
+
+  protected function getTimestampAccessToken ( $dataString )
+  {
+    $timestamp = time() * 1000;
+    $accessKey = WebAuto::ABLE_SKY_KEY;
+
+    $accessToken = md5( $dataString . "|" . $timestamp . "|" . $accessKey );
+    return array( $timestamp, $accessToken );
   }
 
   protected function postAbleSkyResponse( $dataArray )

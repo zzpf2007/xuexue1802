@@ -92,7 +92,8 @@ class Register extends UserMode
   private function saveUserResult()
   {
     $this->saveToDB( $this->user );
+    return $this->buildSuccessResponse();
     // return '{ "result" : { "message" : "succeed!", "code" : "0" }  }';
-    return sprintf( 'message: %s', $this->user->getEmail() );
+    // return sprintf( 'message: %s', $this->user->getEmail() );    
   }
 }

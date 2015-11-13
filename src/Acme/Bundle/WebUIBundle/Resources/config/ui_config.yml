@@ -1,0 +1,8 @@
+web_ui:
+  homepage:
+    titlebar:
+      title: "Home Page"
+      image: "image1"
+    sidebar:
+      title: "Side Bar"
+      image: "image2"

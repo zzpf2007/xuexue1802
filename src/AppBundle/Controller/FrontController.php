@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FrontController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $name)
     {
-        return $this->render('front/index.html.twig');
+        return $this->render('front/index.html.twig', array( 'name' => $name ));
     }
 
     public function userAction(Request $request)

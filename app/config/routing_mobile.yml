@@ -1,4 +1,3 @@
 user_api_path:
-  path: '/api/user'
-  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::userAction }
-  methods: [GET, POST]
+  path: /api/test/hello/{name}
+  defaults: { _controller: AppBundle:Front:index }

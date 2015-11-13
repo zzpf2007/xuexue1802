@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Ci\RestClientBundle\CiRestClientBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Acme\Bundle\WebUIBundle\AcmeWebUIBundle(),
             new AppBundle\AppBundle(),
         );
 

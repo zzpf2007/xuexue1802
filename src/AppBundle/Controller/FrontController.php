@@ -20,14 +20,11 @@ class FrontController extends Controller
     {
         $userRepo = $this->getDoctrine()
                    ->getRepository('AppBundle:User');
-
         $users = $userRepo->findAll();
-
         $result = '';
         foreach( $users as $user ) {
             $result = $result . sprintf("username: %s, email: %s, mobile: %s </br>", $user->getUsername(), $user->getEmail(), $user->getMobile() );
         }
-
         return new Response( "Users List:</br>" . $result );
     }
 

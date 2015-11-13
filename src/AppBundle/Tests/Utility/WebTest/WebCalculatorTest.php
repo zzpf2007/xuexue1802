@@ -19,6 +19,14 @@ class WebCalculatorTest extends \PHPUnit_Framework_TestCase
       $this->assertEquals( 50, $result );
     }
 
+    public function testJsonEncode()
+    {
+      $json = '{ "result" : "操作成功" }';
+      // $result = json_encode($json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      $result = json_encode($json);
+      print_r( "testJsonEncode: " . $result );
+    }
+
     public function testStringToJson()
     {
       $str = '{"data": "10"}';

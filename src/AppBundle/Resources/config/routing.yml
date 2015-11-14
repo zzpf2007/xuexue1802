@@ -36,3 +36,7 @@ api_course_path:
 web_test_index:
   path: /web/{name}
   defaults: {_controller: 'AppBundle\Controller\WebTest\HomeController::indexAction'}
+
+test_page:
+  path: /web2/test
+  defaults: {_controller: 'AppBundle:Front:test'}  

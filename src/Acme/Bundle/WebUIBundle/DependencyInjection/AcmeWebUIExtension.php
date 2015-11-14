@@ -32,12 +32,14 @@ class AcmeWebUIExtension extends Extension
         if (!isset($config['homepage']['titlebar'])) throw new \RuntimeException('configuration ci_rest_client.curl.defaults is missing.');
 
         $options = array();
-        foreach ($config['homepage']['titlebar'] as $key => $value) {
+        foreach ($config['homepage'] as $key => $value) {
             // $options[constant($key)] = $value;
             $options[$key] = $value;
         };
 
-        $container->setParameter('web_ui.homepage.titlebar', $options);
+        // var_dump($options);
+
+        $container->setParameter('web_ui.homepage', $options);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

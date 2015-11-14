@@ -8,12 +8,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FrontController extends Controller
 {
-    public function indexAction(Request $request, $name)
+    /**
+     * @Template()
+     */
+    public function indexAction(Request $request)
     {
-        return $this->render('front/index.html.twig', array( 'name' => $name ));
     }
 
     public function userAction(Request $request)
@@ -60,5 +63,20 @@ class FrontController extends Controller
         // return new Response("Content: " . $restClient);
         // $response->send();
         return new Response("Content: " . $data );
+    }
+
+    public function testAction( Request $request )
+    {
+        // $retArray = $this->container->getParameter('ci.restclient.curl.defaults');
+        $retArray = $this->container->getParameter('web_ui.homepage');
+        var_dump($retArray);
+
+        $result = '';
+        // foreach( $retArray as $key => $value ) {
+        //     $result = $result . sprintf("key: %s, value: %s </br>", $key, $value );
+        // }
+
+        // $result = $retArray['A_TEST_STRING'];
+        return new Response( "Key Value List:</br>" . $result );
     }
 }

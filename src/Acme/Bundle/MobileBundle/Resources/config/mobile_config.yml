@@ -1,0 +1,6 @@
+api_school:
+  urls:
+    ABLE_SKY_URL:         http://www.ablesky.com
+    ABLE_SKY_MOBILE_URL:  http://mobile.ablesky.com
+    ABLE_SKY_TEST_URL:    'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId=24369'
+    ABLE_SKY_TEACHER_URL: 'http://www.ablesky.com/org/8778/teacher'

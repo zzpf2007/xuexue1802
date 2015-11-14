@@ -1,3 +1,8 @@
+acme_mobile:
+    resource: "@AcmeMobileBundle/Controller/"
+    type:     annotation
+    prefix:   /api/mobile
+    
 acme_webui:
      resource: "@AcmeWebUIBundle/Resources/config/routing.yml"
      prefix: /webui

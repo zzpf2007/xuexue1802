@@ -34,6 +34,7 @@ class ApiMobileTeacher extends ApiMobileMode
 
   private function buildSingleJson( $content )
   {
+
     return $content;
     // return 'Single result! :' . $testUrl = $this->getUrl();
   }
@@ -41,7 +42,7 @@ class ApiMobileTeacher extends ApiMobileMode
   private function buildListJson( $content )
   {
     $json = WebJson::stringToJson($content);
-    if ( !is_object($json) && !isset($json->{'result'}) ) return $json;    
+    if ( !is_object($json) && !isset($json->{'result'}) ) return $json;
     $result = $json->{'result'};
 
     if ( !isset($result->{'list'}) ) return $json;

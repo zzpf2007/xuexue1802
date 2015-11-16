@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Ci\RestClientBundle\CiRestClientBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new AppBundle\AppBundle(),
+            new Acme\Bundle\MobileBundle\AcmeMobileBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

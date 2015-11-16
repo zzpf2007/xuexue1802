@@ -1,0 +1,4 @@
+api_school:
+  urls:
+    ABLE_SKY_URL:         http://www.ablesky.com
+    ABLE_SKY_MOBILE_URL:  http://mobile.ablesky.com

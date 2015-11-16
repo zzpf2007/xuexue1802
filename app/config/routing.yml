@@ -1,3 +1,8 @@
+acme_mobile:
+    resource: "@AcmeMobileBundle/Controller/"
+    type:     annotation
+    prefix:   /api/mobile
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

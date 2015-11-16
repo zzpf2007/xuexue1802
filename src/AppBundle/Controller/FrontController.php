@@ -11,23 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FrontController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $name)
     {
-        return $this->render('front/index.html.twig');
+        return $this->render('front/index.html.twig', array( 'name' => $name ));
     }
 
     public function userAction(Request $request)
     {
         $userRepo = $this->getDoctrine()
                    ->getRepository('AppBundle:User');
-
         $users = $userRepo->findAll();
-
         $result = '';
         foreach( $users as $user ) {
             $result = $result . sprintf("username: %s, email: %s, mobile: %s </br>", $user->getUsername(), $user->getEmail(), $user->getMobile() );
         }
-
         return new Response( "Users List:</br>" . $result );
     }
 

@@ -2,53 +2,22 @@ acme_mobile:
     resource: "@AcmeMobileBundle/Controller/"
     type:     annotation
     prefix:   /api/mobile
+    
+acme_webui:
+     resource: "@AcmeWebUIBundle/Resources/config/routing.yml"
+     prefix: /webui
 
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+app_main_urls:
+  resource: "@AppBundle/Resources/config/routing.yml"
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 root_url:
   path: '/'
   defaults: { _controller: AppBundle:Front:index }
 
-show_path:
-  path: '/show'
-  defaults: { _controller: AppBundle:Front:show }
-# posts_path:
-#   path: '/posts'
-#   defaults: { _controller: AppBundle:Post:index }
-
-# show_post_path:
-#   path: '/posts/show/{id}'
-#   defaults: { _controller: AppBundle:Post:show }
-
-front_users_path:
-  path: '/front/users'
-  defaults: { _controller: AppBundle:Front:user }
-
-user_api_path:
-  path: '/api/user'
-  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::userAction }
-  methods: [POST]
-  # methods: [GET]
-
-api_category_path:
-  path: '/api/school/categories/{id}'
-  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::categoryActoin, id: null }
-  requirements:
-    page:  \d{1, 6}
-  methods: [GET]
-
-api_course_path:
-  path: '/api/school/courses/{id}'
-  defaults: { _controller: AppBundle\Controller\Api\Mobile\ApiBaseController::courseAction, id: null }
-  requirements:
-    page:  \d{1, 6}
-  methods: [GET]
-
-web_test_index:
-  path: /web/{name}
-  defaults: {_controller: 'AppBundle\Controller\WebTest\HomeController::indexAction'}
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

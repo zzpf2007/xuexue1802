@@ -9,6 +9,6 @@ parameters:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
 services:
-    my_service.api.mobile:
-        class: Acme\Bundle\MobileBundle\Services\WebTest
+    my_service.api.mobile.factory:
+        class: Acme\Bundle\MobileBundle\Services\ApiMobileFactory
         arguments: [ %api_school.urls% ]

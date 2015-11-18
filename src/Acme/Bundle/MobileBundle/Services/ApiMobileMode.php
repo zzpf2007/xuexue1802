@@ -7,10 +7,12 @@ abstract class ApiMobileMode
   protected $options;
   protected $container; 
   protected $restClient;
+  protected $itemId;
 
   public function __construct( $container, $options, $itemId = null )
   {
     $this->options = $options;
+    $this->itemId = $itemId;
     $this->init( $container );
   }
 

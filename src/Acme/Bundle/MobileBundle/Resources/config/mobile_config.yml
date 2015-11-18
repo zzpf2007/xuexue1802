@@ -3,4 +3,5 @@ api_school:
     ABLE_SKY_URL:         http://www.ablesky.com
     ABLE_SKY_MOBILE_URL:  http://mobile.ablesky.com
     ABLE_SKY_TEST_URL:    'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId=24369'
-    ABLE_SKY_TEACHER_URL: 'http://www.ablesky.com/teacherInfo.do?action=getFamousTeacherList&organizationId=8778&start=0&limit=100&keyword=&categoryId=&teacherName=&firstLetter=&isSimple=true'
+    ABLE_SKY_TEACHERS_URL: 'http://www.ablesky.com/teacherInfo.do?action=getFamousTeacherList&organizationId=8778&start=0&limit=100&keyword=&categoryId=&teacherName=&firstLetter=&isSimple=true'
+    ABLE_SKY_TEACHER_ID_URL: 'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId='

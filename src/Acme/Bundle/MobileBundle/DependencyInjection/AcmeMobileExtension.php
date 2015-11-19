@@ -33,11 +33,16 @@ class AcmeMobileExtension extends Extension
 
         $options = array();
         foreach ($config['urls'] as $key => $value) {
-            // $options[constant($key)] = $value;
             $options[$key] = $value;
         };
 
+        $teacherOptions = array();
+        foreach ($config['html_nodes'] as $key => $value) {
+            $teacherOptions[$key] = $value;
+        };
+
         $container->setParameter('api_school.urls', $options);
+        $container->setParameter('api_school.html_nodes', $teacherOptions);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

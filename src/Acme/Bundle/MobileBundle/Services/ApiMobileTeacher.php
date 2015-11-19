@@ -4,6 +4,7 @@ namespace Acme\Bundle\MobileBundle\Services;
 
 use Acme\Bundle\MobileBundle\Services\ApiMobileMode;
 use AppBundle\Utility\WebUtility\WebJson;
+use AppBundle\Utility\WebUtility\WebAuto;
 
 class ApiMobileTeacher extends ApiMobileMode
 {
@@ -34,8 +35,26 @@ class ApiMobileTeacher extends ApiMobileMode
 
   private function buildSingleJson( $content )
   {
+    $xpathObj = WebAuto::buildHTMLDocXPath( $content );
+    $content = $this->getTeacherName( $xpathObj );
     return $content;
-    // return 'Single result! :' . $testUrl = $this->getUrl();
+  }
+
+  private function getTeacherName( $xpathObj )
+  {
+    $nameXPath = $this->getTeacherOptions()['TEACHER_NAME'];
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath );
+    $name = '';
+    foreach ($nodes as $node) {
+      $name = $node->nodeValue;
+    }
+
+    return $name;
+  }
+
+  private function getTeacherOptions()
+  {
+    return $this->container->getParameter('api_school.html_nodes');
   }
 
   private function buildListJson( $content )

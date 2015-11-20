@@ -1,7 +1,14 @@
 api_school:
   urls:
-    ABLE_SKY_URL:         http://www.ablesky.com
-    ABLE_SKY_MOBILE_URL:  http://mobile.ablesky.com
-    ABLE_SKY_TEST_URL:    'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId=24369'
-    ABLE_SKY_TEACHERS_URL: 'http://www.ablesky.com/teacherInfo.do?action=getFamousTeacherList&organizationId=8778&start=0&limit=100&keyword=&categoryId=&teacherName=&firstLetter=&isSimple=true'
-    ABLE_SKY_TEACHER_ID_URL: 'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId='
+    ABLE_SKY_URL:             http://www.ablesky.com
+    ABLE_SKY_MOBILE_URL:      http://mobile.ablesky.com
+    ABLE_SKY_TEST_URL:        'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId=24369'
+    ABLE_SKY_TEACHERS_URL:    'http://www.ablesky.com/teacherInfo.do?action=getFamousTeacherList&organizationId=8778&start=0&limit=100&keyword=&categoryId=&teacherName=&firstLetter=&isSimple=true'
+    ABLE_SKY_TEACHER_ID_URL:  'http://www.ablesky.com/famousTeacherRedirect.do?action=toFamousTeacherDetail&organizationId=8778&teacherId='
+  html_nodes:
+    TEACHER_NAME:             '//xhtml:dl[@class="teacher-detail-info"]/xhtml:dd/xhtml:p'
+    TEACHER_IMAGE:            '//xhtml:dl[@class="teacher-detail-info"]/xhtml:dt/xhtml:img/@src'
+    TEACHER_DETAILS:          '//xhtml:dl[@class="teacher-detail-info"]/xhtml:ul/xhtml:li/xhtml:div[@class="descript-teacher-detail"]'
+    TEACHER_COURSES_IMAGE:    '//xhtml:div[@class="teacher-course-items"]/xhtml:img/@src'
+    TEACHER_COURSES_TITLE:    '//xhtml:div[@class="teacher-course-items"]/xhtml:p/xhtml:a/@title'
+    TEACHER_COURSES_URLS:     '//xhtml:div[@class="teacher-course-items"]/xhtml:p/xhtml:a/@href'

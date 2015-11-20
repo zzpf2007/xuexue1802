@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->variableNode('urls')->end()
+                ->variableNode('html_nodes')->end()
             ->end();
             
        return $treeBuilder;

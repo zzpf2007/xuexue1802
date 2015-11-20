@@ -1,7 +1,15 @@
 <?php
 
+/*
+ * This file is provide tools to for Web api.
+ * 
+ */
+
 namespace AppBundle\Utility\WebUtility;
 
+/**
+ * @author Kevin Zhou <zzpf2007@gmail.com>
+ */
 class WebAuto
 {
   // const ABLE_SKY_KEY = "E1F244781A9F4F42BD7E6ADB2316B0FF";
@@ -16,6 +24,35 @@ class WebAuto
   public static function pEcho($name, $string)
   {
     if ( WebAuto::DEBUG ) echo "$name: $string</br>";
+  }
+
+
+  /*
+   * Build Web HTML to Document and return the XPath Object.
+   * @param Response Content $content
+   */
+  public static function buildHTMLDocXPath( $content )
+  {
+    $opts = array('output-xhtml' => true, 'numeric-entities' => true);
+    $xml = tidy_repair_string($content, $opts, 'utf8');
+    $doc = new \DOMDocument();
+    $doc->loadXML($xml);
+    $xpathObj = new \DOMXPath($doc);
+    $xpathObj->registerNamespace('xhtml','http://www.w3.org/1999/xhtml');
+
+    return $xpathObj;
+  }
+
+  /*
+   * Pass the XPath Object from function buildHTMLDocXPath and xpath string to get array of elements.
+   * $xpath e.g. '//xhtml:span[@class="target"]'
+   * @param $xpathObj, $xpath
+   */
+  public static function getHTMLDocNodesByPath( $xpathObj, $xpath)
+  {
+    $nodes = $xpathObj->query($xpath);
+
+    return $nodes;
   }
 
   public static function makeUp()

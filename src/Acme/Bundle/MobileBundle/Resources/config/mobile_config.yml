@@ -8,7 +8,9 @@ api_school:
   html_nodes:
     TEACHER_NAME:             '//xhtml:dl[@class="teacher-detail-info"]/xhtml:dd/xhtml:p'
     TEACHER_IMAGE:            '//xhtml:dl[@class="teacher-detail-info"]/xhtml:dt/xhtml:img/@src'
-    TEACHER_DETAILS:          '//xhtml:dl[@class="teacher-detail-info"]/xhtml:ul/xhtml:li/xhtml:div[@class="descript-teacher-detail"]'
-    TEACHER_COURSES_IMAGE:    '//xhtml:div[@class="teacher-course-items"]/xhtml:img/@src'
+    TEACHER_DETAILS:          '//xhtml:dl[@class="teacher-detail-info"]//xhtml:div[@class="descript-teacher-detail"]'
+    TEACHER_COURSES_IMAGE:    '//xhtml:div[@class="teacher-course-items"]//xhtml:img/@src'
     TEACHER_COURSES_TITLE:    '//xhtml:div[@class="teacher-course-items"]/xhtml:p/xhtml:a/@title'
     TEACHER_COURSES_URLS:     '//xhtml:div[@class="teacher-course-items"]/xhtml:p/xhtml:a/@href'
+  result_message:
+    SUCCEED:                  '"code":"0","message":"succeed!"'

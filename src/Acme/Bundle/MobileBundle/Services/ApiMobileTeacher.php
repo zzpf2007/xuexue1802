@@ -36,27 +36,128 @@ class ApiMobileTeacher extends ApiMobileMode
   private function buildSingleJson( $content )
   {
     $xpathObj = WebAuto::buildHTMLDocXPath( $content );
-    $content = $this->getTeacherDetails( $xpathObj );
-    return $content;
-  }
 
-  private function getTeacherName( $xpathObj )
-  {
-    $nameXPath = $this->getTeacherOptions()['TEACHER_NAME'];
-    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath );
-    $result = '';
-    foreach ($nodes as $node) {
-      $result = $node->nodeValue;
-    }
+    $name = $this->getTeacherName( $xpathObj );
+    $photo = $this->getTeacherImage( $xpathObj );
+    $detailedList = $this->getTeacherDetails( $xpathObj );
+
+    $coursesImageList = $this->getCoursesImage( $xpathObj );
+    $coursesTitleList = $this->getCoursesTitle( $xpathObj );
+    $coursesIdList = $this->getCoursesId( $xpathObj );
+
+    $result = $this->outputTeacherDetailsJson( $name, $photo, $detailedList, $coursesImageList, $coursesTitleList, $coursesIdList );
 
     return $result;
   }
 
+  private function outputTeacherDetailsJson( $name, $photo, $detailedList, $coursesImageList, $coursesTitleList, $coursesIdList )
+  {
+    $retStart = '{' . $this->resultOptions['SUCCEED'] . ',';
+
+    list($major, $item, $description) = $detailedList;
+    
+    $description = WebJson::strRemoveSpace($description);
+
+    // $string = htmlentities($description, null, 'utf-8');
+    // $content = str_replace("&nbsp;", "", $string);
+    // $content = html_entity_decode($content);
+
+    $categoriesJson = $this->outputCategoriesJson( $coursesImageList, $coursesTitleList, $coursesIdList );
+
+    $content = sprintf('"result":{"id":"%s","name":"%s","work_exp":"6","major":"%s","photo":"%s","valid":"true","description":"%s",%s}',
+                        $this->itemId, $name, $major, $photo, $description, $categoriesJson
+                      );
+
+    $retEnd = '}';
+
+    return $retStart . $content . $retEnd;
+  }
+
+  private function outputCategoriesJson( $coursesImageList, $coursesTitleList, $coursesIdList )
+  {
+    $retJson = '"categories":{"list":[';
+    $content = '';
+
+    for ( $i = 0; $i < count( $coursesImageList ); $i++ ) {
+      if ( !isset( $coursesTitleList[$i] ) ) $coursesTitleList[$i] = 'null';
+      if ( !isset( $coursesIdList[$i] ) ) $coursesIdList[$i] = 'null';
+      $image = $coursesImageList[$i];
+      $title = $coursesTitleList[$i];
+      $idLink = $coursesIdList[$i];
+      $id = '';
+
+      if ( preg_match('/^.*detail_([0-9]*)$/', $idLink, $matches ) ) {
+        $id = $matches[1];
+      }
+      // "title":"一级建造师","duration":"90分50秒","play_count":800
+      $content = $content . sprintf('{"id":"%s","title":"%s","photo":"%s"},', $id, $title, $image);
+    }
+    $content = rtrim( trim($content, ',') );
+
+    $retJson = $retJson . $content . ']}';    
+    return $retJson;
+  }
+
+  private function getCoursesImage( $xpathObj )
+  {
+    $xpath = $this->htmlNoteOptions['TEACHER_COURSES_IMAGE'];
+    // echo $xpath = '//xhtml:div[@class="teacher-course-items"]';
+    // echo $xpath = '//xhtml:div[@class="teacher-connect-course"]';
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $xpath ); 
+
+    $retArray = array();
+    foreach ($nodes as $node) {
+      $retArray[] = $node->nodeValue;
+    }
+
+    return $retArray;
+  }
+
+  private function getCoursesTitle( $xpathObj )
+  {
+    $nameXPath = $this->htmlNoteOptions['TEACHER_COURSES_TITLE'];
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath ); 
+
+    $retArray = array();
+    foreach ($nodes as $node) {
+      $retArray[] = $node->nodeValue;
+    }
+
+    return $retArray;
+  }
+
+  private function getCoursesId( $xpathObj )
+  {
+    $nameXPath = $this->htmlNoteOptions['TEACHER_COURSES_URLS'];
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath ); 
+
+    $retArray = array();
+    foreach ($nodes as $node) {
+      $retArray[] = $node->nodeValue;
+    }
+
+    return $retArray;
+  }
+
+
+  private function getTeacherName( $xpathObj )
+  {
+    $nameXPath = $this->htmlNoteOptions['TEACHER_NAME'];
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath ); 
+    $name = '';
+    foreach ($nodes as $node) {
+      $name = $node->nodeValue;
+    }
+
+    return $name;
+  }
+
   private function getTeacherImage( $xpathObj )
   {
-    $nameXPath = $this->getTeacherOptions()['TEACHER_IMAGE'];
-    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath );
     $result = '';
+    $nameXPath = $this->htmlNoteOptions['TEACHER_IMAGE'];
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath ); 
+    $name = '';
     foreach ($nodes as $node) {
       $result = $node->nodeValue;
     }
@@ -66,19 +167,15 @@ class ApiMobileTeacher extends ApiMobileMode
 
   private function getTeacherDetails( $xpathObj )
   {
-    $nameXPath = $this->getTeacherOptions()['TEACHER_DETAILS'];
-    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath );
-    $result = '';
+    $nameXPath = $this->htmlNoteOptions['TEACHER_DETAILS'];
+    $nodes = WebAuto::getHTMLDocNodesByPath( $xpathObj, $nameXPath ); 
+
+    $retArray = array();
     foreach ($nodes as $node) {
-      $result = $node->nodeValue;
+      $retArray[] = $node->nodeValue;
     }
 
-    return $result;
-  }
-
-  private function getTeacherOptions()
-  {
-    return $this->container->getParameter('api_school.html_nodes');
+    return $retArray;
   }
 
   private function buildListJson( $content )
@@ -90,7 +187,8 @@ class ApiMobileTeacher extends ApiMobileMode
     if ( !isset($result->{'list'}) ) return $json;
     $resultList = $result->{'list'};
 
-    $retResult = '{"code":0,"message":"succeed!","result":{"list":[';
+    $resultMessage = $this->resultOptions['SUCCEED'];
+    $retResult = '{' . $resultMessage . ',"result":{"list":[';
 
     foreach ($resultList as $item) {
       $id = $item->{'id'};

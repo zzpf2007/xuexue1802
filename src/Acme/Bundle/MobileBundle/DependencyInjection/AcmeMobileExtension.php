@@ -41,8 +41,15 @@ class AcmeMobileExtension extends Extension
             $teacherOptions[$key] = $value;
         };
 
+        $resultOptions = array();
+        foreach ($config['result_message'] as $key => $value) {
+            $resultOptions[$key] = $value;
+        };
+
+
         $container->setParameter('api_school.urls', $options);
         $container->setParameter('api_school.html_nodes', $teacherOptions);
+        $container->setParameter('api_school.result_message', $resultOptions);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

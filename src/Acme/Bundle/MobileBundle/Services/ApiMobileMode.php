@@ -5,6 +5,8 @@ namespace Acme\Bundle\MobileBundle\Services;
 abstract class ApiMobileMode
 {
   protected $options;
+  protected $htmlNoteOptions;
+  protected $resultOptions;
   protected $container; 
   protected $restClient;
   protected $itemId;
@@ -25,6 +27,10 @@ abstract class ApiMobileMode
     }
 
     $this->restClient = $this->container->get('ci.restclient');
+
+    $this->htmlNoteOptions = $this->container->getParameter('api_school.html_nodes');
+    $this->resultOptions = $this->container->getParameter('api_school.result_message');
+
     return $this;
   }
 

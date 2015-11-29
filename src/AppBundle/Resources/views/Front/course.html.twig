@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>课程</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="assets/css/pc/cui.css" />
+  <link rel="stylesheet" href="assets/css/pc/lib.css" />
+  <link rel="stylesheet" href="assets/css/pc/style.css" />
+</head>
+<body>
+
+  <div id="top">
+    <div class="wp">
+      <div class="top-r">
+        <div class="g-user">
+          <a href="" class="a-user">姓名</a>
+          <ul>
+            <li><a href="">选课包</a></li>
+            <li><a href="">联系网校</a></li>
+            <li><a href="">消息中心</a></li>
+            <li><a href="">退出</a></li>
+          </ul>
+        </div>
+        <a href="" class="a-app">下载app</a>
+        <a href="">帮助中心</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="hd">
+    <div class="wp">
+      <a href="" class="logo"><img src="assets/images/pc/logo.png" alt=""></a>
+      <div class="hdr">
+        <ul class="g-webInfo">
+          <li>
+            <a href=""><img src="assets/images/pc/ico1.png" alt="" class="ico"></a>
+            <div class="txt">58918 门课程<br>给你更强能力</div>
+          </li>
+          <li>
+            <a href=""><img src="assets/images/pc/ico2.png" alt="" class="ico"></a>
+            <div class="txt">18918 位名师<br>任你选择</div>
+          </li>
+          <li>
+            <a href=""><img src="assets/images/pc/ico3.png" alt="" class="ico"></a>
+            <div class="txt">892365 名学员<br>与你同学</div>
+          </li>
+        </ul>
+        <div class="searchBox">
+          <form action="">
+          <input type="text" class="so-inp" placeholder="搜索贴子、用户或课程..." value="">
+          <input type="submit" class="so-btn" value="">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="nv">
+    <div class="wp">
+      <div id="mainNav">
+        <a href="javascript:void(0);" class="mainNavBtn">全部课程分类</a>
+        <ul class="mainNavBox">
+          {% for entry in categories %}
+            <li>
+              <a href="" class="v1">{{ entry.categoryName }}</a>
+              <dl>
+              {% for child in entry.children %}
+                <dd>
+                  <a href="">{{ child.categoryName }}</a>
+                </dd>
+              {% endfor %}
+              <dl>
+            </li>
+
+          {% endfor %}
+        </ul>
+      </div>
+      <ul class="nav">
+        <li class="on"><a href="/">网站首页</a></li>
+        <li><a href="/teachers">入驻名师</a></li>
+        <li><a href="/courses">视频课程</a></li>
+        <li><a href="http://xuekaotong.net/org/8778/exam">试题库</a></li>
+        <li><a href="/about">关于我们</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="h40"></div>
+
+  <div id="bd">
+    <div class="wp">
+      <div class="tea-header">
+        <table>
+          <tbody>
+            <tr>
+              <th width="80">分类:</th>
+              <td width="70"><span class="active">不限</span></td>
+              <td>
+                <a href="">一级建造师</a>
+                <a href="">二级建造师</a>
+                <a href="">注册造价师</a>
+                <a href="">注册结构师</a>
+                <a href="">注册监理师</a>
+                <a href="">一级消防工程师</a>
+                <a href="">二级消防工程师</a>
+                <a href="">注册电气工程师</a>
+                <a href="">建筑八大员</a>
+                <a href="">物业管理师</a>
+              </td>
+            </tr>
+            <tr>
+              <th>课程 :</th>
+              <td><span class="active">不限</span></td>
+              <td>
+                <a href="">建设工程经济</a>
+                <a href="">建设工程项目管理</a>
+                <a href="">建设工程法规及相关知识</a>
+              </td>
+            </tr>
+            <tr>
+              <th width='80'>价格 : </th>
+              <td width='70'><span class="active">不限</span></td>
+              <td>
+                <a href="">&yen;0-50</a>
+                <a href="">&yen;50-100</a>
+                <a href="">&yen;100-500</a>
+                <a href="">&yen;500-1000</a>
+                <a href="">&yen;1000-2500</a>
+                <a href="">&yen;2500以上</a>
+                <div class="price-y">
+                  <form action="">
+                    自定义价格 <input type="text" name=""> - <input type="text" name=""> <input type="submit" value="确定" class="price-btn">
+                  </form>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="filter_tit">
+        <form action="">
+        <span class="num">找到课程</span>
+        <div class="order">
+          <a href="" class="on">综合排序</a>
+          <a href="">人气最高</a>
+          <a href="">经验排序</a>
+        </div>
+        <label class="course-check">
+          <input type="checkbox">只看免费
+        </label>
+        </form>
+      </div>
+      
+      <ul class="course-list">
+        {% for list in courseArray %}
+          {% for item in list %}
+            <li>
+              <div class="pic">
+                <a href="http://xuekaotong.net/kecheng/detail_{{ item.id }}"><img src="{{ item.coursePhoto }}" alt=""></a>
+              </div>
+              <span class="price">{{ item.price }}</span>
+              <div class="txt">
+                <h4><a href="http://xuekaotong.net/kecheng/detail_{{ item.id }}">{{ item.title }}</a></h4>
+                <div class="det"></div>
+                <div class="info"><span></span><span>课时数：{{ item.contentCount }}</span><span></span><span></span></div>
+              </div>
+            </li>
+          {% endfor %}          
+        {% endfor %}
+        <!-- <li>
+          <div class="pic">
+            <a href=""><img src="assets/images/pc/blank.gif" alt=""></a>
+          </div>
+          <span class="price">&yen125.00</span>
+          <div class="txt">
+            <h4><a href="">2015年一级建造师市政工程精讲课</a></h4>
+            <div class="det">2015年一级建造师市政工程精讲课 镇道路工程结构与材料，城镇道路路基施工，城镇道路基层施工，城镇道路面城镇道路路基施工工城镇道路面层施工,城市桥梁结构形式及通用施工技术</div>
+            <div class="info"><span>主讲：甘森</span><span>课时数：20</span><span>时长：199分钟</span><span>139人正在学习</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href=""><img src="assets/images/pc/blank.gif" alt=""></a>
+          </div>
+          <span class="price">&yen125.00</span>
+          <div class="txt">
+            <h4><a href="">2015年一级建造师市政工程精讲课</a></h4>
+            <div class="det">2015年一级建造师市政工程精讲课 镇道路工程结构与材料，城镇道路路基施工，城镇道路基层施工，城镇道路面城镇道路路基施工工城镇道路面层施工,城市桥梁结构形式及通用施工技术</div>
+            <div class="info"><span>主讲：甘森</span><span>课时数：20</span><span>时长：199分钟</span><span>139人正在学习</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href=""><img src="assets/images/pc/blank.gif" alt=""></a>
+          </div>
+          <span class="price">&yen125.00</span>
+          <div class="txt">
+            <h4><a href="">2015年一级建造师市政工程精讲课</a></h4>
+            <div class="det">2015年一级建造师市政工程精讲课 镇道路工程结构与材料，城镇道路路基施工，城镇道路基层施工，城镇道路面城镇道路路基施工工城镇道路面层施工,城市桥梁结构形式及通用施工技术</div>
+            <div class="info"><span>主讲：甘森</span><span>课时数：20</span><span>时长：199分钟</span><span>139人正在学习</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href=""><img src="assets/images/pc/blank.gif" alt=""></a>
+          </div>
+          <span class="price free">免费</span>
+          <div class="txt">
+            <h4><a href="">2015年一级建造师市政工程精讲课</a></h4>
+            <div class="det">2015年一级建造师市政工程精讲课 镇道路工程结构与材料，城镇道路路基施工，城镇道路基层施工，城镇道路面城镇道路路基施工工城镇道路面层施工,城市桥梁结构形式及通用施工技术</div>
+            <div class="info"><span>主讲：甘森</span><span>课时数：20</span><span>时长：199分钟</span><span>139人正在学习</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href=""><img src="assets/images/pc/blank.gif" alt=""></a>
+          </div>
+          <span class="price free">免费</span>
+          <div class="txt">
+            <h4><a href="">2015年一级建造师市政工程精讲课</a></h4>
+            <div class="det">2015年一级建造师市政工程精讲课 镇道路工程结构与材料，城镇道路路基施工，城镇道路基层施工，城镇道路面城镇道路路基施工工城镇道路面层施工,城市桥梁结构形式及通用施工技术</div>
+            <div class="info"><span>主讲：甘森</span><span>课时数：20</span><span>时长：199分钟</span><span>139人正在学习</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href=""><img src="assets/images/pc/blank.gif" alt=""></a>
+          </div>
+          <span class="price free">免费</span>
+          <div class="txt">
+            <h4><a href="">2015年一级建造师市政工程精讲课</a></h4>
+            <div class="det">2015年一级建造师市政工程精讲课 镇道路工程结构与材料，城镇道路路基施工，城镇道路基层施工，城镇道路面城镇道路路基施工工城镇道路面层施工,城市桥梁结构形式及通用施工技术</div>
+            <div class="info"><span>主讲：甘森</span><span>课时数：20</span><span>时长：199分钟</span><span>139人正在学习</span></div>
+          </div>
+        </li> -->
+      </ul>
+      <div class="h40"></div>
+
+      <!-- 分页 -->
+    <!--   <div class="page">
+        <ul>
+          <li><a href="javascript:void(0);" class="prev">&lt;</a></li>
+          <li class="on"><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+          <li><a href="">4</a></li>
+          <li>...</li>
+          <li><a href="">798</a></li>
+          <li><a href="javascript:void(0);" class="next">&gt;</a></li>
+        </ul>
+      </div> -->
+    </div>
+  </div>
+
+  <div id="fd">
+    <div class="wp">
+      <div class="ftop">
+        <div class="fnav">
+          <dl class="fm1">
+            <dt><a href="">关于我们</a></dt>
+            <dd><a href="">关于我们</a></dd>
+            <dd><a href="">加入我们</a></dd>
+            <dd><a href="">联系我们</a></dd>
+          </dl>
+          <dl class="fm1">
+            <dt><a href="">学习资讯</a></dt>
+            <dd><a href="">课程学习</a></dd>
+            <dd><a href="">就业指南</a></dd>
+            <dd><a href="">认证考证</a></dd>
+          </dl>
+          <dl class="fm1">
+            <dt><a href="">帮助中心</a></dt>
+            <dd><a href="">VIP学员特权</a></dd>
+            <dd><a href="">积分规则</a></dd>
+          </dl>
+          <dl class="fm1">
+            <dt><a href="">合作加盟</a></dt>
+            <dd><a href="">推广加盟</a></dd>
+            <dd><a href="">渠道加盟</a></dd>
+            <dd><a href="">名师加盟</a></dd>
+          </dl>
+          <dl class="fm1">
+            <dt><a href="">下载中心</a></dt>
+            <dd><a href="">客户端</a></dd>
+            <dd><a href="">表情包</a></dd>
+            <dd><a href="">桌面壁纸</a></dd>
+          </dl>
+        </div>
+        <div class="fdr">
+          <div class="ftel">400-029-3003</div>
+          每天 9:30 - 23:30 (仅收市话费)
+          <div class="flink">
+            <a href=""><img src="assets/images/pc/fico1.png" alt=""></a>
+            <a href=""><img src="assets/images/pc/fico2.png" alt=""></a>
+            <a href=""><img src="assets/images/pc/fico3.png" alt=""></a>
+            <a href=""><img src="assets/images/pc/fico4.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <div class="fcopy">
+        Copyright@2008-2038中建瑞通版权所有京ICP备15000560号-1 京ICP证080808号
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/pc/jquery.js"></script>
+  <script src="assets/js/pc/lib.js"></script>
+
+  <link rel="stylesheet" href="assets/css/pc/jquery.fancybox.css">
+  <script src="assets/js/pc/jquery.fancybox.pack.js"></script>
+  <script>
+  $(document).ready(function() {
+    // 登陆注册-弹出
+    $('.login-fancybox').fancybox({
+      padding:0,
+        width:460,
+        height:328
+    });
+    $('.reg-fancybox').fancybox({
+      padding:0,
+        width:460,
+        height:629
+    });
+  });
+  </script>
+
+</body>
+</html>

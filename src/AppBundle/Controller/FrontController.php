@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use AppBundle\Utility\WebUtility\WebJson;
 
 class FrontController extends Controller
 {
@@ -17,7 +18,59 @@ class FrontController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $categories = $this->getRootCategory();
+        unset( $categories[0] );
+        // $item = count($categories);
+        // var_dump($categories);
+        $courses01 = $this->getCourse( 207470 );
+        $courses01 = array_slice( $courses01, 0, 6 );
+        $courses02 = $this->getCourse( 207512 );
+        $courses02 = array_slice( $courses02, 0, 6 );
+        $courses03 = $this->getCourse( 207471 );
+        $courses03 = array_slice( $courses03, 0, 6 );
+        $teachers = $this->getTeachers();
+        $teachers = array_slice( $teachers, 0, 10 );
+        // var_dump( $courses );
+        return array( 'categories' => $categories, 'courses01' => $courses01, 'courses02' => $courses02, 'courses03' => $courses03, 'teachers' => $teachers ); //$categories );
     }
+
+    /**
+     * @Template()
+     */
+    public function courseAction( Request $request )
+    {
+        $categories = $this->getRootCategory();    
+        unset( $categories[0] ); 
+
+        $courseArray = array();
+        foreach ($categories as $item) {
+            $course = $this->getCourse( $item->id );
+            $courseArray[] = $course;
+        }
+        return array( 'categories' => $categories, 'courseArray' => $courseArray );
+    }
+
+    /**
+     * @Template()
+     */
+    public function teacherAction( Request $request )
+    {
+        $categories = $this->getRootCategory();    
+        unset( $categories[0] ); 
+        $teachers = $this->getTeachers();
+        return array( 'categories' => $categories, 'teachers' => $teachers );
+    }
+
+    /**
+     * @Template()
+     */
+    public function aboutAction()
+    {
+        $categories = $this->getRootCategory();    
+        unset( $categories[0] ); 
+        return array( 'categories' => $categories ); 
+    }
+
 
     public function userAction(Request $request)
     {
@@ -75,8 +128,60 @@ class FrontController extends Controller
         // foreach( $retArray as $key => $value ) {
         //     $result = $result . sprintf("key: %s, value: %s </br>", $key, $value );
         // }
-
+getMobileJson();
         // $result = $retArray['A_TEST_STRING'];
         return new Response( "Key Value List:</br>" . $result );
     }
+
+    private function getRootCategory()
+    {
+        $entityRepo = $this->getDoctrine()
+                       ->getRepository('AppBundle:Category');
+
+        $item = $entityRepo->findOneBy(array('type' => 'root'), array('updatedAt' => 'DESC'));
+
+        $content = $item->getMobileJson();
+
+        $retJson = WebJson::stringToJson($content);
+
+        $result = $retJson->{'result'};
+        // return $content;
+        return $result;
+    }
+
+    private function getCourse( $id )
+    {
+        $entityRepo = $this->getDoctrine()
+                       ->getRepository('AppBundle:Category');
+
+        $item = $entityRepo->findOneBy(array('ablesky_id' => $id), array('updatedAt' => 'DESC'));
+
+        if ( !$item ) return array();
+
+        $content = $item->getMobileJson();
+        // var_dump($content);
+        $content = strip_tags( $content );
+
+        $retJson = WebJson::stringToJson($content);
+
+        $result = $retJson->{'result'};
+        // return $content;
+        return $result;
+        // return $content;
+    }
+
+    private function getTeachers()
+    {
+        $url = 'http://www.xuekaotong.cn/api/mobile/home/teachers';
+        $restClient = $this->container->get('ci.restclient');
+        $response = $restClient->get($url);
+
+        $content = $response->getContent();
+        // var_dump($content);
+        $retJson = WebJson::stringToJson($content);
+
+        $result = $retJson->{'result'}->{'list'};
+        return $result;
+    }
 }
+

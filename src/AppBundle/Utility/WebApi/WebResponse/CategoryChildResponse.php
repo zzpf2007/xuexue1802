@@ -26,7 +26,7 @@ class CategoryChildResponse extends WebResponseMode
     $retReult = '';    
     $timeExpired = CheckData::dateExpired( $this->category->getUpdatedAt() );
 
-    // $timeExpired = true;
+    $timeExpired = true;
     
     if ( $this->category && $timeExpired ) {
       $url = $this->buildURL();
@@ -57,7 +57,8 @@ class CategoryChildResponse extends WebResponseMode
     $retResult = '';
     $raw_md5 = md5( $content );
     $cat_md5 = $this->category->getMd5();
-    if ( $cat_md5 && $this->getMobileJson() && $cat_md5 == $raw_md5 ) {
+    // if ( $cat_md5 && $this->getMobileJson() && $cat_md5 == $raw_md5 ) {
+    if ( false ) {
       $retResult = $this->getMobileJson();
     } else {
       $retResult = WebJson::parseCoursesJsonString($content);

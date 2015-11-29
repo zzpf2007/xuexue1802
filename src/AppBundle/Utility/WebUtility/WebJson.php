@@ -71,7 +71,12 @@ class WebJson
     foreach ($result as $value) {
       $id = $value->{'id'};
       $title = $value->{'title'};
-      $ret = $ret . "{ \"id\": $id, \"title\": \"$title\" }, ";
+      $price = $value->{'price'};
+      $description = strip_tags ( $value->{'description'} );
+      $contentCount = $value->{'contentCnt'};
+      $coursePhoto = strip_tags (  $value->{'coursePhoto'} );
+      // $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"description\": \"$description\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\" }, ";
+      $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\" }, ";
     }
 
     $ret = rtrim(trim($ret), ',') . ']}';

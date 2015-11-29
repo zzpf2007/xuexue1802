@@ -8,6 +8,17 @@ show_path:
 # show_post_path:
 #   path: '/posts/show/{id}'
 #   defaults: { _controller: AppBundle:Post:show }
+front_course_path:
+  path: '/courses'
+  defaults: { _controller: AppBundle:Front:course }
+
+front_teacher_path:
+  path: '/teachers'
+  defaults: { _controller: AppBundle:Front:teacher }
+
+front_about_path:
+  path: '/about'
+  defaults: { _controller: AppBundle:Front:about }
 
 front_users_path:
   path: '/front/users'

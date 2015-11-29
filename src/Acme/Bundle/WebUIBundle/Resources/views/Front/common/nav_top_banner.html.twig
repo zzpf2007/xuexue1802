@@ -1,0 +1,70 @@
+  <div id="top">
+    <div class="wp">
+      <div class="top-r">
+        <a href="login.html" class="login-fancybox fancybox.iframe">登录</a>
+        <a href="reg.html" class="reg-fancybox fancybox.iframe">注册</a>
+        <a href="" class="a-app">下载app</a>
+        <a href="">帮助中心</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="hd">
+    <div class="wp">
+      <a href="" class="logo"><img src="assets/images/pc/logo.png" alt=""></a>
+      <div class="hdr">
+        <ul class="g-webInfo">
+          <li>
+            <a href=""><img src="assets/images/pc/ico1.png" alt="" class="ico"></a>
+            <div class="txt">58918 门课程<br>给你更强能力</div>
+          </li>
+          <li>
+            <a href=""><img src="assets/images/pc/ico2.png" alt="" class="ico"></a>
+            <div class="txt">18918 位名师<br>任你选择</div>
+          </li>
+          <li>
+            <a href=""><img src="assets/images/pc/ico3.png" alt="" class="ico"></a>
+            <div class="txt">892365 名学员<br>与你同学</div>
+          </li>
+        </ul>
+        <div class="searchBox">
+          <form action="">
+          <input type="text" class="so-inp" placeholder="搜索贴子、用户或课程..." value="">
+          <input type="submit" class="so-btn" value="">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="nv">
+    <div class="wp">
+      <div id="mainNav">
+        <a href="javascript:void(0);" class="mainNavBtn">全部课程分类</a>
+        <ul class="mainNavBox">
+          {% for entry in categories %}
+            <li>
+              <a href="" class="v1">{{ entry.categoryName }}</a>
+              <dl>
+              {% for child in entry.children %}
+                <dd>
+                  <a href="">{{ child.categoryName }}</a>
+                </dd>
+              {% endfor %}
+              <dl>
+            </li>
+
+            {# {{ entry.id }} #}
+          {% endfor %}
+         
+        </ul>
+      </div>
+      <ul class="nav">
+        <li class="on"><a href="/">网站首页</a></li>
+        <li><a href="/teachers">入驻名师</a></li>
+        <li><a href="/courses">视频课程</a></li>
+        <li><a href="http://xuekaotong.net/org/8778/exam">试题库</a></li>
+        <li><a href="/about">关于我们</a></li>
+      </ul>
+    </div>
+  </div>

@@ -1,3 +1,23 @@
 acme_web_ui_homepage:
     path:     /hello/{name}
     defaults: { _controller: AcmeWebUIBundle:Default:index }
+
+front_path:
+  path: '/'
+  defaults: { _controller: AcmeWebUIBundle:Front:index }
+
+front_course_path:
+  path: '/courses'
+  defaults: { _controller: AcmeWebUIBundle:Front:course }
+
+front_teacher_path:
+  path: '/teachers'
+  defaults: { _controller: AcmeWebUIBundle:Front:teacher }
+
+front_about_path:
+  path: '/about'
+  defaults: { _controller: AcmeWebUIBundle:Front:about }
+
+front_info_path:
+  path: '/info'
+  defaults: { _controller: AcmeWebUIBundle:Front:info }

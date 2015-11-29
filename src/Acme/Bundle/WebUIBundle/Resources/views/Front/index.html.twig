@@ -294,6 +294,24 @@
   });
   </script>
 
+  <script src="assets/js/pc/hammer.min.js"></script>
+  <script>
+      var myElement = document.getElementById('banner');
+      var mc = new Hammer(myElement);
+
+      mc.on("panleft panright", function(ev) {
+          if( ev.type == 'panleft' ){
+              if( !$('#banner .bd ul').is(':animated') ){
+                  $('#banner .next').trigger('click');
+              }
+          }else{
+              if( !$('#banner .bd ul').is(':animated') ){
+                  $('#banner .prev').trigger('click');
+              }
+          };
+      });
+  </script>
+
   <link rel="stylesheet" href="assets/css/pc/jquery.fancybox.css">
   <script src="assets/js/pc/jquery.fancybox.pack.js"></script>
   <script>

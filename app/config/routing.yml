@@ -5,7 +5,6 @@ acme_mobile:
     
 acme_webui:
      resource: "@AcmeWebUIBundle/Resources/config/routing.yml"
-     prefix: /webui
 
 app:
     resource: "@AppBundle/Controller/"
@@ -19,5 +18,5 @@ fos_user:
 
 root_url:
   path: '/'
-  defaults: { _controller: AppBundle:Front:index }
+  defaults: { _controller: AcmeWebUIBundle:Front:index }
 

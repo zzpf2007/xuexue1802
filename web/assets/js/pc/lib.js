@@ -13,9 +13,10 @@ $(document).ready(function($) {
 		$(this).find('.mainNavBox').stop().slideUp();
 	});
 	$('.mainNavBox li').hover(function() {
-		$(this).find('dl').stop().fadeIn();
+		$('.mainNavBox li').removeClass('on');
+		$(this).addClass('on').find('dl').stop().fadeIn();
 	},function(){
-		$(this).find('dl').stop().fadeOut();
+		$(this).removeClass('on').find('dl').stop().fadeOut();
 	});
 
 	

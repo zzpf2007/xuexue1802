@@ -93,8 +93,8 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     color: #fff;border-bottom: 1px solid #485b6b;
 }
 .mainNavBox li.on .v1,.mainNavBox .v1:hover{color: #fff;background-color: #53626f;}
-.mainNavBox dl{position: absolute;left: 100%;top: 0;width: 305px;
-    padding: 0 15px;background-color: #475666;display: none;
+.mainNavBox dl{position: absolute;left: 100%;top: 0;width: 600px;
+    padding: 0 15px;background-color: #53626f;display: none;
 }
 .mainNavBox dd{float: left;width: 50%;line-height: 46px;}
 .mainNavBox dd a{color: #fff;padding-left: 15px;}

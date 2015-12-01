@@ -26,7 +26,7 @@ class CategoryRootResponse extends WebResponseMode
     $timeExpired = true;
 
     if ( $this->category && $timeExpired ) {
-      // echo $url = $this->buildURL();
+      $url = $this->buildURL();
       $content = $this->getAbleSkyResponse( $url );
 
       $retResult = $this->buildMobileJson( $content );

@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Utility\WebUtility\WebJson;
+use AppBundle\Utility\WebApi\WebResponse\CategoryChildResponse;
+use AppBundle\Utility\WebApi\WebResponse\CategoryRootResponse;
 
 class FrontController extends Controller
 {
@@ -143,13 +145,16 @@ getMobileJson();
 
     private function getRootCategory()
     {
-        $entityRepo = $this->getDoctrine()
-                       ->getRepository('AppBundle:Category');
+        // $entityRepo = $this->getDoctrine()
+        //                ->getRepository('AppBundle:Category');
 
-        $item = $entityRepo->findOneBy(array('type' => 'root'), array('updatedAt' => 'DESC'));
+        // $item = $entityRepo->findOneBy(array('type' => 'root'), array('updatedAt' => 'DESC'));
 
-        $content = $item->getMobileJson();
+        // $content = $item->getMobileJson();
 
+        $item = new CategoryRootResponse( $this->container );
+        $content = $item->getResponse();
+        
         $retJson = WebJson::stringToJson($content);
 
         $result = $retJson->{'result'};
@@ -159,14 +164,16 @@ getMobileJson();
 
     private function getCourse( $id )
     {
-        $entityRepo = $this->getDoctrine()
-                       ->getRepository('AppBundle:Category');
+        // $entityRepo = $this->getDoctrine()
+        //                ->getRepository('AppBundle:Category');
 
-        $item = $entityRepo->findOneBy(array('ablesky_id' => $id), array('updatedAt' => 'DESC'));
+        // $item = $entityRepo->findOneBy(array('ablesky_id' => $id), array('updatedAt' => 'DESC'));
 
-        if ( !$item ) return array();
+        // if ( !$item ) return array();
 
-        $content = $item->getMobileJson();
+        $item = new CategoryChildResponse( $this->container, $id );
+
+        $content = $item->getResponse();
         // var_dump($content);
         $content = strip_tags( $content );
 

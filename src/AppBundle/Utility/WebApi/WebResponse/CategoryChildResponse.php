@@ -28,7 +28,8 @@ class CategoryChildResponse extends WebResponseMode
 
     $timeExpired = true;
     
-    if ( $this->category && $timeExpired ) {
+    if ( isset( $this->category ) && $timeExpired ) {
+    // if ( $timeExpired ) {
       $url = $this->buildURL();
       $content = $this->getAbleSkyResponse( $url );
 

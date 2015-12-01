@@ -25,7 +25,7 @@ class CategoryRootResponse extends WebResponseMode
 
     $timeExpired = true;
 
-    if ( $this->category && $timeExpired ) {
+    if ( isset( $this->category ) && $timeExpired ) {
       $url = $this->buildURL();
       $content = $this->getAbleSkyResponse( $url );
 
@@ -79,8 +79,8 @@ class CategoryRootResponse extends WebResponseMode
     $item = $entityRepo->findOneBy(array('type' => 'root'), array('updatedAt' => 'DESC'));
     if ( !$item ) {
       $item = new Category();
-        $item->setAbleskyId(1);
-        $item->setType('root');
+      $item->setAbleskyId(1);
+      $item->setType('root');
     }
 
     return $item;

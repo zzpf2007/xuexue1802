@@ -46,8 +46,8 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 #top{height: 31px;line-height: 31px;background-color: #f7f7f7;border-bottom: 1px solid #eee;}
 .top-r{float: right;}
 .top-r a{display: inline-block;margin-left: 20px;color: #999;}
-.a-app{padding-left: 13px;background: url(../images/ico-phone.png) no-repeat left center;}
-.a-user{padding-left: 30px;background: url(../images/ico-user.png) no-repeat 8px center;}
+.a-app{padding-left: 13px;background: url(../../../assets/images/pc/ico-phone.png) no-repeat left center;}
+.a-user{padding-left: 30px;background: url(../../../assets/images/pc/ico-user.png) no-repeat 8px center;}
 
 .g-user{display: inline-block;position: relative;}
 .g-user a{margin-left: 0;}
@@ -72,7 +72,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 .searchBox input{background: none;height: 36px;line-height: 36px \9;display: block;}
 .searchBox .so-inp{padding: 0 15px;float: left;width: 335px;}
 .searchBox .so-btn{float: right;width: 60px;
-    background:#3a9fff url(../images/i-so.png) no-repeat center center;
+    background:#3a9fff url(../../../assets/images/pc/i-so.png) no-repeat center center;
 }
 
 /*******************************
@@ -82,7 +82,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 
 #mainNav{color: #fff;font-size: 16px;width: 240px;float: left;height: 50px;position: relative;z-index: 99;}
 .mainNavBtn{display: block;line-height: 50px;padding-left: 40px;color: #fff;
-    background: #3a9fff url(../images/a1.png) no-repeat right center;
+    background: #3a9fff url(../../../assets/images/pc/a1.png) no-repeat right center;
 }
 .mainNavBtn:hover{color: #fff;}
 .mainNavBox{position: absolute;left: 0;top: 50px;width: 100%;
@@ -127,8 +127,8 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     width: 72px;height: 72px;font-size: 0;line-height: 0;line-height: 999;
     background-repeat: no-repeat;background-position: center center;
 }
-#banner .slider .prev .arrow{right: 15px;background-image: url(../images/arr-l.png);}
-#banner .slider .next .arrow{left: 15px;background-image: url(../images/arr-r.png);}
+#banner .slider .prev .arrow{right: 15px;background-image: url(../../../assets/images/pc/arr-l.png);}
+#banner .slider .next .arrow{left: 15px;background-image: url(../../../assets/images/pc/arr-r.png);}
 
 #banner .slider .hd{position: absolute;bottom: 10px;left:0;width: 100%;z-index: 9999;}
 #banner .slider .hd ul{display: inline-block;overflow: hidden;}

@@ -26,7 +26,6 @@ class WebAuto
     if ( WebAuto::DEBUG ) echo "$name: $string</br>";
   }
 
-
   /*
    * Build Web HTML to Document and return the XPath Object.
    * @param Response Content $content

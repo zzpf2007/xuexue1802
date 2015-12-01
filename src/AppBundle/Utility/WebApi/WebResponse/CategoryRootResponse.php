@@ -23,10 +23,10 @@ class CategoryRootResponse extends WebResponseMode
     $retReult = '';    
     $timeExpired = CheckData::dateExpired( $this->category->getUpdatedAt() );
 
-    // $timeExpired = true;
+    $timeExpired = true;
 
     if ( $this->category && $timeExpired ) {
-      $url = $this->buildURL();
+      // echo $url = $this->buildURL();
       $content = $this->getAbleSkyResponse( $url );
 
       $retResult = $this->buildMobileJson( $content );

@@ -196,7 +196,7 @@ getMobileJson();
 
     private function getTeachers()
     {
-        $url = 'http://www.xuekaotong.cn/api/mobile/home/teachers';
+        $url = 'http://112.126.77.76/api/mobile/home/teachers';
         $restClient = $this->container->get('ci.restclient');
         $response = $restClient->get($url);
 

@@ -30,8 +30,11 @@ class DefaultController extends Controller
      */
     public function testAction()
     {
-      $apiMobile = $this->get('my_service.api.mobile.factory')->getInstance( $this->container, 'teachers', null );
-      $content = $apiMobile->getResponse();
+      // $apiMobile = $this->get('my_service.api.mobile.factory')->getInstance( $this->container, 'teachers', null );
+      // $content = $apiMobile->getResponse();
+
+      // $content = file_get_contents('http://imgsrc.baidu.com/forum/w%3D580/sign=ecf7ce79d31b0ef46ce89856edc551a1/78310a55b319ebc4ff70f0ce8326cffc1e171658.jpg?v=tbs');
+      $content = "";
 
       return new Response(" Content: </br> " . $content );
     }

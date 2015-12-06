@@ -27,7 +27,7 @@ class ApiMobileCourse extends ApiMobileMode
                     {"id":5,"title":"2015一建建筑实务真题解析","icon":"null","category_id":"972741","click_url":"http://www.xuekaotong.cn/api/school/categories/972741","teacher":"韩 雷","photo":"http://pic1.ablesky.cn/content/pic/coursecontentphoto/2015/11/24/780f671d-7036-4a6c-b84e-85b8f22c8a56.jpg"},
                     {"id":6,"title":"2014年真题一建市政真题解析班","icon":"null","category_id":"966006","click_url":"http://www.xuekaotong.cn/api/school/categories/966006","teacher":"肖国祥","photo":"http://pic3.ablesky.cn/content/pic/coursephoto/2015/10/30/f0d7891d-bb24-4183-a8fc-74b343cfc5d0.jpg"},
                     {"id":7,"title":"2015年一级建造师市政精选课程二建-市政-精讲班17","icon":"null","category_id":"967758","click_url":"http://www.xuekaotong.cn/api/school/categories/967758","teacher":"曹明铭","photo":"http://pic3.ablesky.cn/content/pic/coursephoto/2015/11/04/0fbd45ca-09a1-4566-96dd-c3bbfa464945.jpg"},
-                    {"id":8,"title":"更多..","icon":"null","category_id":"null","click_url":"null"}
+                    {"id":8,"title":"更多..","icon":"null","category_id":"null","click_url":"null", "teacher":"null"}
                   ]
                 }
                }';

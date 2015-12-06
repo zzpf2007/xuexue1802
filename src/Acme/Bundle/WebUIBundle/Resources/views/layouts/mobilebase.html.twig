@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}首页{% endblock %}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {% block stylesheet %}
+      <link rel="stylesheet" href="{{ asset('assets/css/mobile/cui.css') }}" />
+      <link rel="stylesheet" href="{{ asset('assets/css/mobile/lib-m.css') }}" />
+      <link rel="stylesheet" href="{{ asset('assets/css/mobile/style-m.css') }}" />
+    {% endblock %}
+  </head>
+  <body>
+    {% block nav_top_bar %}{% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}
+      {{ include('AcmeWebUIBundle::Mobile/common/mobilefooter.html.twig') }}
+    {% endblock %}
+    {% block javascript %}{% endblock %}
+  </body>
+</html>

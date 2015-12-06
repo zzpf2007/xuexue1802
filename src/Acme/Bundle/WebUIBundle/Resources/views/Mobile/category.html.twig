@@ -1,0 +1,41 @@
+{% extends 'AcmeWebUIBundle::layouts/mobilebase.html.twig' %}
+{% block title %}分类{% endblock %}
+
+{% block body %}
+  <div id="main">
+    <header id="hd">
+                <div class="right"><input type="submit" value="" class="g-soBtn"></div>
+                <h1>分类</h1>
+            </header>
+
+            <section id="bd">
+                <div class="search-box">
+                    <input type="text" class="inp" placeholder="查找材料、套餐及优惠活动">
+                </div>
+
+                <ul class="nav-cta">
+                  {% for entry in categories %}
+                    <li class="on">
+                      <h3>{{ entry.categoryName }}</h3>
+                      <dl class="sub-nav">
+                        {% for child in entry.children %}
+                          <dd>
+                            <a href="">{{ child.categoryName }}</a>
+                          </dd>
+                        {% endfor %}
+                      </dl>
+                    </li>
+                  {% endfor %} 
+                </ul>
+            </section> 
+            {% block footer %}
+              {{ include('AcmeWebUIBundle::Mobile/common/mobilefooter.html.twig') }}
+            {% endblock %}
+          </div>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/lib.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/slick.min.js') }}"></script>
+{% endblock %}

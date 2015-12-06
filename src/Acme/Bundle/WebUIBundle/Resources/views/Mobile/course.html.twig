@@ -1,0 +1,104 @@
+{% extends 'AcmeWebUIBundle::layouts/mobilebase.html.twig' %}
+
+{% block body %}
+    <div id="main">
+        <header id="hd">
+            <div class="right"><a href="" class="g-soBtn"></a></div>
+            <h1>视频</h1>
+        </header>
+
+        <section id="bd">
+            <ul class="tab_tit TAB" id=".video-tab-con">
+                <li class="on"><a href="javascript:void(0);">人气</a></li>
+                <li><a href="javascript:void(0);">推荐</a></li>
+                <li><a href="javascript:void(0);"><span class="arr-up">价格</span></a></li>
+                <li><a href="javascript:void(0);">免费</a></li>
+            </ul>
+            <div class="h10"></div>
+
+            <div class="box2">
+                <!-- 人气 -->
+                <div class="video-tab-con">
+                    <ul class="sz-list1">
+                      {% for course in courses %}
+                        <li>
+                            <div class="pic">
+                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
+                            </div>
+                            <div class="txt">
+                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
+                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
+                                 <span class="learner">1298 人正在学习</span>
+                             </div>
+                         </li>  
+                      {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- 推荐 -->
+                <div class="video-tab-con dn">
+                    <ul class="sz-list1">
+                      {% for course in courses %}
+                        <li>
+                            <div class="pic">
+                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
+                            </div>
+                            <div class="txt">
+                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
+                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
+                                 <span class="learner">1298 人正在学习</span>
+                             </div>
+                         </li>  
+                      {% endfor %} 
+                    </ul>
+                </div>
+
+                <!-- 价格 -->
+                <div class="video-tab-con dn">
+                    <ul class="sz-list1">
+                         {% for course in courses %}
+                        <li>
+                            <div class="pic">
+                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
+                            </div>
+                            <div class="txt">
+                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
+                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
+                                 <span class="learner">1298 人正在学习</span>
+                             </div>
+                         </li>  
+                      {% endfor %} 
+                    </ul>
+                </div>
+
+                <!-- 免费 -->
+                <div class="video-tab-con dn">
+                    <ul class="sz-list1">
+                         {% for course in courses %}
+                        <li>
+                            <div class="pic">
+                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
+                            </div>
+                            <div class="txt">
+                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
+                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
+                                 <span class="learner">1298 人正在学习</span>
+                             </div>
+                         </li>  
+                      {% endfor %} 
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+      {% block footer %}
+        {{ include('AcmeWebUIBundle::Mobile/common/mobilefooter.html.twig') }}
+      {% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/lib.js') }}"></script>
+  
+{% endblock %}

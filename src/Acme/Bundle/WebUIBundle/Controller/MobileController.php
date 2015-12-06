@@ -11,33 +11,35 @@ use AppBundle\Utility\WebUtility\WebJson;
 use AppBundle\Utility\WebApi\WebResponse\CategoryChildResponse;
 use AppBundle\Utility\WebApi\WebResponse\CategoryRootResponse;
 
-class FrontController extends Controller
+class MobileController extends Controller
 {
     /**
      * @Template()
      */
     public function indexAction(Request $request)
-    {
-        $categories = $this->getRootCategory();
-        unset( $categories[0] );
-        // $item = count($categories);
-        // var_dump($categories);
+    {        
+        $categories = $this->getHomeCategory();
+
+        // $courses = $this->getHomeCourses();
+        // $courses = array_slice( $courses, 0, 4 );
+
+        // var_dump($courses);
         $courses01 = $this->getCourse( 207470 );
-        $courses01 = array_slice( $courses01, 0, 6 );
+        $courses01 = array_slice( $courses01, 0, 4 );
         $courses02 = $this->getCourse( 207512 );
-        $courses02 = array_slice( $courses02, 0, 6 );
+        $courses02 = array_slice( $courses02, 0, 4 );
         $courses03 = $this->getCourse( 207471 );
-        $courses03 = array_slice( $courses03, 0, 6 );
+        $courses03 = array_slice( $courses03, 0, 4 );
         $teachers = $this->getTeachers();
-        $teachers = array_slice( $teachers, 0, 10 );
-        // var_dump( $courses );
+        $teachers = array_slice( $teachers, 0, 4 );
         return array( 'categories' => $categories, 'courses01' => $courses01, 'courses02' => $courses02, 'courses03' => $courses03, 'teachers' => $teachers ); //$categories );
+        // return array( "categories" => $categories, "courses" => $courses );
     }
 
     /**
      * @Template()
      */
-    public function courseAction( Request $request )
+    public function categoryAction( Request $request )
     {
         $categories = $this->getRootCategory();    
         unset( $categories[0] ); 
@@ -48,6 +50,16 @@ class FrontController extends Controller
             $courseArray[] = $course;
         }
         return array( 'categories' => $categories, 'courseArray' => $courseArray );
+    }
+
+    /**
+     * @Template()
+     */
+    public function courseAction( Request $request, $id )
+    {
+        $courses = $this->getCourse( $id );
+        
+        return array( 'courses' => $courses );
     }
 
     /**
@@ -81,66 +93,30 @@ class FrontController extends Controller
         return array( 'categories' => $categories ); 
     }
 
-
-    public function userAction(Request $request)
+    private function getHomeCategory()
     {
-        $userRepo = $this->getDoctrine()
-                   ->getRepository('AppBundle:User');
-        $users = $userRepo->findAll();
-        $result = '';
-        foreach( $users as $user ) {
-            $result = $result . sprintf("username: %s, email: %s, mobile: %s </br>", $user->getUsername(), $user->getEmail(), $user->getMobile() );
+        $content = file_get_contents('http://www.xuekaotong.cn/api/mobile/home/categories');
+
+        $result = array();
+        try {
+            $retJson = WebJson::stringToJson($content);
+            $result = $retJson->{'result'}->{'list'};
+        } catch (Exception $e) {
         }
-        return new Response( "Users List:</br>" . $result );
+        return $result;
     }
 
-    public function showAction(Request $request)
+    private function getHomeCourses()
     {
-        $restClient = $this->container->get('ci.restclient');
-        // $response = $restClient->get('http://www.baidu.com');
-        $payloads = 'data=[orgId:123]&timestamp=123&accessToken=9876543';
-        $data1 = array("orgId" => "100");
-        // $post_data_01 = array( "data" => json_encode($data1), "timestamp" => "456789", "accessToken" => "987654321");
-        $post_data_01 = array( "data" => "100", "timestamp" => "456789", "accessToken" => "987654321");
-        // $post_data = array( "data" => "234", "timestamp" => "456789", "accessToken" => "987654321");
-        // $post_data = json_encode($post_data);
-        // $payloads = "{data:100, timestamp:456789, accessToken:987654321}";
-        // $post_data = "{data:100, timestamp:456789, accessToken:987654321}";
-        $post_data = http_build_query($post_data_01);
-        // $post_data = json_encode($post_data);
+        $content = file_get_contents('http://www.xuekaotong.cn/api/mobile/home/courses');
 
-        $response = $restClient->post('http://accliapac1.cloudapp.net/api/user', $post_data, array(CURLOPT_CONNECTTIMEOUT => 30));
-        $content = $response->getContent();
-        $data = $content;
-        // $data = join(' ', explode(' ', $content));
-
-        // $json_data = json_decode($data);
-        // $content = '{"data": 12345}';
-        // $json_data = json_decode($content);
-        // $data = $json_data->{'data'};//["data"];
-        // $data = $post_data_01["data"];
-        // $data = array_reverse ( explode(' ', $content) );
-        // $data = implode(' ', $data);
-        // $data = strtoupper($data);
-
-        // return new Response("Content: " . $restClient);
-        // $response->send();
-        return new Response("Content: " . $data );
-    }
-
-    public function testAction( Request $request )
-    {
-        // $retArray = $this->container->getParameter('ci.restclient.curl.defaults');
-        $retArray = $this->container->getParameter('web_ui.homepage');
-        var_dump($retArray);
-
-        $result = '';
-        // foreach( $retArray as $key => $value ) {
-        //     $result = $result . sprintf("key: %s, value: %s </br>", $key, $value );
-        // }
-getMobileJson();
-        // $result = $retArray['A_TEST_STRING'];
-        return new Response( "Key Value List:</br>" . $result );
+        $result = array();
+        try {
+            $retJson = WebJson::stringToJson($content);
+            $result = $retJson->{'result'}->{'list'};
+        } catch (Exception $e) {
+        }
+        return $result;
     }
 
     private function getRootCategory()
@@ -211,6 +187,5 @@ getMobileJson();
         }        
         return $result;
     }
-
 }
 

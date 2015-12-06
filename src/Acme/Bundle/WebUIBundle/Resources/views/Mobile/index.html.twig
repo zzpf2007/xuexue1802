@@ -1,0 +1,169 @@
+{% extends 'AcmeWebUIBundle::layouts/mobilebase.html.twig' %}
+
+{% block nav_top_bar %}
+  {{ include('AcmeWebUIBundle::Mobile/common/mobile_home_top.html.twig') }}
+{% endblock %}
+
+{% block body %}
+  <div id="main">
+    <header id="hd">
+      <div class="left">
+        <a href="javascript:void(0);" class="navBtn"></a>
+      </div>
+      <div class="right">
+        <a href="javascript:void(0);" class="a-mess"><i>3</i></a>
+      </div>
+      <div class="soBox">
+        <form action="">
+        <input type="text" placeholder="搜课程 职业 视频" class="so-inp" value="">
+        <input type="submit" value="" class="so-btn">
+        </form>
+      </div>
+    </header>
+
+    <section id="banner">
+      <div class="slider">
+        <div class="slide"><a href=""><img src="{{ asset('assets/images/mobile/banner_1.jpg') }}" alt=""></a></div>
+        <div class="slide"><a href=""><img src="{{ asset('assets/images/mobile/banner_2.jpg') }}" alt=""></a></div>
+        <div class="slide"><a href=""><img src="{{ asset('assets/images/mobile/banner_3.jpg') }}" alt=""></a></div>
+        <div class="slide"><a href=""><img src="{{ asset('assets/images/mobile/banner_4.jpg') }}" alt=""></a></div>
+        <div class="slide"><a href=""><img src="{{ asset('assets/images/mobile/banner_5.jpg') }}" alt=""></a></div>
+      </div>
+    </section>
+
+    <section id="bd">
+      <ul class="g-list3">
+        {% for category in categories %}
+          <li>
+            <a href="{{ category.category_id }}">
+              <img src="{{ asset('assets/images/mobile/ico{{loop.index}}.png') | replace({'{{loop.index}}' : loop.index })}}" alt="{{ loop.index }}" class="ico">
+              <h4> {{ category.title }} </h4>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="h10"></div>
+
+      <div class="box1">
+        <div class="s-tit1">
+          <a href="" class="a-more r">更多</a>
+          <h3>精品公开课</h3>
+        </div>
+        <ul class="m-list1">
+          {% for course in courses01 %}
+            <li>
+              <div class="con">
+                <div class="pic"><a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
+                <div class="txt">
+                  <h4><a href="">{{ course.title }}</a></h4>
+                  <div class="det">
+                    <span class="l"></span>
+                    <span class="r">2918人在学</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="s-tit1">
+          <a href="" class="a-more r">更多</a>
+          <h3>名师推荐</h3>
+        </div>
+        <ul class="m-list2">
+          {% for item in teachers %}
+            <li>
+              <div class="con">
+                <div class="pic"><a href="{{ item.id }}"><img src="{{ item.photo }}" alt=""></a></div>
+                <div class="txt">
+                  <h4>{{ item.name }}</h4>
+                  <div class="level">{{ item.major }}</div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="s-tit1">
+          <a href="" class="a-more r">更多</a>
+          <h3>最新课程</h3>
+        </div>
+        <ul class="m-list1">
+          {% for course in courses02 %}
+            <li>
+              <div class="con">
+                <div class="pic"><a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
+                <div class="txt">
+                  <h4><a href="">{{ course.title }}</a></h4>
+                  <div class="det">
+                    <span class="l"></span>
+                    <span class="r">2918人在学</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="s-tit1">
+          <a href="" class="a-more r">更多</a>
+          <h3>VIP课程</h3>
+        </div>
+        <ul class="m-list1">
+          {% for course in courses03 %}
+            <li>
+              <div class="con">
+                <div class="pic"><a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
+                <div class="txt">
+                  <h4><a href="">{{ course.title }}</a></h4>
+                  <div class="det">
+                    <span class="l"></span>
+                    <span class="r">2918人在学</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/lib.js') }}"></script>
+  <script>
+  $(document).ready(function() {
+    $('.g-list3 li:gt(6)').hide();
+    $('.g-list3 li:last()').show();
+    $('.g-list3 .last').click(function(event) {
+      $(this).parents('ul').find('li').show();
+      $('.g-list3 li:last()').hide();
+      $('#main').append('<div class="overlay"></div><a href="javascript:void(0);" class="overlay-close"></a>');
+      return false;
+    });
+    $('body').on('click','.overlay-close',function(){
+      $('.g-list3 li:gt(6)').hide();
+      $('.g-list3 li:last()').show();
+      $('.overlay').remove();
+      $(this).remove();
+    });
+  });
+  </script>
+
+  <link rel="stylesheet" href="{{ asset('assets/css/mobile/slick.css') }}">
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/slick.min.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+      $('#banner .slider').slick({
+        dots:true,
+        arrows:false,
+        autoplay:true,
+        slidesToShow: 1,
+        autoplaySpeed: 5000,
+        pauseOnHover:false,
+        lazyLoad: 'ondemand'
+      });
+    });
+  </script>
+{% endblock %}

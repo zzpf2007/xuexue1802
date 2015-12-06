@@ -21,3 +21,23 @@ front_about_path:
 front_info_path:
   path: '/info'
   defaults: { _controller: AcmeWebUIBundle:Front:info }
+
+front_mobile_path:
+  path: '/mobile'
+  defaults: { _controller: AcmeWebUIBundle:Mobile:index }
+
+front_mobile_category_path:
+  path: '/mobile/category'
+  defaults: { _controller: AcmeWebUIBundle:Mobile:category }
+
+front_mobile__teacher_path:
+  path: '/mobile/teacher'
+  defaults: { _controller: AcmeWebUIBundle:Mobile:teacher }
+
+front_mobile_course_path:
+  path: '/mobile/course/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Mobile:course }
+
+front_mobile_about_path:
+  path: '/mobile/aboutus'
+  defaults: { _controller: AcmeWebUIBundle:Mobile:about }

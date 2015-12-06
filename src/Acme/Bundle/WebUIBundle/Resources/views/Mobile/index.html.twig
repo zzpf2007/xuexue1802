@@ -35,7 +35,7 @@
       <ul class="g-list3">
         {% for category in categories %}
           <li>
-            <a href="{{ category.category_id }}">
+            <a href="/mobile/course/{{ category.category_id }}">
               <img src="{{ asset('assets/images/mobile/ico{{loop.index}}.png') | replace({'{{loop.index}}' : loop.index })}}" alt="{{ loop.index }}" class="ico">
               <h4> {{ category.title }} </h4>
             </a>
@@ -53,9 +53,9 @@
           {% for course in courses01 %}
             <li>
               <div class="con">
-                <div class="pic"><a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
+                <div class="pic"><a href="/mobile/course/{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
                 <div class="txt">
-                  <h4><a href="">{{ course.title }}</a></h4>
+                  <h4><a href="/mobile/course/{{ course.id }}">{{ course.title }}</a></h4>
                   <div class="det">
                     <span class="l"></span>
                     <span class="r">2918人在学</span>
@@ -74,7 +74,7 @@
           {% for item in teachers %}
             <li>
               <div class="con">
-                <div class="pic"><a href="{{ item.id }}"><img src="{{ item.photo }}" alt=""></a></div>
+                <div class="pic"><a href="/mobile/teacher/{{ item.id }}"><img src="{{ item.photo }}" alt=""></a></div>
                 <div class="txt">
                   <h4>{{ item.name }}</h4>
                   <div class="level">{{ item.major }}</div>
@@ -92,9 +92,9 @@
           {% for course in courses02 %}
             <li>
               <div class="con">
-                <div class="pic"><a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
+                <div class="pic"><a href="/mobile/course/{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
                 <div class="txt">
-                  <h4><a href="">{{ course.title }}</a></h4>
+                  <h4><a href="/mobile/course/{{ course.id }}">{{ course.title }}</a></h4>
                   <div class="det">
                     <span class="l"></span>
                     <span class="r">2918人在学</span>
@@ -113,9 +113,9 @@
           {% for course in courses03 %}
             <li>
               <div class="con">
-                <div class="pic"><a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
+                <div class="pic"><a href="/mobile/course/{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a></div>
                 <div class="txt">
-                  <h4><a href="">{{ course.title }}</a></h4>
+                  <h4><a href="/mobile/course/{{ course.id }}">{{ course.title }}</a></h4>
                   <div class="det">
                     <span class="l"></span>
                     <span class="r">2918人在学</span>

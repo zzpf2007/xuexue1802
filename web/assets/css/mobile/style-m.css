@@ -79,6 +79,14 @@
 	background-size: 50px auto;
 }
 
+.tz-list4{width: 98%;margin: 0 auto;}
+.tz-list4 li{overflow: hidden;border-bottom: 1px solid #e5e5e5;margin-bottom: 20px;}
+.tz-list4 .pic{position: relative;height: 0;padding-top: 59%;overflow: hidden;border: 1px solid #e5e5e5;}
+.tz-list4 .pic img{display: block;width: 100%;height: 100%;position: absolute;left: 0;top: 0;}
+.tz-list4 .txt{font-size: 14px;color: #454545;padding: 10px 0;}
+.tz-list4 h3{font-size: 18px;font-weight: normal;color: #333;margin-bottom: 5px;}
+
+
 /*******************************
 	-------[=sz-start]-------
 ********************************/
@@ -113,7 +121,9 @@
 .sz-list1 li:last-child .txt{border-bottom: 0;}
 .sz-list1 .pic{float: left;width: 82px;}
 .sz-list1 .txt{margin-left: 95px;padding: 5px 0;border-bottom: 1px solid #dcddde;line-height: 1.7;}
-.sz-list1 h4{overflow: hidden;font-weight: normal;font-size: 13px;line-height: 1;height: 1em;}
+.sz-list1 h4{font-weight: normal;font-size: 13px;line-height: 1;height: 1em;
+	overflow: hidden;white-space: nowrap;word-wrap: normal;text-overflow: ellipsis;
+}
 .sz-list1 h4 a{color: #333;}
 .sz-list1 .teacher,.sz-list1 .hours{color: #888;}
 .sz-list1 .hours{margin-left: 15px;}

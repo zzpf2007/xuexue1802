@@ -1,0 +1,19 @@
+Acme\Bundle\MySysBundle\Entity\Category:
+    type: entity
+    table: mysys_category 
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        'name':
+            type: string
+            length: 255
+        pid:
+            type: string
+            length: '100'
+        corder:
+            type: integer
+    lifecycleCallbacks: {  }

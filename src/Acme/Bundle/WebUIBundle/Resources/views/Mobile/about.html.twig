@@ -1,0 +1,66 @@
+{% extends 'AcmeWebUIBundle::layouts/mobilebase.html.twig' %}
+
+{% block title %} 关于我们 {% endblock %}
+
+{% block nav_top_bar %}
+  {{ include('AcmeWebUIBundle::Mobile/common/mobile_home_top.html.twig') }}
+{% endblock %}
+
+{% block body %}
+<div id="main">
+    <header id="hd">
+      <div class="left"><a href="javascript:history.back(-1);" class="a-back2"></a></div>
+        <h1>关于我们</h1>
+    </header>
+    
+    <section id="bd">
+      <div class="h"></div>
+      <ul class="tz-list4">
+        <li>
+          <div class="pic"><img src="{{ asset('/assets/images/mobile/img1.jpg') }}" alt=""></div>
+          <div class="txt">
+            <h3>中国首家职业教育互助学习平台(P2P+O2O)</h3>
+            <p>学考通是北京中建瑞通科技有限公司旗下互联网教育云服务学习平台，全力打造全球</p>
+          </div>
+        </li>
+        <li>
+          <div class="pic"><img src="{{ asset('/assets/images/mobile/img2.jpg') }}" alt=""></div>
+          <div class="txt">
+            <h3>业内顶尖的管理团队和技术专家</h3>
+            <p>学考通具有卓越的教育服务战略能力和丰富的互联网商业运营实战经验。凭借先进的技术革新实力和一流的市场开拓能力，我们怀揣梦想以推动中国互联网教育平台进步为己任，依托互联网载体，为学生和老师提供最具价值的教育平台和服务。</p>
+          </div>
+        </li>
+        <li>
+          <div class="pic"><img src="{{ asset('/assets/images/mobile/img3.jpg') }}" alt=""></div>
+          <div class="txt">
+            <h3>学考通为老师、学生建立直通车学习平台</h3>
+            <p>目前已设立北京、上海、山西、陕西、山东、河北、云南、深圳等8家分公司，去中介化学习平台，让老师、学生实现互助、互动、互赢</p>
+          </div>
+        </li>
+        <li>
+          <div class="pic"><img src="{{ asset('/assets/images/mobile/img4.jpg') }}" alt=""></div>
+          <div class="txt">
+            <h3>学考通---帮助老师、学生更直接</h3>
+            <p>更快速学习、沟通，让老师、学生价值最大化，让学习考试更轻松！</p>
+          </div>
+        </li>
+        <li>
+          <div class="pic"><img src="{{ asset('/assets/images/mobile/img5.jpg') }}" alt=""></div>
+          <div class="txt">
+            <h3>打造全球最好、最大的职业教育互助学习平台！</h3>
+            <p>让老师、学生更高效地学习、互动、分享和沟通。团队理念：团结、感恩、责任、奉献。企业精神：互助、合作、超越、创新。平台口号：共同携手实现财富自由！企业使命：生命不息，学习不止，学考通，伴你学习终生。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="h"></div>
+    </section>
+    {% block footer %}
+      {{ include('AcmeWebUIBundle::Mobile/common/mobilefooter.html.twig') }}
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/lib.js') }}"></script>
+{% endblock %}

@@ -67,10 +67,17 @@ class MobileController extends Controller
      */
     public function teacherAction( Request $request )
     {
-        $categories = $this->getRootCategory();    
-        unset( $categories[0] ); 
         $teachers = $this->getTeachers();
-        return array( 'categories' => $categories, 'teachers' => $teachers );
+        return array( 'teachers' => $teachers );
+    }
+
+    /**
+     * @Template()
+     */
+    public function teacherinfoAction( Request $request, $id )
+    {
+        $teacher = $this->getTeachers( $id );
+        return array( 'teacher' => $teacher );
     }
 
     /**
@@ -78,9 +85,7 @@ class MobileController extends Controller
      */
     public function aboutAction()
     {
-        $categories = $this->getRootCategory();    
-        unset( $categories[0] ); 
-        return array( 'categories' => $categories ); 
+        return array( ); 
     }
 
     /**
@@ -170,7 +175,36 @@ class MobileController extends Controller
         // return $content;
     }
 
-    private function getTeachers()
+    private function getTeachers( $id = null)
+    {
+        $url = '';
+        if ( !isset($id) ) {
+            $url = 'http://www.xuekaotong.cn/api/mobile/home/teachers';
+        } else {
+            $url = 'http://www.xuekaotong.cn/api/mobile/home/teachers/' . $id;
+        }
+
+        // $restClient = $this->container->get('ci.restclient');
+        // $response = $restClient->get($url);
+
+        // $content = $response->getContent();
+        $content = file_get_contents( $url );
+        // var_dump($content);
+        $result = array();
+        try {
+            $retJson = WebJson::stringToJson($content);
+            if ( !isset($id) ) {
+                $result = $retJson->{'result'}->{'list'};
+            } else {
+                $result = $retJson->{'result'};
+            }
+        } catch (Exception $e) {
+            $result = array();
+        }        
+        return $result;
+    }
+
+    private function getTeachersById()
     {
         $url = 'http://www.xuekaotong.cn/api/mobile/home/teachers';
         $restClient = $this->container->get('ci.restclient');

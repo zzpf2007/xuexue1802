@@ -16,7 +16,7 @@
 .m-list1 li{float: left;width: 50%;margin-bottom: 10px;}
 .m-list1 .con{margin: 0 5px;}
 .m-list1 .pic{position: relative;height: 0;padding-top: 63%;overflow: hidden;
-	background:#dcddde url(../images/loading.png) no-repeat center center;
+	background:#dcddde url(../../../../assets/images/mobile/loading.png) no-repeat center center;
 	-o-background-size: 80px auto;
 	-ms-background-size: 80px auto;
 	-moz-background-size: 80px auto;
@@ -34,7 +34,7 @@
 .m-list2 li{float: left;width: 50%;margin-bottom: 10px;}
 .m-list2 .con{margin: 0 5px;}
 .m-list2 .pic{position: relative;height: 0;padding-top: 100%;overflow: hidden;
-	background:#dcddde url(../images/loading.png) no-repeat center center;
+	background:#dcddde url(../../../../assets/images/mobile/loading.png) no-repeat center center;
 	-o-background-size: 80px auto;
 	-ms-background-size: 80px auto;
 	-moz-background-size: 80px auto;
@@ -57,7 +57,7 @@
 .tab_tit li a{display: block;font-size: 13px;line-height: 45px;}
 .tab_tit li.on a{color: #3a9fff;line-height: 43px;border-bottom: 2px solid #3a9fff;}
 .arr-up{display: inline-block;padding-right: 15px;
-	background: url(../images/a3.png) no-repeat right center;
+	background: url(../../../../assets/images/mobile/a3.png) no-repeat right center;
 	-o-background-size: 10px auto;
 	-ms-background-size: 10px auto;
 	-moz-background-size: 10px auto;
@@ -71,7 +71,7 @@
 }
 .videoBox .playBtn{display: block;width: 100%;height: 100%;
 	position: absolute;left: 0;top: 0;
-	background: url(../images/ico-play.png) no-repeat center center;
+	background: url(../../../../assets/images/mobile/ico-play.png) no-repeat center center;
 	-o-background-size: 50px auto;
 	-ms-background-size: 50px auto;
 	-moz-background-size: 50px auto;
@@ -131,7 +131,7 @@
 
 /* 名师 */
 .sz-list2{padding: 5px 0 5px 12px;background-color: #fff;}
-.sz-list2 li{padding-top: 15px;background: url(../images/m-list2-ico.png) no-repeat center right 15px;}
+.sz-list2 li{padding-top: 15px;background: url(../../../../assets/images/mobile/m-list2-ico.png) no-repeat center right 15px;}
 .sz-list2 li:last-child .txt{border-bottom: 0;}
 .sz-list2 .pic{float: left;width: 55px;margin-right: 10px;}
 .sz-list2 .txt{overflow: hidden;padding: 0 0 10px;border-bottom: 1px solid #dcddde;}
@@ -155,9 +155,9 @@
 .box-info .con{margin: 10px 0;padding: 0 15px;color: #3b3b3b;line-height: 25px;height: 75px;overflow: hidden;}
 .box-info .more{display: block;line-height: 36px;text-align: center;border-top: 1px solid #e4e4e4;}
 .box-info .more span{display: inline-block;padding-right: 25px;color: #989898;
-	background: url(../images/info-more.png) no-repeat right center;
+	background: url(../../../../assets/images/mobile/info-more.png) no-repeat right center;
 }
-.box-info .more.open span{background-image: url(../images/info-more-on.png);}
+.box-info .more.open span{background-image: url(../../../../assets/images/mobile/info-more-on.png);}
 
 /* 视频播放 */
 .info-video{padding: 25px 10px;background-color: #fff;}
@@ -181,9 +181,9 @@
 	-webkit-background-size: 25px auto;
 	background-size: 25px auto;
 }
-.a-save{background-image: url(../images/ico-btn1.png);}
-.a-download{background-image: url(../images/ico-btn2.png);}
-.a-share{background-image: url(../images/ico-btn3.png);}
+.a-save{background-image: url(../../../../assets/images/mobile/ico-btn1.png);}
+.a-download{background-image: url(../../../../assets/images/mobile/ico-btn2.png);}
+.a-share{background-image: url(../../../../assets/images/mobile/ico-btn3.png);}
 
 .sz-list3 {padding-left: 12px;background-color: #fff;}
 .sz-list3 li{height: 50px;line-height: 50px;padding-left: 7px;border-bottom: 1px solid #e4e4e4;}
@@ -191,7 +191,7 @@
 .sz-list3 li a{font-size: 14px;color: #5f5f5f;}
 
 /* 分类 */
-.bg-cta{background:#fff url(../images/bg-cta.jpg) repeat-y -6px top;}
+.bg-cta{background:#fff url(../../../../assets/images/mobile/bg-cta.jpg) repeat-y -6px top;}
 
 .nav-cta{position: relative;}
 .nav-cta li{width: 93px;min-height: 47px;text-align: center;background-color: #f2f2f2;
@@ -209,7 +209,7 @@
 .search-box{padding: 10px;background-color: #fff;border-bottom: 1px solid #e9e9e9;}
 .search-box .inp{width: 100%;height: 30px;padding-left: 65px;color: #9a9a9a;
 	font-size: 15px;border-radius: 3px;
-	background: #e7e7e7 url(../images/search-icon.png) no-repeat 44px center;
+	background: #e7e7e7 url(../../../../assets/images/mobile/search-icon.png) no-repeat 44px center;
 }
 .search-box .inp::-webkit-input-placeholder {color: #9a9a9a;}
 .search-box .inp::-moz-placeholder {color: #9a9a9a; }

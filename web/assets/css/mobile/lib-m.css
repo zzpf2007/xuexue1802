@@ -76,26 +76,26 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     -webkit-background-size: 25px auto;
     background-size: 25px auto;
 }
-.navBtn{background-image: url(../images/menu.png);}
-.a-mess{background-image: url(../images/mess.png);}
+.navBtn{background-image: url(../../../../assets/images/mobile/menu.png);}
+.a-mess{background-image: url(../../../../assets/images/mobile/mess.png);}
 .a-mess i{position: absolute;right: 5px;top: 7px;width: 16px;height: 16px;
     text-align: center;line-height: 16px;color: #3a9fff;
     font-style: normal;font-size: 12px;font-family: 'Arial';
-    background: url(../images/dot.png) no-repeat center center;
+    background: url(../../../../assets/images/mobile/dot.png) no-repeat center center;
     -o-background-size: cover;
     -ms-background-size: cover;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;
 }
-.g-soBtn{background-image: url(../images/i-sobtn.png);}
-.a-back{background-image: url(../images/back2.png);}
-.a-back2{background-image: url(../images/back.png);}
+.g-soBtn{background-image: url(../../../../assets/images/mobile/i-sobtn.png);}
+.a-back{background-image: url(../../../../assets/images/mobile/back2.png);}
+.a-back2{background-image: url(../../../../assets/images/mobile/back.png);}
 
 .soBox{height: 30px;padding-top: 10px;}
 .soBox input{display: block;height: 30px;line-height: 30px \9;font-size: 15px;}
 .soBox .so-inp{width: 100%;border-radius: 3px;overflow: hidden;padding-left: 30px;
-    background: #fff url(../images/search-icon.png) no-repeat 8px center;
+    background: #fff url(../../../../assets/images/mobile/search-icon.png) no-repeat 8px center;
     -o-background-size: 15px auto;
     -ms-background-size: 15px auto;
     -moz-background-size: 15px auto;
@@ -135,7 +135,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 
 .g-list1{}
 .g-list1 li{border-bottom: 1px solid #2b2a39;
-    background: url(../images/a2.png) no-repeat right center;
+    background: url(../../../../assets/images/mobile/a2.png) no-repeat right center;
     -o-background-size: 25px auto;
     -ms-background-size: 25px auto;
     -moz-background-size: 25px auto;
@@ -143,7 +143,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     background-size: 25px auto;
 }
 .g-list1 li a{display: block;line-height: 50px;color: #808e9d;font-size: 16px;
-    padding-left: 40px;background: url(../images/ico-l1.png) no-repeat 5px center;
+    padding-left: 40px;background: url(../../../../assets/images/mobile/ico-l1.png) no-repeat 5px center;
     -o-background-size: 30px auto;
     -ms-background-size: 30px auto;
     -moz-background-size: 30px auto;
@@ -161,7 +161,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
   -------[=banner]-------
 *******************************/
 #banner{overflow: hidden;position: relative;height: 0;padding-top: 37%;z-index: 1;
-    background: #dcddde url(../images/loading.png) no-repeat center center;
+    background: #dcddde url(../../../../assets/images/mobile/loading.png) no-repeat center center;
     -o-background-size: 250px auto;
     -ms-background-size: 250px auto;
     -moz-background-size: 250px auto;
@@ -194,7 +194,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 .menu li{float: left;width: 20%;text-align: center;}
 .menu li a{display: block;line-height: 15px;}
 .menu li span{height: 30px;display: block;
-    background: url(../images/ficon.png) no-repeat center top;
+    background: url(../../../../assets/images/mobile/ficon.png) no-repeat center top;
     -o-background-size: 25px auto;
     -ms-background-size: 25px auto;
     -moz-background-size: 25px auto;
@@ -202,7 +202,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     background-size: 25px auto;
 }
 .menu li.on a{color: #3a9fff;}
-.menu li.on span{background-image: url(../images/ficon-on.png);}
+.menu li.on span{background-image: url(../../../../assets/images/mobile/ficon-on.png);}
 .menu li .ico1{background-position: center 0;}
 .menu li .ico2{background-position: center -50px;}
 .menu li .ico3{background-position: center -100px;}
@@ -215,14 +215,14 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 .fixme{height: 100%;overflow: hidden;}
 .overlay{position: fixed;left: 0;top: 0;width: 100%;height: 100%;
     background-color: rgba(0,0,0,.35);z-index: 998;
-    background: url(../images/black-alpha35.png) repeat left top \9;
+    background: url(../../../../assets/images/mobile/black-alpha35.png) repeat left top \9;
 }
 .overlay2{position: fixed;left: 0;bottom: 0;width: 100%;height: 56px;
     background-color: rgba(0,0,0,.35);z-index: 998;
-    background: url(../images/black-alpha35.png) repeat left top \9;
+    background: url(../../../../assets/images/mobile/black-alpha35.png) repeat left top \9;
 }
 .overlay-close{position: fixed;left: 50%;bottom: 55px;width: 50px;height: 50px;margin-left: -25px;
-    background: url(../images/ico-close.png) no-repeat center center;z-index: 1001;
+    background: url(../../../../assets/images/mobile/ico-close.png) no-repeat center center;z-index: 1001;
     -o-background-size: cover;
     -ms-background-size: cover;
     -moz-background-size: cover;
@@ -241,7 +241,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 
 /*按钮*/
 .a-more{display: inline-block;padding-right: 10px;
-    background: url(../images/a1.png) no-repeat right center;
+    background: url(../../../../assets/images/mobile/a1.png) no-repeat right center;
     -o-background-size: 6px auto;
     -ms-background-size: 6px auto;
     -moz-background-size: 6px auto;
@@ -250,7 +250,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 }
 .a-btn1{display: inline-block;border: 2px solid #cecece;color: #888;
     line-height: 26px;padding: 0 5px 0 20px;border-radius: 3px;
-    background: url(../images/ico-list.png) no-repeat 2px center;
+    background: url(../../../../assets/images/mobile/ico-list.png) no-repeat 2px center;
     -o-background-size: 20px auto;
     -ms-background-size: 20px auto;
     -moz-background-size: 20px auto;

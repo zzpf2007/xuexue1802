@@ -1,0 +1,69 @@
+{% extends 'AcmeWebUIBundle::layouts/mobilebase.html.twig' %}
+
+{% block body %}
+    <div id="main">
+        <header id="hd" class="header2">
+            <div class="left"><a href="javascript:history.back(-1);" class="a-back"></a></div>
+            <h1>详细信息</h1>
+        </header>
+
+        <section id="bd">
+            <div class="box-teacher box3">
+                <div class="pic">
+                    <a href="/mobile/teacher/{{ teacher.id }}"><img src="{{ teacher.photo }}" alt=""></a>
+                </div>
+                <div class="txt">
+                    <div class="hd">
+                        <h4>{{ teacher.name }}</h4>
+                        <div class="tags">
+                            <span class="ico1">证</span>
+                            <span class="ico2">专</span>
+                        </div>
+                    </div>
+                    <p class="years">工作经验：6年</p>
+                    <div class="info">主讲科目：{{ teacher.major }}</div>
+                </div>
+            </div>
+            <div class="h"></div>
+            
+            <div class="box-info box3">
+                <h3 class="tit-1">基本资料</h3>
+                <div class="con">
+                    <p>教学年龄：6年</p>
+                    <p>擅长科目：{{ teacher.major }}</p>
+                    
+                </div>
+                <a href="javascript:void(0);" class="more"><span>查看更多信息</span></a>
+            </div>
+            <div class="h"></div>
+            
+            <div class="box-video box3">
+                <h3 class="tit-1">相关视频</h3>
+                <ul class="sz-list1">
+                    {% for item in teacher.categories.list %}
+                        <li>
+                            <div class="pic">
+                                 <a href="{{ item.id }}"><img src="{{ item.photo }}" alt=""></a>
+                            </div>
+                            <div class="txt">
+                                 <h4 class="tit"><a href="courses-info.html">{{ item.title }}</a></h4>
+                                 <p><span class="teacher">主讲老师：{{ teacher.name }}</span><span class="hours">课时：2小时</span></p>
+                                 <span class="learner">1298 人正在学习</span>
+                             </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+      {% block footer %}
+        {{ include('AcmeWebUIBundle::Mobile/common/mobilefooter.html.twig') }}
+      {% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/mobile/lib.js') }}"></script>
+  
+{% endblock %}

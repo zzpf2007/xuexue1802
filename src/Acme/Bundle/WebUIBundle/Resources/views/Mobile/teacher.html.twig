@@ -4,89 +4,113 @@
     <div id="main">
         <header id="hd">
             <div class="right"><a href="" class="g-soBtn"></a></div>
-            <h1>视频</h1>
+            <h1>名师</h1>
         </header>
 
         <section id="bd">
-            <ul class="tab_tit TAB" id=".video-tab-con">
-                <li class="on"><a href="javascript:void(0);">人气</a></li>
-                <li><a href="javascript:void(0);">推荐</a></li>
-                <li><a href="javascript:void(0);"><span class="arr-up">价格</span></a></li>
-                <li><a href="javascript:void(0);">免费</a></li>
+            <ul class="tab_tit TAB" id=".tab-teacher">
+                <li class="on"><a href="javascript:void(0);">推荐</a></li>
+                <li><a href="javascript:void(0);">分类</a></li>
+                <li><a href="javascript:void(0);">人气</a></li>
+                <li><a href="javascript:void(0);">经验</a></li>
             </ul>
-            <div class="h10"></div>
+            <div class="tab_con">
+                <div class="tab-teacher">
 
-            <div class="box2">
-                <!-- 人气 -->
-                <div class="video-tab-con">
-                    <ul class="sz-list1">
-                      {% for course in courses %}
-                        <li>
-                            <div class="pic">
-                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
-                            </div>
-                            <div class="txt">
-                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
-                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
-                                 <span class="learner">1298 人正在学习</span>
-                             </div>
-                         </li>  
-                      {% endfor %}
-                    </ul>
+                    <div class="box2">
+                        <ul class="sz-list2">
+                            {% for item in teachers %}
+                                <li>
+                                    <div class="pic">
+                                         <a href="/mobile/teacher/{{ item.id }}"><img src="{{ item.photo }}" alt=""></a>
+                                    </div>
+                                    <div class="txt">
+                                         <h4><a href="/mobile/teacher/{{ item.id }}">{{ item.name }}</a></h4>
+                                         <p class="intro">主讲科目：{{ item.major }}</p>
+                                         <div class="tags">
+                                             <span class="ico1">证</span>
+                                             <span class="ico2">专</span>
+                                         </div>
+                                     </div>
+                                </li>  
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- 推荐 -->
-                <div class="video-tab-con dn">
-                    <ul class="sz-list1">
-                      {% for course in courses %}
-                        <li>
-                            <div class="pic">
-                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
-                            </div>
-                            <div class="txt">
-                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
-                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
-                                 <span class="learner">1298 人正在学习</span>
-                             </div>
-                         </li>  
-                      {% endfor %} 
-                    </ul>
+                <div class="tab-teacher dn">
+                    <div class="s-tit2">
+                        <a href="" class="a-btn1 r">选择分类</a>
+                        <h3>一级建造师</h3>
+                    </div>
+                    
+                    <div class="box2">
+                        <ul class="sz-list2">
+                             {% for item in teachers %}
+                                <li>
+                                    <div class="pic">
+                                         <a href="/mobile/teacher/{{ item.id }}"><img src="{{ item.photo }}" alt=""></a>
+                                    </div>
+                                    <div class="txt">
+                                         <h4><a href="/mobile/teacher/{{ item.id }}">{{ item.name }}</a></h4>
+                                         <p class="intro">主讲科目：{{ item.major }}</p>
+                                         <div class="tags">
+                                             <span class="ico1">证</span>
+                                             <span class="ico2">专</span>
+                                         </div>
+                                     </div>
+                                </li>  
+                            {% endfor %}  
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- 价格 -->
-                <div class="video-tab-con dn">
-                    <ul class="sz-list1">
-                         {% for course in courses %}
-                        <li>
-                            <div class="pic">
-                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
-                            </div>
-                            <div class="txt">
-                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
-                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
-                                 <span class="learner">1298 人正在学习</span>
-                             </div>
-                         </li>  
-                      {% endfor %} 
-                    </ul>
+                <div class="tab-teacher dn">
+                    <div class="h10"></div>
+
+                    <div class="box2">
+                        <ul class="sz-list2">
+                            {% for item in teachers %}
+                                <li>
+                                    <div class="pic">
+                                         <a href="/mobile/teacher/{{ item.id }}"><img src="{{ item.photo }}" alt=""></a>
+                                    </div>
+                                    <div class="txt">
+                                         <h4><a href="/mobile/teacher/{{ item.id }}">{{ item.name }}</a></h4>
+                                         <p class="intro">主讲科目：{{ item.major }}</p>
+                                         <div class="tags">
+                                             <span class="ico1">证</span>
+                                             <span class="ico2">专</span>
+                                         </div>
+                                     </div>
+                                </li>  
+                            {% endfor %} 
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- 免费 -->
-                <div class="video-tab-con dn">
-                    <ul class="sz-list1">
-                         {% for course in courses %}
-                        <li>
-                            <div class="pic">
-                                 <a href="{{ course.id }}"><img src="{{ course.coursePhoto }}" alt=""></a>
-                            </div>
-                            <div class="txt">
-                                 <h4 class="tit"><a href="">{{ course.title }}</a></h4>
-                                 <p><span class="teacher"></span><span class="hours">课时：2小时</span></p>
-                                 <span class="learner">1298 人正在学习</span>
-                             </div>
-                         </li>  
-                      {% endfor %} 
-                    </ul>
+                <div class="tab-teacher dn">
+                    <div class="h10"></div>
+
+                    <div class="box2">
+                        <ul class="sz-list2">
+                            {% for item in teachers %}
+                                <li>
+                                    <div class="pic">
+                                         <a href="/mobile/teacher/{{ item.id }}"><img src="{{ item.photo }}" alt=""></a>
+                                    </div>
+                                    <div class="txt">
+                                         <h4><a href="/mobile/teacher/{{ item.id }}">{{ item.name }}</a></h4>
+                                         <p class="intro">主讲科目：{{ item.major }}</p>
+                                         <div class="tags">
+                                             <span class="ico1">证</span>
+                                             <span class="ico2">专</span>
+                                         </div>
+                                     </div>
+                                </li>  
+                            {% endfor %}  
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>

@@ -30,9 +30,13 @@ front_mobile_category_path:
   path: '/mobile/category'
   defaults: { _controller: AcmeWebUIBundle:Mobile:category }
 
-front_mobile__teacher_path:
-  path: '/mobile/teacher'
+front_mobile_teacher_path:
+  path: '/mobile/teacher/'
   defaults: { _controller: AcmeWebUIBundle:Mobile:teacher }
+
+front_mobile_teacher_info_path:
+  path: '/mobile/teacher/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Mobile:teacherinfo }
 
 front_mobile_course_path:
   path: '/mobile/course/{id}'

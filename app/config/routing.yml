@@ -1,3 +1,7 @@
+acme_my_sys:
+    resource: "@AcmeMySysBundle/Resources/config/routing.yml"
+    prefix:   /mysys
+
 acme_mobile:
     resource: "@AcmeMobileBundle/Controller/"
     type:     annotation

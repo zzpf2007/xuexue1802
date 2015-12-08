@@ -1,0 +1,3 @@
+acme_my_sys_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AcmeMySysBundle:Default:index }

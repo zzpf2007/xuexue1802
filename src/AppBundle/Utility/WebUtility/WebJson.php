@@ -61,7 +61,7 @@ class WebJson
     return $ret;
   }
 
-  public static function parseCoursesJsonString( $result )
+  public static function parseCoursesJsonString( $result, $courseRepo )
   {
     $result = WebJson::stringToJson($result);
 
@@ -75,8 +75,12 @@ class WebJson
       $description = strip_tags ( $value->{'description'} );
       $contentCount = $value->{'contentCnt'};
       $coursePhoto = strip_tags (  $value->{'coursePhoto'} );
+
+      $course = $courseRepo->findOneBy( array('ablesky_id' => $id) );
+      $course_teacher = 'empty';
+      if( $course ) $course_teacher = $course->getTeacher()->getName();
       // $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"description\": \"$description\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\" }, ";
-      $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\" }, ";
+      $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\", \"teacher\": \"$course_teacher\" }, ";
     }
 
     $ret = rtrim(trim($ret), ',') . ']}';

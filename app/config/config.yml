@@ -92,3 +92,32 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+# mobile_detect:
+#     redirect:
+#         # full:
+#         #     is_enabled: true            # default false
+#         #     host: http://192.168.20.132:8000/     # with scheme (http|https), default null, url validate
+#         #     status_code: 301            # default 302
+#         #     action: redirect            # redirect, no_redirect, redirect_without_path
+#         mobile:
+#             is_enabled: true            # default false
+#             host: http://192.168.20.132:8000/mobile     # with scheme (http|https), default null, url validate
+#             status_code: 301            # default 302
+#             action: redirect 
+#         tablet:
+#             is_enabled: true            # default false
+#             host: http://192.168.20.132:8000/mobile     # with scheme (http|https), default null, url validate
+#             status_code: 301            # default 302
+#             action: redirect            # redirect, no_redirect, redirect_without_path
+#         detect_tablet_as_mobile: true   # default false
+#     switch_device_view:
+#         save_referer_path: false        # default true
+#                                         # true  redirectUrl = http://site.com/current/path?currentQuery=string
+#                                         # false redirectUrl = http://site.com
+
+#     service:
+#         mobile_detector: mobile_detect.mobile_detector.default
+#     device_view_class: SunCat\MobileDetectBundle\Helper\DeviceView
+#     request_listener_class: SunCat\MobileDetectBundle\EventListener\RequestListener
+#     extension_class: SunCat\MobileDetectBundle\Twig\Extension\MobileDetectExtension

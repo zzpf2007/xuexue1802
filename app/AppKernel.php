@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Acme\Bundle\MobileBundle\AcmeMobileBundle(),
             new Acme\Bundle\MySysBundle\AcmeMySysBundle(),
+            // new SunCat\MobileDetectBundle\MobileDetectBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

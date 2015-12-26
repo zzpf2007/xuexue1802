@@ -10,15 +10,19 @@ use AppBundle\Utility\WebUtility\WebAuto;
 use AppBundle\Utility\WebUtility\WebJson;
 use AppBundle\Utility\Check\CheckData;
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Course;
 
 class CategoryChildResponse extends WebResponseMode
 {
   private $category;
+  private $entityManager;
+  private $courseRepo;
 
   public function __construct( $container, $itemId ) 
   {
     parent::__construct($container);
     $this->category = $this->getCategory( $itemId );
+    $this->courseRepo = $container->get('doctrine')->getManager()->getRepository('AppBundle:Course');
   }
 
   public function getResponse()
@@ -62,7 +66,7 @@ class CategoryChildResponse extends WebResponseMode
     if ( false ) {
       $retResult = $this->getMobileJson();
     } else {
-      $retResult = WebJson::parseCoursesJsonString($content);
+      $retResult = WebJson::parseCoursesJsonString($content, $this->courseRepo);
       $this->setCategory( $content, $retResult, $raw_md5 );
     }
 

@@ -4,18 +4,15 @@ namespace AppBundle\Entity;
 
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\BaseModel;
+use Acme\Bundle\MobileBundle\Entity;
+
 /**
   * @ORM\Entity
   * @ORM\Table(name="course")
   */
-class Course
+class Course extends BaseModel
 {
-    /**
-     * Hook timestampable behavior
-     * updates createdAt, updatedAt fields
-     */
-    use TimestampableEntity;
-
     /**
     * @ORM\Column(type="integer")
     * @ORM\Id
@@ -24,37 +21,33 @@ class Course
     protected $id;
 
     /**
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="string", length=30)
     */
-    protected $ablesky_id;
-
-    /**
-    * @ORM\Column(type="text")
-    */
-    protected $raw_json;
-
-    /**
-    * @ORM\Column(type="text")
-    */
-    protected $mobile_json;
+    protected $title;
 
     /**
     * @ORM\Column(type="string", length=100)
     */
-    protected $md5;
+    protected $photo;
 
     /**
-    * @ORM\Column(type="string", length=10)
+    * @ORM\Column(type="string", length=100)
     */
-    protected $type;
+    protected $duration;
+
+
+    /**
+      * @ORM\ManyToOne(targetEntity="\Acme\Bundle\MobileBundle\Entity\Teacher", inversedBy="courses")
+      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+      */
+    protected $teacher;
 
     private $isSave;
 
     public function __construct() {
+        parent::__construct();
         $this->isSave = false;
     }
-
-
     public function getSave()
     {
         return $this->isSave;
@@ -62,5 +55,29 @@ class Course
     public function setSave()
     {
         $this->isSave = true;
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param \Acme\Bundle\MobileBundle\Entity\Teacher $teacher
+     *
+     * @return Course
+     */
+    public function setTeacher(\Acme\Bundle\MobileBundle\Entity\Teacher $teacher = null)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher
+     *
+     * @return \Acme\Bundle\MobileBundle\Entity\Teacher
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }

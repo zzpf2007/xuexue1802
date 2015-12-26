@@ -20,4 +20,16 @@ class HomeController extends Controller
 
     return new Response( $content );
  }
+
+  /**
+   * @Route("/cmd/run")
+   */
+  public function cmdAction()
+  {
+    $name = "teachers";
+    $apiMobile = $this->get('my_service.api.mobile.factory')->getInstance( $this->container, $name );
+    $content = $apiMobile->update();
+
+    return new Response( $content );
+ }
 }

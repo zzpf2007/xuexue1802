@@ -19,7 +19,7 @@ class FrontController extends Controller
     public function indexAction(Request $request)
     {
         $categories = $this->getRootCategory();
-        unset( $categories[0] );
+        // unset( $categories[0] );
         // $item = count($categories);
         // var_dump($categories);
         $courses01 = $this->getCourse( 207470 );
@@ -40,7 +40,7 @@ class FrontController extends Controller
     public function courseAction( Request $request )
     {
         $categories = $this->getRootCategory();    
-        unset( $categories[0] ); 
+        // unset( $categories[0] ); 
 
         $courseArray = array();
         foreach ($categories as $item) {
@@ -56,7 +56,7 @@ class FrontController extends Controller
     public function teacherAction( Request $request )
     {
         $categories = $this->getRootCategory();    
-        unset( $categories[0] ); 
+        // unset( $categories[0] ); 
         $teachers = $this->getTeachers();
         return array( 'categories' => $categories, 'teachers' => $teachers );
     }
@@ -67,7 +67,7 @@ class FrontController extends Controller
     public function aboutAction()
     {
         $categories = $this->getRootCategory();    
-        unset( $categories[0] ); 
+        // unset( $categories[0] ); 
         return array( 'categories' => $categories ); 
     }
 
@@ -77,7 +77,7 @@ class FrontController extends Controller
     public function infoAction()
     {
         $categories = $this->getRootCategory();    
-        unset( $categories[0] ); 
+        // unset( $categories[0] ); 
         return array( 'categories' => $categories ); 
     }
 

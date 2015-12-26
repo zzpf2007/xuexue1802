@@ -65,11 +65,11 @@
         <ul class="mainNavBox">
           {% for entry in categories %}
             <li>
-              <a href="" class="v1">{{ entry.categoryName }}</a>
+              <a href="/courses" class="v1">{{ entry.categoryName }}</a>
               <dl>
               {% for child in entry.children %}
                 <dd>
-                  <a href="">{{ child.categoryName }}</a>
+                  <a href="/courses">{{ child.categoryName }}</a>
                 </dd>
               {% endfor %}
               <dl>
@@ -164,8 +164,9 @@
               <span class="price">{{ item.price }}</span>
               <div class="txt">
                 <h4><a href="http://xuekaotong.net/kecheng/detail_{{ item.id }}">{{ item.title }}</a></h4>
-                <div class="det"></div>
-                <div class="info"><span></span><span>课时数：{{ item.contentCount }}</span><span></span><span></span></div>
+                <div class="det">
+                </div>
+                <div class="info"><span>主讲: {{ item.teacher }}</span><span>课时数：{{ item.contentCount }}</span><span></span><span></span></div>
               </div>
             </li>
           {% endfor %}          

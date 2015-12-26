@@ -23,4 +23,3 @@ fos_user:
 root_url:
   path: '/'
   defaults: { _controller: AcmeWebUIBundle:Front:index }
-

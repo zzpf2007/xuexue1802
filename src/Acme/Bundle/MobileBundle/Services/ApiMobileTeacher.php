@@ -5,6 +5,8 @@ namespace Acme\Bundle\MobileBundle\Services;
 use Acme\Bundle\MobileBundle\Services\ApiMobileMode;
 use AppBundle\Utility\WebUtility\WebJson;
 use AppBundle\Utility\WebUtility\WebAuto;
+use Acme\Bundle\MobileBundle\Entity\Teacher;
+use AppBundle\Entity\Course;
 
 class ApiMobileTeacher extends ApiMobileMode
 {
@@ -207,6 +209,128 @@ class ApiMobileTeacher extends ApiMobileMode
     }
 
     $retResult = rtrim(trim($retResult), ',') . ']}}';
+    return $retResult;
+  }
+
+  public function update()
+  {
+    $retResult = '';
+    // $retResult = $this->updateTeacherTable();
+    $this->updateTeacherTable();
+    $retResult .= $this->updateTeacherCourse();
+
+    return $retResult;
+  }
+
+  private function updateTeacherTable()
+  {
+    $retResult = 'Update Teachers: ';
+    $content = $this->getResponse();
+    $json = WebJson::stringToJson($content);
+    if ( !is_object($json) && !isset($json->{'result'}) ) return $json;
+    $result = $json->{'result'};
+
+    if ( !isset($result->{'list'}) ) return $json;
+    $resultList = $result->{'list'};
+    
+    $em = $this->container->get('doctrine')->getManager();
+    $repository = $em->getRepository('AcmeMobileBundle:Teacher');
+
+    $retResult .= 'total - ' . count($resultList) . ' hits. </br>';
+    foreach ($resultList as $item) {
+      $id = trim( $item->{'id'} );
+      $name = trim( $item->{'name'} );
+      // $work_exp = 'empty';
+      $major = trim( $item->{'major'} );
+      $photo = trim( $item->{'photo'} );
+      // $valid = 'empty';
+
+      $teacher = $repository->findOneBy( array('ablesky_id' => $id ) );
+      if ( !$teacher ) {
+        $teacher = new Teacher();
+        $retResult .= 'Create teacher: ';
+      } else {
+        $retResult .= 'Update teacher: ';
+      }
+      
+      $teacher->setAbleskyId( $id );
+      $teacher->setName( $name );
+      // $teacher->setWorkExp( $work_exp );
+      $teacher->setPhoto( $photo );
+      $teacher->setMajor( $major );
+      // $teacher->setValid( $valid );
+      
+      $em->persist($teacher);
+      $em->flush();
+
+      $retResult .= sprintf('id: %s, name: %s, major: %s, photo: %s</br>', $id, $name, $major, $photo);
+    }
+    return $retResult;
+  }
+
+  private function updateTeacherCourse()
+  {
+    $retResult = 'Update Teachers: ';
+    $em = $this->container->get('doctrine')->getManager();
+    $repository = $em->getRepository('AcmeMobileBundle:Teacher');
+    $courseRepo = $em->getRepository('AppBundle:Course');
+
+    $teachers = $repository->findAll();
+    $retResult .= count($teachers) . ' hits</br>';
+
+    foreach ($teachers as $index => $teacher) {
+      $this->itemId = $teacher->getAbleskyId();
+      $content = $this->getResponse();
+      $json = WebJson::stringToJson($content);
+
+      if ( !is_object($json) && !isset($json->{'result'}) && !isset($json->{'result'}->{'categories'}) && !isset($json->{'result'}->{'categories'}->{'list'}) ) {        
+        $retResult .= 'error: json formate incorrect!';
+        continue;
+      }
+
+      // $teacher = $repository->findOneBy( array( 'ablesky_id' => $item->getAbleskyId() ) );
+
+      $courseList = $json->{'result'}->{'categories'}->{'list'};
+
+      $retResult .= sprintf('Teacher id: %s, name: %s </br>', $teacher->getAbleskyId(), $teacher->getName() );
+      // $retResult .= sprintf('Course count: %s </br>', count( $teacher->getCourses() ));
+
+      foreach ($courseList as $item) {
+        $courseId = $item->{'id'};
+        $courseTitle = $item->{'title'};
+        $coursePhoto = $item->{'photo'};
+
+        $course = $courseRepo->findOneBy( array('ablesky_id' => $courseId) );
+
+        if( $course ){
+          $retResult .= 'update: ';
+        } else {
+          $course = new Course();
+          $retResult .= 'create: ';
+        }
+
+        $course->setAbleskyId( $courseId );
+        $course->setTitle( $courseTitle );
+        $course->setPhoto( $coursePhoto );
+
+        $course->setTeacher( $teacher );
+
+        // $teacher->addCourse( $course );
+
+        $em->persist($course);
+        $em->flush();
+
+        $retResult .= sprintf( 'id:%s,title:%s,photo:%s</br>', $courseId, $courseTitle, $coursePhoto );
+      }
+
+      // $em->persist( $teacher );
+      // $em->flush();
+
+      // $retResult .= $content;
+      // if( $index == 1 ) break;
+      $retResult .= sprintf('Course count: %s </br>', count( $teacher->getCourses() ));
+    }
+
     return $retResult;
   }
 

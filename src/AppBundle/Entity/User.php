@@ -9,22 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
- * @ORM\AttributeOverrides({
- *     @ORM\AttributeOverride(name="email",
- *          column=@ORM\Column(
- *              nullable = true,
- *              unique= false
- *          )
- *      ),
- *     @ORM\AttributeOverride(name="emailCanonical",
- *          column=@ORM\Column(
- *              name = "email_canonical",
- *              nullable = true,
- *              unique= false
- *          )
- *      )
- * })
  */
+
 class User extends BaseUser
 {
     /**

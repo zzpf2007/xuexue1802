@@ -4,18 +4,15 @@ namespace AppBundle\Entity;
 
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\BaseModel;
+use Acme\Bundle\MobileBundle\Entity;
+
 /**
   * @ORM\Entity
   * @ORM\Table(name="course")
   */
-class Course
+class Course extends BaseModel
 {
-    /**
-     * Hook timestampable behavior
-     * updates createdAt, updatedAt fields
-     */
-    use TimestampableEntity;
-
     /**
     * @ORM\Column(type="integer")
     * @ORM\Id
@@ -24,37 +21,36 @@ class Course
     protected $id;
 
     /**
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="string", length=30)
     */
-    protected $ablesky_id;
-
-    /**
-    * @ORM\Column(type="text")
-    */
-    protected $raw_json;
-
-    /**
-    * @ORM\Column(type="text")
-    */
-    protected $mobile_json;
+    protected $title;
 
     /**
     * @ORM\Column(type="string", length=100)
     */
-    protected $md5;
+    protected $photo;
 
     /**
-    * @ORM\Column(type="string", length=10)
+    * @ORM\Column(type="string", length=100)
     */
-    protected $type;
+    protected $duration;
+
+
+    /**
+      * @ORM\ManyToOne(targetEntity="\Acme\Bundle\MobileBundle\Entity\Teacher", inversedBy="courses")
+      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+      */
+    protected $teacher;
 
     private $isSave;
 
     public function __construct() {
+        parent::__construct();
         $this->isSave = false;
+        $this->title = 'empty';
+        $this->photo = 'empty';
+        $this->duration = '0:0:0';
     }
-
-
     public function getSave()
     {
         return $this->isSave;
@@ -65,132 +61,98 @@ class Course
     }
 
     /**
-     * Get id
+     * Set teacher
      *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set ableskyId
-     *
-     * @param integer $ableskyId
+     * @param \Acme\Bundle\MobileBundle\Entity\Teacher $teacher
      *
      * @return Course
      */
-    public function setAbleskyId($ableskyId)
+    public function setTeacher(\Acme\Bundle\MobileBundle\Entity\Teacher $teacher = null)
     {
-        $this->ablesky_id = $ableskyId;
+        $this->teacher = $teacher;
 
         return $this;
     }
 
     /**
-     * Get ableskyId
+     * Get teacher
      *
-     * @return integer
+     * @return \Acme\Bundle\MobileBundle\Entity\Teacher
      */
-    public function getAbleskyId()
+    public function getTeacher()
     {
-        return $this->ablesky_id;
+        return $this->teacher;
     }
 
     /**
-     * Set rawJson
+     * Set title
      *
-     * @param string $rawJson
+     * @param string $title
      *
      * @return Course
      */
-    public function setRawJson($rawJson)
+    public function setTitle($title)
     {
-        $this->raw_json = $rawJson;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get rawJson
+     * Get title
      *
      * @return string
      */
-    public function getRawJson()
+    public function getTitle()
     {
-        return $this->raw_json;
+        return $this->title;
     }
 
     /**
-     * Set mobileJson
+     * Set photo
      *
-     * @param string $mobileJson
+     * @param string $photo
      *
      * @return Course
      */
-    public function setMobileJson($mobileJson)
+    public function setPhoto($photo)
     {
-        $this->mobile_json = $mobileJson;
+        $this->photo = $photo;
 
         return $this;
     }
 
     /**
-     * Get mobileJson
+     * Get photo
      *
      * @return string
      */
-    public function getMobileJson()
+    public function getPhoto()
     {
-        return $this->mobile_json;
+        return $this->photo;
     }
 
     /**
-     * Set md5
+     * Set duration
      *
-     * @param string $md5
+     * @param string $duration
      *
      * @return Course
      */
-    public function setMd5($md5)
+    public function setDuration($duration)
     {
-        $this->md5 = $md5;
+        $this->duration = $duration;
 
         return $this;
     }
 
     /**
-     * Get md5
+     * Get duration
      *
      * @return string
      */
-    public function getMd5()
+    public function getDuration()
     {
-        return $this->md5;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Course
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
+        return $this->duration;
     }
 }

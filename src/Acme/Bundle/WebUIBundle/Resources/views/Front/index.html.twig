@@ -9,6 +9,16 @@
   <link rel="stylesheet" href="assets/css/pc/cui.css" />
   <link rel="stylesheet" href="assets/css/pc/lib.css" />
   <link rel="stylesheet" href="assets/css/pc/style.css" />
+  <script type="text/javascript">
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase(); 
+    var isMobile = false; 
+    for (var i=0; i<mobileAgent.length; i++){ if (browser.indexOf(mobileAgent[i])!=-1){ isMobile = true; 
+      //alert(mobileAgent[i]); 
+
+      location.href = '/mobile';
+    break; } } 
+  </script>
 </head>
 <body>
 
@@ -60,11 +70,11 @@
         <ul class="mainNavBox">
           {% for entry in categories %}
             <li>
-              <a href="" class="v1">{{ entry.categoryName }}</a>
+              <a href="/courses" class="v1">{{ entry.categoryName }}</a>
               <dl>
               {% for child in entry.children %}
                 <dd>
-                  <a href="">{{ child.categoryName }}</a>
+                  <a href="/courses">{{ child.categoryName }}</a>
                 </dd>
               {% endfor %}
               <dl>
@@ -125,7 +135,12 @@
                 </a>
               </div>
               <div class="txt">
-                <h4><a href="">{{item.title}}</a></h4>
+                <h4>
+                  <a href="">{{item.title}}</a>
+                  <p>
+                    主讲: {{ item.teacher }}
+                  </p>
+                </h4>
               </div>
             </li>
           {% endfor %}
@@ -164,7 +179,11 @@
                 </a>
               </div>
               <div class="txt">
-                <h4><a href="">{{item.title}}</a></h4>
+                <h4><a href="">{{item.title}}</a>
+                  <p>
+                    主讲: {{ item.teacher }}
+                  </p>
+                </h4>
               </div>
             </li>
           {% endfor %}
@@ -184,7 +203,12 @@
                 </a>
               </div>
               <div class="txt">
-                <h4><a href="">{{item.title}}</a></h4>
+                <h4>
+                  <a href="">{{item.title}}</a>
+                  <p>
+                    主讲: {{ item.teacher }}
+                  </p>
+                </h4>
               </div>
             </li>
           {% endfor %}

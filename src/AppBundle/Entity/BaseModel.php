@@ -15,22 +15,22 @@ abstract class BaseModel
   protected $id;
 
   /**
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="integer", nullable=false)
     */
   protected $ablesky_id;
 
   /**
-    * @ORM\Column(type="text")
+    * @ORM\Column(type="text", nullable=true)
     */
   protected $raw_json;
 
   /**
-    * @ORM\Column(type="text")
+    * @ORM\Column(type="text", nullable=true)
     */
   protected $mobile_json;
 
   /**
-    * @ORM\Column(type="string", length=100)
+    * @ORM\Column(type="string", length=100, nullable=true)
     */
   protected $md5;
 

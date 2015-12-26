@@ -42,7 +42,7 @@
 .s-list1 li img{display: inline-block;vertical-align: middle;max-height: 80px;}
 
 .index-help{padding: 210px 0 60px;text-align: center;
-	background: url(../../../assets/images/pc/bg1.jpg) repeat left top;
+	background: url(../../../assets/images/pc/bg1.jpg) repeat center top;
 }
 .a-android,.a-apple{display: inline-block;width: 220px;height: 53px;font-size: 22px;color: #fff;
 	border: 2px solid #fff;border-radius: 2px;text-align: center;line-height: 53px;margin: 0 40px;

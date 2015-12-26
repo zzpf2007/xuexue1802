@@ -31,7 +31,7 @@ class Course extends BaseModel
     protected $photo;
 
     /**
-    * @ORM\Column(type="string", length=100)
+    * @ORM\Column(type="string", length=20, nullable=true)
     */
     protected $duration;
 

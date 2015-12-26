@@ -10,9 +10,45 @@ class ApiMobileCourse extends ApiMobileMode
 {
   public function getResponse()
   {
-    $content = $this->getHomeContent();
-    $content = WebJson::strRemoveSpace($content);
+    // $content = $this->getHomeContent();
+    // $content = WebJson::strRemoveSpace($content);
+
+    $content = $this->getHomeCourse();
     return $content;
+  }
+
+  private function getHomeCourse()
+  {
+    $result = '{"code":0,"message":"succeed!","result":{"list":[
+              ';
+
+    $em = $this->container->get('doctrine')->getManager();
+    $repo = $em->getRepository('AppBundle:Course');
+    $courses= $repo->findBy(array(), null, 30, null);
+
+    $courselist = '';
+    foreach ($courses as $index => $course) {
+      // $result .= $index . ',';
+      $id = $course->getAbleskyId();
+      $title = $course->getTitle();
+      $teacher = $course->getTeacher()->getName();
+      $photo = $course->getPhoto();
+
+      if ( $index < 8 ) {
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s", "vip":"true"},', $id, $title, $teacher, $photo);
+      }
+
+      if ( $index > 8 && $index < 16 ) {
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s", "suggest":"true"},', $id, $title, $teacher, $photo);
+      }
+
+      if ( $index > 16 && $index < 25 ) {
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s", "popular":"true"},', $id, $title, $teacher, $photo);
+      }
+    }
+
+    $result .=  rtrim($courselist, ",") . ']}}';
+    return $result;
   }
 
   private function getHomeContent()
@@ -38,5 +74,4 @@ class ApiMobileCourse extends ApiMobileMode
   {
     return '';
   }
-
 }

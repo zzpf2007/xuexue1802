@@ -131,7 +131,7 @@ class WebApiCourse extends WebApiMode
     $this->course->setRawJson('default');
     $this->course->setMobileJson($mobileJson);
     $this->course->setMd5('default');
-    $this->course->setType('default');
+    // $this->course->setType('default');
     $this->course->setUpdatedAt( new \DateTime('now') );
 
     $em = $this->getDoctrine()->getManager();

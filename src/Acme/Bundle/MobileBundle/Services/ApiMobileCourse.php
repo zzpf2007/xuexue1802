@@ -34,16 +34,21 @@ class ApiMobileCourse extends ApiMobileMode
       $teacher = $course->getTeacher()->getName();
       $photo = $course->getPhoto();
 
+      $type = "0";
+
       if ( $index < 8 ) {
-        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s", "vip":"true"},', $id, $title, $teacher, $photo);
+        $type = "0";
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s"},', $id, $title, $teacher, $photo, $type);
       }
 
       if ( $index > 8 && $index < 16 ) {
-        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s", "suggest":"true"},', $id, $title, $teacher, $photo);
+        $type = "1";
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s"},', $id, $title, $teacher, $photo, $type);
       }
 
       if ( $index > 16 && $index < 25 ) {
-        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s", "popular":"true"},', $id, $title, $teacher, $photo);
+        $type = "2";
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s"},', $id, $title, $teacher, $photo, $type);
       }
     }
 

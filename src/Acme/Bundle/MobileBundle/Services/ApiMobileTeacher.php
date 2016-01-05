@@ -192,7 +192,11 @@ class ApiMobileTeacher extends ApiMobileMode
     $resultMessage = $this->resultOptions['SUCCEED'];
     $retResult = '{' . $resultMessage . ',"result":{"list":[';
 
-    foreach ($resultList as $item) {
+    $number = count( $resultList );
+    $times = $number / 4;
+    $type = '0';
+
+    foreach ($resultList as $index => $item) {
       $id = $item->{'id'};
       $name = trim( $item->{'name'} );
       $work_exp = 'null';
@@ -202,10 +206,25 @@ class ApiMobileTeacher extends ApiMobileMode
       // $description = trim( $item->{'description'} );
 
       // $itemJson = sprintf('{"id":"%s","name":"%s","work_exp":"%s","major":"%s","photo":"%s","valid":"%s","description":"%s"},', $id,$name,$work_exp,$major,$photo,$valid,$description);
-      $itemJson = sprintf('{"id":"%s","name":"%s","work_exp":"%s","major":"%s","photo":"%s","valid":"%s"},',$id,$name,$work_exp,$major,$photo,$valid);
-      $retResult = $retResult . $itemJson;
 
-      // $itemArray = array('id' => $id, 'name' => $name, 'work_exp' => $work_exp, 'major' => $major, 'photo' => $photo, 'valid' => $valid, 'description' => $description );
+      if ( $index < 1 * $times ) {
+        $type = '0';
+      }
+
+      if ( $index > ( 1 * $times ) && $index < ( 2 * $times ) ) {
+        $type = "1";
+      }
+
+      if ( $index > ( 2 * $times ) && $index < ( 3 * $times ) ) {
+        $type = "2";
+      }
+
+      if ( $index > ( 3 * $times ) && $index < ( 4 * $times ) ) {
+        $type = "3";
+      }
+
+      $itemJson = sprintf('{"id":"%s","name":"%s","work_exp":"%s","major":"%s","photo":"%s","valid":"%s","type":"%s"},' ,$id, $name, $work_exp, $major, $photo, $valid, $type);
+      $retResult = $retResult . $itemJson;
     }
 
     $retResult = rtrim(trim($retResult), ',') . ']}}';

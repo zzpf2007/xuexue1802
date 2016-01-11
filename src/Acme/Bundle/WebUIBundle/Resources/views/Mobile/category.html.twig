@@ -15,9 +15,9 @@
 
                 <ul class="nav-cta">
                   {% for entry in categories %}
-                    <li class="on">
+                    <li>
                       <h3>{{ entry.categoryName }}</h3>
-                      <dl class="sub-nav">
+                      <dl class="sub-nav" style="display:none">
                         {% for child in entry.children %}
                           <dd>
                             <a href="/mobile/course/{{ child.id }}">{{ child.categoryName }}</a>
@@ -38,4 +38,11 @@
   <script type="text/javascript" src="{{ asset('assets/js/mobile/jquery.js') }}"></script>
   <script type="text/javascript" src="{{ asset('assets/js/mobile/lib.js') }}"></script>
   <script type="text/javascript" src="{{ asset('assets/js/mobile/slick.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(".nav-cta > li").click(function(){
+          $(".nav-cta dl").hide();
+          $(this).find("dl").show();
+        });
+    </script>
 {% endblock %}

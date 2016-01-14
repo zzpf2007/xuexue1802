@@ -1,3 +1,7 @@
+acme_user:
+    resource: "@AcmeUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 acme_my_sys:
     resource: "@AcmeMySysBundle/Resources/config/routing.yml"
     prefix:   /mysys

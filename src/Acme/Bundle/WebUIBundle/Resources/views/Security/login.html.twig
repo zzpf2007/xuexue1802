@@ -1,22 +1,31 @@
-<p>
-This is my own login page022!
-</p>
+{% extends 'AcmeWebUIBundle::layouts/loginregister.html.twig' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{% block title %}登录{% endblock %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+{% block form %}
+  
+  <form action="{{ path("fos_user_security_check") }}" method="post">
+		<div class="head">
+			<h3>登录</h3>
+		</div>
+		<div class="cont">
+			<div class="loginBox">
+				
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                <label for="username">请输入用户名</label>
+				<input type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="用户名" class="inp">
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+                <label for="password">请输入密码</label>
+				<input type="password" id="password" name="_password" required="required"  placeholder="密码" class="inp">
+                 
+				<label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" value="on" class="inp-c" id="c1">自动登录</label>
+			</div>
+		</div>
+		<div class="foot">
+			<input type="submit" id="_submit" name="_submit" value="确定" class="sbtn1 btn-blue">
+			<input type="submit" value="取消" class="sbtn1">
+		</div>
+   </form>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-
-   <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /> 
-</form>
+{% endblock %}

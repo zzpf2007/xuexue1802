@@ -54,35 +54,3 @@
       </div>
     </div>
   </div>
-
-  <div id="nv">
-    <div class="wp">
-      <div id="mainNav">
-        <a href="javascript:void(0);" class="mainNavBtn">全部课程分类</a>
-        <ul class="mainNavBox">
-          {% for entry in categories %}
-            <li>
-              <a href="" class="v1">{{ entry.categoryName }}</a>
-              <dl>
-              {% for child in entry.children %}
-                <dd>
-                  <a href="">{{ child.categoryName }}</a>
-                </dd>
-              {% endfor %}
-              <dl>
-            </li>
-
-            {# {{ entry.id }} #}
-          {% endfor %}
-         
-        </ul>
-      </div>
-      <ul class="nav">
-        <li class="on"><a href="/">网站首页</a></li>
-        <li><a href="/teachers">入驻名师</a></li>
-        <li><a href="/courses">视频课程</a></li>
-        <li><a href="http://xuekaotong.net/org/8778/exam">试题库</a></li>
-        <li><a href="/about">关于我们</a></li>
-      </ul>
-    </div>
-  </div>

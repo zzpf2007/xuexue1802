@@ -1,33 +1,45 @@
-        {% extends 'AcmeWebUIBundle::layouts/loginregister.html.twig' %}
+{% extends 'AcmeWebUIBundle::layouts/loginregister.html.twig' %}
 
-        {% block title %}注册{% endblock %}
-        
-		{% block form %}
-		<form name="fos_user_registration_form" method="post" action="/register/" class="fos_user_registration_register">
-		<div class="head">
-			<h3>注册</h3>
-		</div>
-		<div class="cont">
-			<div class="regBox">
-			     <label for="fos_user_registration_form_email" class="required">邮箱</label>
-			    <input type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" class="inp">
+{% block title %}注册{% endblock %}
 
-			   <label for="fos_user_registration_form_username" class="required">用户名</label>
-               <input type="password" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="255" pattern=".{2,}"class="inp"/>
+{% block form %}
+  {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+      <div class="head">
+        <h3>注册</h3>
+      </div>
+      <div class="cont">
+        <div class="regBox">
+            <div id="fos_user_registration_form">
 
+              {{ form_errors(form) }}
 
-				<label for="fos_user_registration_form_plainPassword_first" class="required">密码</label>
-				<input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" class="inp">
+              <div class="inp-box">请输入邮箱
+                {{ form_widget( form.email, {'attr': {'class': 'inp'}}) }}
+              </div>
 
-				<label for="fos_user_registration_form_plainPassword_second" class="required">确认密码</label>
-		    	<input type="text"type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" class="inp">
+              <div class="inp-box">用户名
+                {{ form_widget( form.username, {'attr': {'class': 'inp'}} ) }}
+              </div>
 
-				<input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="Fr3mZyqefCdah6nfP2xQGlOEBC2tAePERYbKIdYFnUg" />
-			</div>
-		</div>
-		<div class="foot">
-			<input type="submit" value="确定" class="sbtn1 btn-blue">
-			<input type="submit" value="取消" class="sbtn1">
-		</div>
-		</form>
-		{% endblock %}
+              <div class="inp-box">请输入密码
+                {{ form_widget( form.plainPassword.first, {'attr': {'class': 'inp'}} ) }}
+              </div>
+
+              <div class="inp-box">确认密码
+                {{ form_widget( form.plainPassword.second, {'attr': {'class': 'inp'}} ) }}
+              </div>
+
+              <div class="inp-box">手机号码
+                {{ form_widget( form.mobile, {'attr': {'class': 'inp'}} ) }}
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <input type="submit" value="确定" class="sbtn1 btn-blue">
+        <input type="submit" value="取消" class="sbtn1">
+      </div>
+  {{ form_end(form) }}
+
+{% endblock %}

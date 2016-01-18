@@ -18,6 +18,11 @@ services:
     class:  Monolog\Handler\StreamHandler
     arguments: [%kernel.logs_dir%/%kernel.environment%_my.log]
 
+  app.form.registration:
+    class: Acme\Bundle\WebUIBundle\Form\RegistrationType
+    tags:
+        - { name: form.type, alias: app_user_registration }
+
   # my_web_calculator:
   #   class: AppBundle\Utility\WebTest\WebCalculator
   #   arguments: ["@serializer"]

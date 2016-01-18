@@ -3,8 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{% block title %}首页{% endblock %}</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="keywords" content="学考通" />
+    <meta name="description" content="学考通" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     {% block stylesheet %}
       <link rel="stylesheet" href="assets/css/pc/cui.css" />
@@ -30,7 +30,8 @@
     {% block nav_top_bar %}
       {{ include('AcmeWebUIBundle::Front/common/nav_top_banner.html.twig', { 'categories': categories } ) }}
     {% endblock %}
-    {% block body %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
     {% block javascript %}{% endblock %}
   </body>
 </html>

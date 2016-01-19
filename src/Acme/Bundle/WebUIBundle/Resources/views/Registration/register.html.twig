@@ -1,6 +1,6 @@
 {% extends 'AcmeWebUIBundle::layouts/loginregister.html.twig' %}
 
-{% block title %}注册{% endblock %}
+{% block title %}学考通 注册{% endblock %}
 
 {% block form %}
   {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
@@ -41,5 +41,4 @@
         <input type="submit" value="取消" class="sbtn1">
       </div>
   {{ form_end(form) }}
-
 {% endblock %}

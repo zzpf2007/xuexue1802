@@ -12,6 +12,8 @@ class UserApiFactory
     switch ( $name ) {
       case ( 'register' ):
         $apiObject = new Register($container, $data); break;
+      case ( 'changePwd' ):
+        $apiObject = new ChangePwd($container, $data); break;
       default:
         $apiObject = new UserDefault($container);        
     }

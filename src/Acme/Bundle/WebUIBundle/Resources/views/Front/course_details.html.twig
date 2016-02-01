@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title>课程详情</title>
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+{% extends "AcmeWebUIBundle::layouts/homebase.html.twig" %}
+
+{% block title %}课程详情{% endblock %}
+
+{% block stylesheet %}
+
   <link rel="stylesheet" href="assets/css/pc/cui.css" />
   <link rel="stylesheet" href="assets/css/pc/lib.css" />
   <link rel="stylesheet" href="assets/css/pc/style.css" />
-  <script src="assets/js/pc/jquery.js"></script>
-  <script src="assets/js/pc/lib.js"></script>
-</head>
-<body>
+  <link rel="stylesheet" href="assets/css/pc/jquery.fancybox.css">
 
-  <div id="top">
+{% endblock %}
+
+{% block content %}
+
+     <div id="top">
     <div class="wp">
       <div class="top-r">
         <a href="login.html" class="login-fancybox fancybox.iframe">登录</a>
@@ -268,7 +267,11 @@
   </div>
   <div class="h40"></div>
 
-  <div id="fd">
+{% endblock %}
+
+{% block footer %}
+
+      <div id="fd">
     <div class="wp">
       <div class="ftop">
         <div class="fnav">
@@ -319,9 +322,19 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block javascript %}
+
   <script src="assets/js/pc/jquery.js"></script>
   <script src="assets/js/pc/lib.js"></script>
-  <script>
+  <script src="assets/js/pc/jquery.fancybox.pack.js"></script>
+
+{% endblock %}
+
+{% block script %}
+
+     <script>
   $(document).ready(function() {
     $('.vedio-list li').hover(function() {
       $(this).toggleClass('on');
@@ -329,9 +342,7 @@
   });
   </script>
 
-  <link rel="stylesheet" href="assets/css/pc/jquery.fancybox.css">
-  <script src="assets/js/pc/jquery.fancybox.pack.js"></script>
-  <script>
+    <script>
   $(document).ready(function() {
     // 登陆注册-弹出
     $('.login-fancybox').fancybox({
@@ -346,6 +357,5 @@
     });
   });
   </script>
-  
-</body>
-</html>
+
+{% endblock %}

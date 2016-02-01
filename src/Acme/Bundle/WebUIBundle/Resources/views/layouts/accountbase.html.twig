@@ -1,0 +1,282 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>学考通</title>
+  <meta name="description" content="学考通">
+  <meta name="keywords" content="学考通">
+
+  {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/cui.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/lib.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/style.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/amazeui.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/admin.css' ) }}" />
+  {% endblock %}
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+
+  <div class="am-topbar-brand">
+    <strong>学考通</strong>
+    <small>后台管理模板</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}">
+    <span class="am-sr-only">导航切换</span> 
+    <span class="am-icon-bars"></span>
+  </button>
+
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li>
+        <a href="javascript:;">
+          <img style="width:16px;height:16px;margin-top:-7px;" src="/assets/images/pc/4.png"> 
+              收件箱 
+          <span class="am-badge am-badge-warning">5</span>
+        </a>
+      </li>
+
+      <li class="am-dropdown" data-am-dropdown>
+
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <img style="width:15px;height:15px;margin-top:-5px;" src="/assets/images/pc/7.png"> 
+             管理员 
+          <span class="am-icon-caret-down"></span>
+        </a>
+
+        <ul class="am-dropdown-content">
+          <li>
+            <a href="#">
+              <img style="width:15px;height:15px;margin-top:-3px;" src="/assets/images/pc/11.png"> 
+                资料
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <img style="width:15px;height:15px;margin-top:-3px;" src="/assets/images/pc/10.png">
+                 设置
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <img style="width:15px;height:15px;margin-top:-3px;" src="/assets/images/pc/6.png">
+                 退出
+            </a>
+          </li>
+
+        </ul>
+
+      </li>
+
+      <li class="am-hide-sm-only">
+         <a href="javascript:;" id="admin-fullscreen">
+            <img style="width:15px;height:15px;margin-top:-5px;" src="/assets/images/pc/12.png">  
+            <span class="admin-fullText">开启全屏</span>
+         </a>
+      </li>
+    </ul>
+  </div>
+
+</header>
+
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+
+        <li>
+          <a href="/account/profile">
+          <img style="width:20px;height:20px;margin-top:-5px;" src="/assets/images/pc/3.png">
+             首页
+          </a>
+        </li>
+
+        <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+            <img style="width:20px;height:20px;margin-top:-5px;" src="/assets/images/pc/5.png">
+               会员管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+
+            <li>
+              <a href="/account/user/index" class="am-cf">
+                <img style="width:17px;height:17px;margin-top:-5px;" src="/assets/images/pc/7.png">
+                   会员列表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/account/user/new">
+                <img style="width:17px;height:17px;margin-top:-5px;" src="/assets/images/pc/8.png">
+                   添加会员
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="{{ path( 'account_index_path' ) }}">
+            <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/local.png">
+               账号详情信息
+          </a>
+        </li>
+
+        <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse2-nav'}">
+           <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/1.png">
+               摄像头管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse2-nav">
+
+            <li>
+              <a href="{{ path( 'camera_index_path' ) }}" class="am-cf">
+                <img style="width:17px;height:17px;margin-top:-5px;" src="/assets/images/pc/1.png">
+                   摄像头列表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'camera_new_path' ) }}">
+                <img style="width:17x;height:17px;margin-top:-5px;" src="/assets/images/pc/8.png">
+                   添加摄像头
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse3-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/16.png">  
+               省份管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse3-nav">
+
+            <li>
+              <a href="{{ path( 'area_index_path' ) }}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/18.png"> 
+                   省份列表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'area_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/8.png">  
+                   添加省份
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="">
+            <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/8.png">
+               权限管理
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/10.png">
+               网站配置
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/6.png">
+               注销
+          </a>
+        </li>
+
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+
+          <p>
+            <span class="am-icon-bookmark"></span> 
+              公告
+          </p>
+
+          <p>学如逆水行舟，不进则退。—— 学考通</p>
+
+        </div>
+
+      </div>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+
+          <p>
+            <span class="am-icon-tag"></span> 
+               xuekaotong
+          </p>
+
+          <p>Welcome to the xuekaotong!</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+
+   {% block content %}
+   
+   {% endblock %}
+  <!-- content end -->
+  </div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/assets/js/pc/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/assets/js/pc/amazeui.min.js"></script>
+<script src="/assets/js/pc/app.js"></script>
+</body>
+</html>

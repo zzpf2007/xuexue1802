@@ -2,6 +2,76 @@ acme_web_ui_homepage:
     path:     /hello/{name}
     defaults: { _controller: AcmeWebUIBundle:Default:index }
 
+coin_edit_path:
+  path: '/account/coin/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Coin:edit }
+
+account_edit_path:
+  path: '/account/account/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Account:edit }
+
+account_index_path:
+  path: '/account/account/index'
+  defaults: { _controller: AcmeWebUIBundle:Account:index }
+
+area_new_path:
+  path: '/account/area/new'
+  defaults: { _controller: AcmeWebUIBundle:Area:new }
+
+area_delete_path:
+  path: '/account/area/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Area:delete }
+  requirements:
+      _method:  DELETE
+
+area_index_path:
+  path: '/account/area'
+  defaults: { _controller: AcmeWebUIBundle:Area:index }
+
+camerauser_edit_path:
+  path: '/account/camerauser/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Camerauser:edit }
+
+camera_index_path:
+  path: '/account/camera'
+  defaults: { _controller: AcmeWebUIBundle:Camera:index }
+
+camera_new_path:
+  path: '/account/camera/new'
+  defaults: { _controller: AcmeWebUIBundle:Camera:new }
+
+camera_delete_path:
+  path: '/account/camera/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Camera:delete }
+  requirements:
+        _method:  DELETE
+
+user_create_path:
+  path: '/account/user/{id}/create'
+  defaults: { _controller: AcmeWebUIBundle:User:create }
+
+user_new_path:
+  path: '/account/user/new'
+  defaults: { _controller: AcmeWebUIBundle:User:new }
+
+user_edit_path:
+  path: '/account/user/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:User:edit }
+
+user_delete_path:
+  path: '/account/user/{id}'
+  defaults: { _controller: AcmeWebUIBundle:User:delete }
+  requirements:
+        _method:  DELETE
+
+user_index_path:
+  path: '/account/user/index'
+  defaults: { _controller: AcmeWebUIBundle:User:index }
+
+amdin_setting_path:
+  path: '/account/admin/setting'
+  defaults: { _controller: AcmeWebUIBundle:User:admin }
+
 front_path:
   path: '/'
   defaults: { _controller: AcmeWebUIBundle:Front:index }

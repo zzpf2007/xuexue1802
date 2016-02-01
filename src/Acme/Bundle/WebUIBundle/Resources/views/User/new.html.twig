@@ -1,0 +1,30 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+  {% block content %}
+
+
+        {{ form_start(new_form) }}
+
+           <div class="cont" >
+              <div class="new_form">
+
+                <label for="form_username" class="lab">用户名</label>
+                {{ form_widget(new_form.username,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_password" class="lab">密码</label>
+                {{ form_widget(new_form.password,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_mobile" class="lab">电话</label>
+                {{ form_widget(new_form.mobile,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_email" class="lab">邮箱</label>
+                {{ form_widget(new_form.email,{'attr': {'class': 'inp'}}) }}
+              </div>
+           </div>  
+
+            <input type="submit" value="添加" style="margin-left:300px;margin-top:30px;width:100px;height:30px;">
+
+        {{ form_end(new_form) }}
+    
+
+  {% endblock %}

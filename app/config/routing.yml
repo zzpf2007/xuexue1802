@@ -24,6 +24,10 @@ app_main_urls:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+fos_user_registration_confirmed:
+    path:      /account/profile
+    defaults:  { _controller: AcmeWebUIBundle:User:profile }
+
 root_url:
   path: '/'
   defaults: { _controller: AcmeWebUIBundle:Front:index }

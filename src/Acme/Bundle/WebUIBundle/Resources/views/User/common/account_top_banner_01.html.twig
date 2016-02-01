@@ -1,0 +1,56 @@
+  <div id="top">
+    <div class="wp">
+      <div class="top-r">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              用户 
+              <a href="{{ path('fos_user_registration_confirmed') }}">
+                {{ app.user.username }} 
+              </a>
+              | 
+            <a href="{{ path('fos_user_security_logout') }}">
+              注销
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">
+              登录
+            </a>
+            |
+            <a href="{{ path('fos_user_registration_register') }}">
+              注册
+            </a>
+        {% endif %}
+        {# <a href="login.html" class="login-fancybox fancybox.iframe">登录</a>
+        <a href="reg.html" class="reg-fancybox fancybox.iframe">注册</a> #}
+        <a href="" class="a-app">下载app</a>
+        <a href="">帮助中心</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="hd">
+    <div class="wp">
+      <a href="" class="logo"><img src="/assets/images/pc/logo.png" alt=""></a>
+      <div class="hdr">
+        <ul class="g-webInfo">
+          <li>
+            <a href=""><img src="/assets/images/pc/ico1.png" alt="" class="ico"></a>
+            <div class="txt">58918 门课程<br>给你更强能力</div>
+          </li>
+          <li>
+            <a href=""><img src="/assets/images/pc/ico2.png" alt="" class="ico"></a>
+            <div class="txt">18918 位名师<br>任你选择</div>
+          </li>
+          <li>
+            <a href=""><img src="/assets/images/pc/ico3.png" alt="" class="ico"></a>
+            <div class="txt">892365 名学员<br>与你同学</div>
+          </li>
+        </ul>
+        <div class="searchBox">
+          <form action="">
+          <input type="text" class="so-inp" placeholder="搜索贴子、用户或课程..." value="">
+          <input type="submit" class="so-btn" value="">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

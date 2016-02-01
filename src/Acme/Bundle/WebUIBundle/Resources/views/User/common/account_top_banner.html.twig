@@ -1,0 +1,28 @@
+  <div id="top">
+    <div class="wp">
+      <div class="top-r">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              用户 
+              <a href="{{ path('fos_user_registration_confirmed') }}">
+                {{ app.user.username }} 
+              </a>
+              | 
+            <a href="{{ path('fos_user_security_logout') }}">
+              注销
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">
+              登录
+            </a>
+            |
+            <a href="{{ path('fos_user_registration_register') }}">
+              注册
+            </a>
+        {% endif %}
+        {# <a href="login.html" class="login-fancybox fancybox.iframe">登录</a>
+        <a href="reg.html" class="reg-fancybox fancybox.iframe">注册</a> #}
+        <a href="" class="a-app">下载app</a>
+        <a href="">帮助中心</a>
+      </div>
+    </div>
+  </div>

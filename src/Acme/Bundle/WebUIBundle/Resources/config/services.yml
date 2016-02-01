@@ -1,4 +1,11 @@
-services:
+#services:
 #    acme_web_ui.example:
 #        class: Acme\Bundle\WebUIBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    acme_webui_user.registration_confirm:
+        class: Acme\Bundle\WebUIBundle\EventListener\RegistrationConfirmListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }

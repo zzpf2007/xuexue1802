@@ -27,42 +27,14 @@ class CameraController extends Controller
         $cameras = $em->getRepository('AppBundle:Camera')->findAll();
 
 
-        return array('cameras' => $cameras,'delete_form' => $delete_form->createView() );
+        $qb = $em->getRepository('AppBundle:Camera')->createQueryBuilder('n');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),3);
+
+
+        return array('pagination' => $pagination,'cameras' => $cameras,'delete_form' => $delete_form->createView() );
 
         // return array( 'cameras' => $cameras );
-    }
-
-    public function editAction(Request $request, $id)
-    {
-        //$em = $this->getDoctrine()->getManager();
-       // $camera = $em->getRepository('AppBundle:Camera')->find($id);
-
-       // $delete_form = $this->createDeleteForm($camera);
-
-       // $edit_form = $this->createFormBuilder($camera)
-                //->add('devId', null)
-                //->add('devDesc', null)
-                //->add('devStatus', null)
-                //->add('devStreanId', null)        
-                //->add('devThumbnail', null)        
-                //->add('save', 'submit', array('label' => '修改'))
-                //->getForm();
-
-        //$edit_form->handleRequest($request);
-
-        //if ($edit_form->isSubmitted() && $edit_form->isValid()) {
-             //... perform some action, such as saving the task to the database
-           // $em->persist($camera);
-           // $em->flush();
-           // return $this->redirectToRoute('camera_index_path');
-       // }
-
-        //return array(            
-          //  'edit_form' => $edit_form->createView(),
-          //  'delete_form' => $delete_form->createView()
-      //  );
-
-        // return array( 'camera' => $camera );
     }
 
     /**

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TextController extends Controller
 {
-     /**
+    /**
      * @Route("/indexx")
 
      */
@@ -44,10 +44,10 @@ class TextController extends Controller
        $em = $this->getDoctrine()->getManager();
        $pro = $em->getRepository('AppBundle:Text')->findOneBy(array('id'=>1));
  
-       $pro->setAge(30);
+       //$pro->setAge(30);
 
-        $em->persist($pro);
-        $em->flush();
+      //  $em->persist($pro);
+       // $em->flush();
               
         return $this->render('AppBundle:Front:index.html.twig');
     }

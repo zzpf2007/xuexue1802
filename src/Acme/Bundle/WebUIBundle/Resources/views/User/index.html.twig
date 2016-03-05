@@ -2,11 +2,24 @@
 
 {% block content %}
     <div class="admin-content">
+
+
         <div class="am-cf am-padding">
           <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员列表</strong></div>
+
+            <div class="search">
+                  <form action="{{ path('user_search_path')}}" method="get">
+                    <input type="text" class="textt" name="username" placeholder="请输入要搜索的用户...">
+                    <input type="submit" class="submitt" value="搜索">
+                  </form>
+            </div>
+
         </div>
 
+         
          <table border=1 class="bor" style="margin-left:10px;"> 
+          
+          <thead>
              <tr>
                 <th></th>         
                 <th>ID</th>
@@ -14,11 +27,15 @@
                 <th>密码</th>
                 <th>电话</th>
                 <th>邮箱</th>
+           
                 <th>设备ID</th>
                 <th>操作</th>
-             </tr>
-              {% for user in users %} 
-                
+             </tr>  
+          </thead> 
+
+          <tbody>
+              {% for user in pagination %}        
+         
                  <tr> 
                     <th>
                        <input type="checkbox" style="width:15px;height:15px;">
@@ -27,7 +44,8 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.password }}</td>
                     <td>{{ user.mobile }}</td>
-                    <td>{{ user.email }}</td> 
+                    <td>{{ user.email }}</td>
+            
                     <td>{{ user.camerauser ? user.camerauser.devid : ''}}</td>
                     <td>
                       <a href=" {{ path('user_edit_path', { id : user.id })  }} ">
@@ -53,8 +71,14 @@
 
                     </td>
                  </tr>
-           
+    
               {% endfor %}
+            </tbody>
+              <tr>
+                  <td colspan="8">
+                     {{ knp_pagination_render(pagination) }} 
+                   </td>
+              </tr>
          </table>
   </div>
 {% endblock %}

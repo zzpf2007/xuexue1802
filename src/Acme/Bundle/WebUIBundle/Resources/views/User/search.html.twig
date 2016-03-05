@@ -1,0 +1,93 @@
+
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+{% block content %}
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">搜索结果</strong></div>
+        </div>
+       
+         <table border=1 class="bor" style="margin-left:10px;"> 
+          
+          <thead>
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>设备ID</th>
+                <th>操作</th>
+             </tr>  
+          </thead> 
+
+          <tbody>
+              {% for user in results %}        
+         
+                 <tr> 
+                    <th>
+                       <input type="checkbox" style="width:15px;height:15px;">
+                    </th>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.mobile }}</td>
+                    <td>{{ user.email }}</td> 
+                   <td>{{ user.camerauser ? user.camerauser.devid : ''}}</td>
+
+                    <td>
+                      <a href=" {{ path('user_edit_path', { id : user.id })  }} ">
+                      <img src="/assets/images/pc/8.png" style="width:17px;height:17px;">修改</a> 
+                      <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;">
+
+                      <div class="del">
+                        {{ form_start( delete_form, { 'action': path( 'user_delete_path', { 'id' : user.id } ) } ) }}                    
+                        {{ form_widget( delete_form ) }}  
+                             <input type="submit" value="删除" />
+                        {{ form_end(delete_form) }}
+                      </div>
+
+                      <div class="update">
+                      <a href=" {{ path('user_create_path', { id : user.id })  }} ">
+                      <img src="/assets/images/pc/key.png" style="width:18px;height:18px;">密码重置</a>
+                      </div>
+
+                    <div class="camera">
+                          <a href=" {{ path('camerauser_edit_path', { id : user.id })  }} ">
+                          <img src="/assets/images/pc/1.png" style="width:15px;height:15px;">修改摄像头</a> 
+                      </div>
+                    
+                    </td>
+                 </tr>
+    
+              {% endfor %}
+            </tbody>
+              {#<tr>
+                  <td colspan="8">
+                     {{ knp_pagination_render(pagination) }} 
+                   </td>
+              </tr>#}
+         </table>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% for result in results %}
+
+    {{ result.username }}
+
+{% endfor %}#}

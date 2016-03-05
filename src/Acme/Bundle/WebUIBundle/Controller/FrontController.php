@@ -30,8 +30,20 @@ class FrontController extends Controller
         $courses03 = array_slice( $courses03, 0, 6 );
         $teachers = $this->getTeachers();
         $teachers = array_slice( $teachers, 0, 10 );
-        // var_dump( $courses );
-        return array( 'categories' => $categories, 'courses01' => $courses01, 'courses02' => $courses02, 'courses03' => $courses03, 'teachers' => $teachers ); //$categories );
+
+        $em = $this->getDoctrine()->getManager();
+        $pictures = $em->getRepository('AppBundle:Pictures')->findAll();
+        //友情链接
+        $friendlys = $em->getRepository('AppBundle:Friendly')->findAll();
+        $learns = $em->getRepository('AppBundle:Learn')->findAll();
+        $helps = $em->getRepository('AppBundle:Help')->findAll();
+        $partners = $em->getRepository('AppBundle:Partner')->findAll();
+        $downs = $em->getRepository('AppBundle:Down')->findAll();
+        //随机数
+        $number1 = rand(10000, 100000);
+        $number2 = rand(10000, 100000);
+        $number3 = rand(10000, 100000); 
+        return array('number1' => $number1,'number2' => $number2,'number3' => $number3,'pictures' => $pictures,'friendlys' => $friendlys,'learns' => $learns,'helps' => $helps,'partners' => $partners,'downs' => $downs,'categories' => $categories, 'courses01' => $courses01, 'courses02' => $courses02, 'courses03' => $courses03, 'teachers' => $teachers ); //$categories );
     }
 
     /**
@@ -47,7 +59,18 @@ class FrontController extends Controller
             $course = $this->getCourse( $item->id );
             $courseArray[] = $course;
         }
-        return array( 'categories' => $categories, 'courseArray' => $courseArray );
+         //友情链接
+        $em = $this->getDoctrine()->getManager();
+        $friendlys = $em->getRepository('AppBundle:Friendly')->findAll();
+        $learns = $em->getRepository('AppBundle:Learn')->findAll();
+        $helps = $em->getRepository('AppBundle:Help')->findAll();
+        $partners = $em->getRepository('AppBundle:Partner')->findAll();
+        $downs = $em->getRepository('AppBundle:Down')->findAll();
+         //随机数
+        $number1 = rand(10000, 100000);
+        $number2 = rand(10000, 100000);
+        $number3 = rand(10000, 100000); 
+        return array('number1' => $number1,'number2' => $number2,'number3' => $number3,'friendlys' => $friendlys,'learns' => $learns,'helps' => $helps,'partners' => $partners,'downs' => $downs, 'categories' => $categories, 'courseArray' => $courseArray );
     }
 
     /**
@@ -58,7 +81,20 @@ class FrontController extends Controller
         $categories = $this->getRootCategory();    
         // unset( $categories[0] ); 
         $teachers = $this->getTeachers();
-        return array( 'categories' => $categories, 'teachers' => $teachers );
+
+        //友情链接
+        $em = $this->getDoctrine()->getManager();
+        $friendlys = $em->getRepository('AppBundle:Friendly')->findAll();
+        $learns = $em->getRepository('AppBundle:Learn')->findAll();
+        $helps = $em->getRepository('AppBundle:Help')->findAll();
+        $partners = $em->getRepository('AppBundle:Partner')->findAll();
+        $downs = $em->getRepository('AppBundle:Down')->findAll();
+
+         //随机数
+        $number1 = rand(10000, 100000);
+        $number2 = rand(10000, 100000);
+        $number3 = rand(10000, 100000); 
+        return array( 'number1' => $number1,'number2' => $number2,'number3' => $number3,'friendlys' => $friendlys,'learns' => $learns,'helps' => $helps,'partners' => $partners,'downs' => $downs,'categories' => $categories, 'teachers' => $teachers );
     }
 
     /**
@@ -68,7 +104,18 @@ class FrontController extends Controller
     {
         $categories = $this->getRootCategory();    
         // unset( $categories[0] ); 
-        return array( 'categories' => $categories ); 
+        //友情链接
+        $em = $this->getDoctrine()->getManager();
+        $friendlys = $em->getRepository('AppBundle:Friendly')->findAll();
+        $learns = $em->getRepository('AppBundle:Learn')->findAll();
+        $helps = $em->getRepository('AppBundle:Help')->findAll();
+        $partners = $em->getRepository('AppBundle:Partner')->findAll();
+        $downs = $em->getRepository('AppBundle:Down')->findAll();
+         //随机数
+        $number1 = rand(10000, 100000);
+        $number2 = rand(10000, 100000);
+        $number3 = rand(10000, 100000); 
+        return array( 'number1' => $number1,'number2' => $number2,'number3' => $number3,'friendlys' => $friendlys,'learns' => $learns,'helps' => $helps,'partners' => $partners,'downs' => $downs,'categories' => $categories ); 
     }
 
     /**

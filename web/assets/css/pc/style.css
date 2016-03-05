@@ -1,6 +1,5 @@
-﻿
 /*******************************
-	-------[=首页]-------
+	-------[=Ê×Ò³]-------
 ********************************/
 .index-teacher{padding-bottom: 60px;
 	background:#eff2f5 url(../../../assets/images/pc/bg2.jpg) no-repeat center top;
@@ -52,7 +51,7 @@
 .a-apple span{background: url(../../../assets/images/pc/ico-apple.png) no-repeat left center;}
 
 /*******************************
-	-------[=关于我们]-------
+	-------[=¹ØÓÚÎÒÃÇ]-------
 ********************************/
 #ban{height: 390px;text-align: center;font-size: 37px;color: #fff;text-shadow:0 2px 5px #333;
 	background-position: center center;background-repeat: no-repeat;
@@ -72,17 +71,17 @@
 	-------[=mg-start]-------
 ********************************/
 
-/*分页*/
+/*·ÖÒ³*/
 .page{text-align: center;margin-bottom: 40px;font-family: 'Arial';}
 .page ul{display: inline-block;overflow: hidden;line-height: 40px;}
 .page li{float: left;margin: 0 5px;}
-.page li .prev,.page li .next{font-family: '宋体';font-weight: bold;}
+.page li .prev,.page li .next{font-family: 'ËÎÌå';font-weight: bold;}
 .page li a{padding: 0 15px;background: #efefef;font-size: 16px;color: #999;
 	display: inline-block;border-radius: 5px;
 }
 .page li.on a,.page li:hover a{background: #3a9fff;color: #FFF;}
 
-/*首页中间部分公用*/
+/*Ê×Ò³ÖÐ¼ä²¿·Ö¹«ÓÃ*/
 .ul-list1{overflow: hidden;width: 1217px;}
 .ul-list1 li{float: left;margin:0 16px 20px 0;width: 380px;border:1px solid #e5e5e5;}
 .ul-list1 .pic{height: 240px;background-color: #f2f2f2;}
@@ -94,7 +93,7 @@
 .ul-list1 .txt p{text-align: right;font-size: 14px;color: #999;padding-right: 13px;}
 .ul-list1 .txt p span{display: inline-block;float: left;font-size: 14px;color: #999;}
 
-/*名师课程顶部*/
+/*ÃûÊ¦¿Î³Ì¶¥²¿*/
 .tea-header{border:1px solid #dedede;margin-bottom: 15px;}
 .tea-header .active{background: #3a9fff;color: #FFF;}
 .tea-header table{width: 100%;font-size: 14px;}
@@ -105,7 +104,7 @@
 .tea-header td a{padding: 3px 8px;display: inline-block;margin-right: 39px;margin-bottom: 5px;}
 .tea-header td a:hover{background: #3a9fff;color: #FFF;}
 
-/*排序输出*/
+/*ÅÅÐòÊä³ö*/
 .filter_tit{line-height: 30px;padding-right: 26px;overflow:hidden;font-size: 14px;}
 .filter_tit .order{border-radius: 4px;float: left;border:1px solid #dedede;margin-right: 25px;}
 .filter_tit .order a{text-align: center;color: #999;
@@ -119,7 +118,7 @@
 }
 .course-check input{display: inline-block;margin-right: 5px;position: relative;top: 2px;}
 
-/*名师课程列表*/
+/*ÃûÊ¦¿Î³ÌÁÐ±í*/
 .tea-list{overflow: hidden;width: 1220px;}
 .tea-list li{float: left;width: 265px;margin:0 37px 40px 0;border:1px solid #e5e5e5;}
 .tea-list .pic{height: 265px;background-color: #f2f2f2;}
@@ -133,13 +132,13 @@
 .tea-list .info{color: #999;}
 .tea-list .info span{float: right;color: #3a9fff;}
 
-/*课程*/
+/*¿Î³Ì*/
 .price-y{width: 230px;height: 24px;display: inline-block;font-size: 14px;color: #666;}
 .price-y input{width: 45px;height: 22px;border:1px solid #dedede;outline: none;text-align: center;}
 .price-y .price-btn{border-radius: 4px;background: #f3f3f3;font-size: 12px;color: #999;text-align: center;line-height: 22px;}
 
 
-/*课程中的列表*/
+/*¿Î³ÌÖÐµÄÁÐ±í*/
 .course-list{overflow: hidden;}
 .course-list li{overflow: hidden;border-bottom: 1px solid #e5e5e5;padding: 30px 0;}
 .course-list .pic{width: 270px;height: 163px;float: left;background-color: #deecf5;}
@@ -155,12 +154,12 @@
 .course-list .info{}
 .course-list .info span{display: inline-block;margin-right: 45px;}
 
-/*当前位置*/
+/*µ±Ç°Î»ÖÃ*/
 .cur_tit{line-height: 36px;overflow: hidden;font-size: 14px;color: #999;}
 .cur_tit a{font-size: 12px;color: #3a9fff;}
-.cur_tit em{font-family: '宋体';display: inline-block;margin: 0 5px;}
+.cur_tit em{font-family: 'ËÎÌå';display: inline-block;margin: 0 5px;}
 
-/*课程详情*/
+/*¿Î³ÌÏêÇé*/
 .m-vedio{}
 .m-vedio h3{font-size: 20px;color: #464646;font-weight: normal;margin-bottom: 10px;}
 .videoBox{background-color: #2b2b2b;overflow: hidden;}
@@ -219,7 +218,7 @@
 .vedio-list li.on a{color: #3a9fff;}
 .vedio-list li.on .a-study{display: inline-block;}
 
-/*课程右侧*/
+/*¿Î³ÌÓÒ²à*/
 .mg-intro-tea{padding-top: 10px;}
 .mg-intro-tea .name{font-size: 18px;color: #464646;overflow: hidden;margin-bottom: 10px;}
 .mg-intro-tea .name img{width: 70px;height: 70px;float: left;margin-right: 10px;background-color: #f2f2f2;}
@@ -240,7 +239,7 @@
 .tz-list2 h4 a{color: #666;}
 .tz-list2 h4 a:hover{color: #3391ea;}
 
-/*相关课程*/
+/*Ïà¹Ø¿Î³Ì*/
 .mg-about{overflow: hidden;width: 1200px;padding-top: 10px;} 
 .mg-about li{float: left;width: 220px;margin-right: 20px;}
 .mg-about .pic{height: 130px;background-color: #f2f2f2;margin-bottom: 5px;}
@@ -255,7 +254,7 @@
 .adBox{height: 90px;background-color: #f2f2f2;}
 .adBox img{display: block;width: 100%;height: 100%;}
 
-/*名师详情*/
+/*ÃûÊ¦ÏêÇé*/
 .m-name{overflow: hidden;padding-bottom: 30px;border-bottom: 1px solid #e5e5e5;font-size: 16px;color: #787878;}
 .m-name .img{float: left;width: 145px;height: 145px;background-color: #f2f2f2;margin-right: 25px;}
 .m-name .img img{display: block;width: 100%;height: 100%;}
@@ -281,7 +280,7 @@
 }
 .tz-list1 h4 a{color: #333;}
 
-/*后台部分*/
+/*ºóÌ¨²¿·Ö*/
 
 .new_form{width:600px;margin-top:100px;margin-left:100px;padding:0 30px;}
 .lab{margin-top:10px;font-size:15px;color:gray;}
@@ -301,6 +300,25 @@
 .update{margin-top:-28px;margin-left:120px;}
 
 .camera{margin-top:-31px;margin-left:210px;}
+
+.uid{margin-left:130px;margin-top:-30px;}
+.uid span{font-size:14px;}
+
+.innp{margin-left:75px;}
+
+/*个人中心*/
+.color{color:#7C8585;margin-left:120px;margin-top:50px;}
+.hr{width:250px;color:#7C8585;margin-top:-5px;margin-left:120px;border:dotted 1px;}
+.picc img{width:100px;height:100px;border:dotted 2px color:#7C8585;margin-top:10px;margin-left:120px;}
+.hr1{width:250px;border:dotted 1px #7C8585;margin-left:120px;margin-top:20px;}
+.person{width:300px;margin-left:80px;}
+.person ol{list-style-type:none;font-size:14px;}
+.person ol li span{font-weight:bold;}
+.account{width:500px;margin-left:550px;margin-top:-400px;}
+.account ol{list-style-type:none;font-size:13px;}
+.account ol li span{font-weight:bold;}
+.personn{ margin-top:50px;margin-left:50px;}
+
 
 /*******************************
 	-------[=mg-end]-------

@@ -3,6 +3,7 @@
 namespace AppBundle\Utility\WebApi\User;
 
 use AppBundle\Utility\WebUtility\WebAuto;
+use AppBundle\Entity\User;
 
 abstract class UserMode
 {
@@ -88,5 +89,13 @@ abstract class UserMode
       $em->persist( $item );
       $em->flush();
     }
+  }
+
+  protected function encodePassword(User $user, $plainPassword)
+  {
+    $encoder = $this->container->get('security.encoder_factory')
+        ->getEncoder($user)
+    ;
+    return $encoder->encodePassword($plainPassword, $user->getSalt());
   }
 }

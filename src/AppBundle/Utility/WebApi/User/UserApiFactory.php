@@ -14,6 +14,8 @@ class UserApiFactory
         $apiObject = new Register($container, $data); break;
       case ( 'changePwd' ):
         $apiObject = new ChangePwd($container, $data); break;
+      case ( 'login' ):
+        $apiObject = new Login($container, $data); break;
       default:
         $apiObject = new UserDefault($container);        
     }

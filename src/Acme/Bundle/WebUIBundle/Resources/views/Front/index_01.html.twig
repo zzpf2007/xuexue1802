@@ -243,34 +243,52 @@
         <div class="fnav">
           <dl class="fm1">
             <dt><a href="">关于我们</a></dt>
-            <dd><a href="">关于我们</a></dd>
-            <dd><a href="">加入我们</a></dd>
-            <dd><a href="">联系我们</a></dd>
+        
+              {% for friendly in friendlys %}
+                  <dd><a href="{{ friendly.link }}"> {{ friendly.title }} </a></dd>                 
+              {% endfor %}
+            
+           {#} <dd><a href="">加入我们</a></dd>
+            <dd><a href="">联系我们</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">学习资讯</a></dt>
-            <dd><a href="">课程学习</a></dd>
-            <dd><a href="">就业指南</a></dd>
-            <dd><a href="">认证考证</a></dd>
+
+            {% for learn in learns %}
+                <dd><a href="{{ learn.link }}">{{ learn.title }}</a></dd>
+            {% endfor %}
+            {#<dd><a href="">就业指南</a></dd>
+            <dd><a href="">认证考证</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">帮助中心</a></dt>
-            <dd><a href="">VIP学员特权</a></dd>
-            <dd><a href="">积分规则</a></dd>
+
+            {% for help in helps %}
+              <dd><a href="{{ help.link }}">{{ help.title }}</a></dd>
+            {% endfor %}
+            {#
+            <dd><a href="">积分规则</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">合作加盟</a></dt>
-            <dd><a href="">推广加盟</a></dd>
-            <dd><a href="">渠道加盟</a></dd>
-            <dd><a href="">名师加盟</a></dd>
+
+            {% for partner in partners %}
+                <dd><a href="{{ partner.link }}">{{ partner.title }}</a></dd>
+            {% endfor %}
+           {#} <dd><a href="">渠道加盟</a></dd>
+            <dd><a href="">名师加盟</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">下载中心</a></dt>
-            <dd><a href="">客户端</a></dd>
-            <dd><a href="">表情包</a></dd>
-            <dd><a href="">桌面壁纸</a></dd>
+
+            {% for down in downs %}
+               <dd><a href="{{ down.link }}">{{ down.title }}</a></dd>
+            {% endfor %}
+           {#} <dd><a href="">表情包</a></dd>
+            <dd><a href="">桌面壁纸</a></dd>#}
           </dl>
         </div>
+
         <div class="fdr">
           <div class="ftel">400-029-3003</div>
           每天 9:30 - 23:30 (仅收市话费)

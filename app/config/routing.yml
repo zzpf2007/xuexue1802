@@ -31,3 +31,7 @@ fos_user_registration_confirmed:
 root_url:
   path: '/'
   defaults: { _controller: AcmeWebUIBundle:Front:index }
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group

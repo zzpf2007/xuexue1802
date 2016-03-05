@@ -27,3 +27,8 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+
+       #- { path: ^/home, roles: ROLE_USER } # role是用户需要具备的角色，登录成功默认会有ROLE_USER
+       # - { path: ^/account/pictures/index, roles: ROLE_SUPER_ADMIN }
+       # - { path: ^/account/course, roles: ROLE_SUPER_ADMIN }
+       # - { path: ^/account/course/new, roles: ROLE_SUPER_ADMIN }

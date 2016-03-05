@@ -1,10 +1,175 @@
-acme_web_ui_homepage:
+n acme_web_ui_homepage:
     path:     /hello/{name}
     defaults: { _controller: AcmeWebUIBundle:Default:index }
+
+#Group
+group_index_path:
+  path: '/account/group/index'
+  defaults: { _controller: AcmeWebUIBundle:Group:index }
+
+#权限管理
+
+authrule_index_path:
+  path: '/account/authrule/index'
+  defaults: { _controller: AcmeWebUIBundle:Permission:index }
+
+authrule_new_path:
+  path: '/account/authrule/new'
+  defaults: { _controller: AcmeWebUIBundle:Permission:new }
+
+authrule_edit_path:
+  path: '/account/authrule/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Permission:edit }
+
+authrule_alter_path:
+  path: '/account/authrule/{id}/alter'
+  defaults: { _controller: AcmeWebUIBundle:Permission:alter }
+
+authrule_delete_path:
+  path: '/account/authrule/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Permission:delete }
+  requirements:
+      _method:  DELETE
+
+authgroup_index_path:
+  path: '/account/authgroup/index'
+  defaults: { _controller: AcmeWebUIBundle:Permissions:index }
+
+authgroup_alter_path:
+  path: '/account/authgroup/{id}/alter'
+  defaults: { _controller: AcmeWebUIBundle:Permissions:alter }
+
+authgroup_new_path:
+  path: '/account/authgroup/new'
+  defaults: { _controller: AcmeWebUIBundle:Permissions:new }
+
+authgroup_edit_path:
+  path: '/account/authgroup/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Permissions:edit }
+
+authgroup_delete_path:
+  path: '/account/authgroup/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Permissions:delete }
+  requirements:
+      _method:  DELETE
+
+authgroupaccess_index_path:
+  path: '/account/authgroupaccess/index'
+  defaults: { _controller: AcmeWebUIBundle:Permissionss:index }
+
+#教师
+teacher_index_path:
+  path: '/account/teacher/index'
+  defaults: { _controller: AcmeWebUIBundle:Teacher:index }
+
+teacher_edit_path:
+  path: '/account/teacher/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Teacher:edit }
+
+teacher_delete_path:
+  path: '/account/teacher/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Teacher:delete }
+  requirements:
+      _method:  DELETE
+
+teacher_new_path:
+  path: '/account/teacher/new'
+  defaults: { _controller: AcmeWebUIBundle:Teacher:new }
+
+#友情链接关于我们
+
+friendly_index_path:
+  path: '/account/friendly/index'
+  defaults: { _controller: AcmeWebUIBundle:Friendly:index }
+
+friendly_delete_path:
+  path: '/account/friendly/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Friendly:delete }
+  requirements:
+      _method:  DELETE
+
+friendly_new_path:
+  path: '/account/friendly/new'
+  defaults: { _controller: AcmeWebUIBundle:Friendly:new }
+
+#友情链接学习
+
+learn_new_path:
+  path: '/account/learn/new'
+  defaults: { _controller: AcmeWebUIBundle:Learn:new }
+
+learn_delete_path:
+  path: '/account/learn/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Learn:delete }
+  requirements:
+      _method:  DELETE
+
+#友情链接帮助
+
+help_delete_path:
+  path: '/account/help/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Help:delete }
+  requirements:
+      _method:  DELETE
+
+help_new_path:
+  path: '/account/help/new'
+  defaults: { _controller: AcmeWebUIBundle:Help:new }
+
+#友情链接合作
+
+partner_delete_path:
+  path: '/account/partner/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Partner:delete }
+  requirements:
+      _method:  DELETE
+
+partner_new_path:
+  path: '/account/partner/new'
+  defaults: { _controller: AcmeWebUIBundle:Partner:new }
+
+#友情链接下载
+
+down_delete_path:
+  path: '/account/down/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Down:delete }
+  requirements:
+      _method:  DELETE
+
+down_new_path:
+  path: '/account/down/new'
+  defaults: { _controller: AcmeWebUIBundle:Down:new }
+
+#轮播图
+
+pictures_delete_path:
+  path: '/account/pictures/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Pictures:delete }
+  requirements:
+      _method:  DELETE
+
+pictures_new_path:
+  path: '/account/pictures/new'
+  defaults: { _controller: AcmeWebUIBundle:Pictures:new }
+
+pictures_index_path:
+  path: '/account/pictures/index'
+  defaults: { _controller: AcmeWebUIBundle:Pictures:index }
+
+#学币管理
+coin_person_path:
+  path: '/account/coin/person'
+  defaults: { _controller: AcmeWebUIBundle:Coin:person }
 
 coin_edit_path:
   path: '/account/coin/{id}/edit'
   defaults: { _controller: AcmeWebUIBundle:Coin:edit }
+
+#账户管理
+
+account_modify_path:
+  path: '/account/acount/{id}/modify'
+  defaults: { _controller: AcmeWebUIBundle:Account:modify }
 
 account_edit_path:
   path: '/account/account/{id}/edit'
@@ -13,6 +178,13 @@ account_edit_path:
 account_index_path:
   path: '/account/account/index'
   defaults: { _controller: AcmeWebUIBundle:Account:index }
+
+account_person_path:
+  path: '/account/account/person'
+  defaults: { _controller: AcmeWebUIBundle:Account:person }
+
+
+#省份管理
 
 area_new_path:
   path: '/account/area/new'
@@ -27,6 +199,8 @@ area_delete_path:
 area_index_path:
   path: '/account/area'
   defaults: { _controller: AcmeWebUIBundle:Area:index }
+
+#摄像头管理
 
 camerauser_edit_path:
   path: '/account/camerauser/{id}/edit'
@@ -45,6 +219,33 @@ camera_delete_path:
   defaults: { _controller: AcmeWebUIBundle:Camera:delete }
   requirements:
         _method:  DELETE
+
+#课程管理
+
+course_index_path:
+  path: '/account/course'
+  defaults: { _controller: AcmeWebUIBundle:Course:index }
+
+course_edit_path:
+  path: '/account/course/{id}/edit'
+  defaults: { _controller: AcmeWebUIBundle:Course:edit }
+
+course_delete_path:
+  path: '/account/course/{id}'
+  defaults: { _controller: AcmeWebUIBundle:Course:delete }
+  requirements:
+        _method:  DELETE
+
+course_create_path:
+  path: '/account/course/create'
+  defaults: { _controller: AcmeWebUIBundle:Course:create }
+
+  
+#会员管理
+
+user_person_path:
+  path: '/account/user/{id}/person'
+  defaults: { _controller: AcmeWebUIBundle:User:person }
 
 user_create_path:
   path: '/account/user/{id}/create'
@@ -68,9 +269,19 @@ user_index_path:
   path: '/account/user/index'
   defaults: { _controller: AcmeWebUIBundle:User:index }
 
+user_search_path:
+  path: '/account/user/search'
+  defaults: { _controller: AcmeWebUIBundle:User:search }
+
+user_complete_path:
+  path: '/account/user/complete'
+  defaults: { _controller: AcmeWebUIBundle:User:complete }
+
 amdin_setting_path:
   path: '/account/admin/setting'
   defaults: { _controller: AcmeWebUIBundle:User:admin }
+
+#前台页面
 
 front_path:
   path: '/'

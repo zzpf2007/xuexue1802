@@ -1,44 +1,37 @@
 {% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
 
-{% block content %}
+  {% block content %}
 
-  <div class="admin-content">
-        <div class="am-cf am-padding">
-          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加课程</strong> 
-          </div>
-        </div>
 
-	      <div class="admin-content">
-            <div class="am-g">
-               <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
-               </div>
+        {{ form_start(new_form) }}
 
-      <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-        <form class="am-form am-form-horizontal">
-          <div class="am-form-group">
-            <label for="user-name" class="am-u-sm-3 am-form-label">课程名 / Class</label>
-            <div class="am-u-sm-9">
-              <input type="text" id="user-name" name=" class" placeholder="课程名 / Class">
-              <small>输入课程的名字</small>
-          </div>
-      </div>
-		  
-        <div class="am-form-group">
-            <label for="user-email" class="am-u-sm-3 am-form-label">照片 / Photo</label>
-            <div class="am-u-sm-9">
-              <input type="file" id="user-email" name="photo" placeholder="添加照片" / Photo">
-              <small>添加一张描述本课程的照片</small>
-            </div>
-        </div>
-		  
-          <div class="am-form-group">
-            <div class="am-u-sm-9 am-u-sm-push-3">
-              <button type="button" class="am-btn am-btn-primary">添加</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+           <div class="cont" >
+              <div class="new_form">
 
-{% endblock %}
+                <label for="form_teacher" class="lab">teacher</label>
+                {{ form_widget(new_form.teacher,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_title" class="lab">title</label>
+                {{ form_widget(new_form.title,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_photo" class="lab">photo</label>
+                {{ form_widget(new_form.photo,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_duration" class="lab">duration</label>
+                {{ form_widget(new_form.duration,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_tcVideoUrl" class="lab">tcVideoUrl</label>
+                {{ form_widget(new_form.tcVideoUrl,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_ablesky_id" class="lab">ablesky_id</label>
+                {{ form_widget(new_form.ablesky_id,{'attr': {'class': 'inp'}}) }}
+
+              </div>
+           </div>  
+
+            <input type="submit" value="添加" style="margin-left:300px;margin-top:30px;width:100px;height:30px;">
+
+        {{ form_end(new_form) }}
+    
+
+  {% endblock %}

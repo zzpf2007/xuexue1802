@@ -1,0 +1,31 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+  {% block content %}
+
+
+        {{ form_start(new_form) }}
+
+           <div class="cont" >
+              <div class="new_form">
+
+                <label for="form_name" class="lab">teacher name</label>
+                {{ form_widget(new_form.name,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_major" class="lab">major</label>
+                {{ form_widget(new_form.major,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_photo" class="lab">photo</label>
+                {{ form_widget(new_form.photo,{'attr': {'class': 'inp'}}) }}
+
+                <label for="form_ablesky_id" class="lab">ablesky_id</label>
+                {{ form_widget(new_form.ablesky_id,{'attr': {'class': 'inp'}}) }}
+
+              </div>
+           </div>  
+
+            <input type="submit" value="添加" style="margin-left:300px;margin-top:30px;width:100px;height:30px;">
+
+        {{ form_end(new_form) }}
+    
+
+  {% endblock %}

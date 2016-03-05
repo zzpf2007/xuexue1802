@@ -20,7 +20,7 @@
                 <th>缩略图</th>
                 <th>操作</th>
              </tr>
-              {% for camera in cameras %}
+              {% for camera in pagination %}
                  <tr class="font"> 
                     <th>
                        <input type="checkbox" style="width:15px;height:15px;">
@@ -53,6 +53,11 @@
                     </td>
                  </tr>
               {% endfor %}
+               <tr>
+                  <td colspan="8">
+                     {{ knp_pagination_render(pagination) }} 
+                   </td>
+              </tr>
          </table>
 
 </body>

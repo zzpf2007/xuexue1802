@@ -74,7 +74,7 @@ class Register extends UserMode
   {
     $newUser = new User();
     $newUser->setUsername( $username );
-    $newUser->setPassword( $username );
+    $newUser->setPassword( $this->encodePassword( $newUser, $password ) );
     $newUser->setEmail( $email );
     $newUser->setMobile( $mobile );
 
@@ -97,7 +97,7 @@ class Register extends UserMode
 
   private function saveUserResult()
   {
-    // $this->saveToDB( $this->user );
+    $this->saveToDB( $this->user );
     return $this->buildSuccessResponse();
     // return '{ "result" : { "message" : "succeed!", "code" : "0" }  }';
     // return sprintf( 'message: %s', $this->user->getEmail() );    

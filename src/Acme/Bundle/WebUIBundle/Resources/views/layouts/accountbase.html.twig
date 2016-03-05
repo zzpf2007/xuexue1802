@@ -98,7 +98,7 @@
       <ul class="am-list admin-sidebar-list">
 
         <li>
-          <a href="/account/profile">
+          <a href="{{ path('front_path')}}">
           <img style="width:20px;height:20px;margin-top:-5px;" src="/assets/images/pc/3.png">
              首页
           </a>
@@ -132,6 +132,65 @@
           </ul>
 
         </li>
+
+          <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse7-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/15.png">  
+               课程管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse7-nav">
+
+            <li>
+              <a href="{{ path('course_index_path') }}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/17.png"> 
+                   课程
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path('course_create_path') }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/8.png">  
+                   添加课程
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+          <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse10-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/15.png">  
+               教师管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse10-nav">
+
+            <li>
+              <a href="{{ path('teacher_index_path') }}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/17.png"> 
+                   教师列表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path('teacher_new_path') }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/8.png">  
+                   添加教师
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
 
         <li>
           <a href="{{ path( 'account_index_path' ) }}">
@@ -198,15 +257,176 @@
 
         </li>
 
-        <li>
-          <a href="">
-            <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/8.png">
-               权限管理
+          <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse4-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/pic.png">  
+               轮播图管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
           </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse4-nav">
+
+            <li>
+              <a href="{{ path( 'pictures_index_path' ) }}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/icon.png"> 
+                    轮播图图片
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'pictures_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/8.png">  
+                   添加图片
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+
+        <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse11-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/16.png">  
+               组管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse11-nav">
+
+            <li>
+              <a href="{{ path('group_index_path')}}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/18.png"> 
+                   组列表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/8.png">  
+                   添加组
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse5-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/link1.png">  
+               友情链接 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse5-nav">
+
+            <li>
+              <a href="{{ path( 'friendly_index_path' ) }}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/18.png"> 
+                   友情链接列表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'friendly_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/link2.png">  
+                   添加关于我们
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'learn_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/link5.png">  
+                   添加学习资讯
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'help_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/link3.png">  
+                   添加帮助中心
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'partner_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/link6.png">  
+                   添加合作加盟
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ path( 'down_new_path' ) }}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/link4.png">  
+                   添加下载中心
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+          <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse8-nav'}">
+            <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/qx.png">  
+               权限管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse8-nav">
+             
+            <li>
+              <a href="{{path('authrule_new_path')}}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/8.png"> 
+                    添加规则
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{path('authrule_index_path')}}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/rule.png"> 
+                    规则表
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+            
+            <li>
+              <a href="{{path('authgroup_new_path')}}" class="am-cf">
+                <img style="width:18px;height:18px;margin-right:5px;" src="/assets/images/pc/8.png"> 
+                    添加用户组
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>   
+
+            <li>
+              <a href="{{ path('authgroup_index_path')}}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/yhz.png">  
+                   用户组表
+              </a>
+            </li>
+
+             <li>
+              <a href="{{ path('authgroupaccess_index_path')}}">
+                 <img style="width:16px;height:16px;margin-right:5px;" src="/assets/images/pc/yhzm.png">  
+                   用户组明细表
+              </a>
+            </li>
+
+          </ul>
+
         </li>
 
         <li>
-          <a href="">
+          <a href="{{ path( 'amdin_setting_path' ) }}">
             <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/10.png">
                网站配置
           </a>

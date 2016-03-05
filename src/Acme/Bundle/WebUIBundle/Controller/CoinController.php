@@ -14,6 +14,15 @@ use AppBundle\Utility\WebApi\WebResponse\CategoryRootResponse;
 
 class CoinController extends Controller
 {
+   
+   /**
+    * @Template()
+    */
+    public function personAction(Request $request)
+    {      
+       $user = $this->getUser();
+       return array( 'user' => $user);
+    }
 
     /**
     * @Template()

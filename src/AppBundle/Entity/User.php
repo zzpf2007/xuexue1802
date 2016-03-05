@@ -11,6 +11,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Account;
 use AppBundle\Entity\Coin;
 use AppBundle\Entity\Camerauser;
+use AppBundle\Entity\Authrole;
+use AppBundle\Entity\Authgroup;
 
 
 /**
@@ -44,6 +46,15 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Group")
+     * @ORM\JoinTable(name="fos_user_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
 
     public function __construct()
     {
@@ -200,4 +211,7 @@ class User extends BaseUser
 
         return $this;
     }
+
+  
+  
 }

@@ -5,7 +5,7 @@ namespace Acme\Bundle\MobileBundle\Services;
 use Acme\Bundle\MobileBundle\Services\ApiMobileMode;
 use AppBundle\Utility\WebUtility\WebJson;
 use AppBundle\Utility\WebUtility\WebAuto;
-use Acme\Bundle\MobileBundle\Entity\Teacher;
+use AppBundle\Entity\Teacher;
 use AppBundle\Entity\Course;
 
 class ApiMobileTeacher extends ApiMobileMode
@@ -14,7 +14,7 @@ class ApiMobileTeacher extends ApiMobileMode
   {
     $url = $this->options['ABLE_SKY_TEACHERS_URL'];
     if ( $this->itemId )
-      $url = $this->options['ABLE_SKY_TEACHER_ID_URL'] . $this->itemId;
+    $url = $this->options['ABLE_SKY_TEACHER_ID_URL'] . $this->itemId;
 
     return $url;
   }
@@ -23,12 +23,20 @@ class ApiMobileTeacher extends ApiMobileMode
   {
     $testUrl = $this->getUrl();
     $response = $this->restClient->get( $testUrl );
-
+    
+    //var_dump($response);
+    //die;
     $content = '';
 
-    if ( isset( $this->itemId ) ) {
+    //var_dump(isset( $this->itemId ) && $this->itemId !== 0);
+    //die;
+    
+    if ( isset( $this->itemId ) && $this->itemId !== 0) {
+
+      echo $this->itemId;
       $content = $this->buildSingleJson( $response->getContent() );
     } else {
+      echo "I am here 01";
       $content = $this->buildListJson( $response->getContent() );
     }
 
@@ -48,17 +56,21 @@ class ApiMobileTeacher extends ApiMobileMode
     $coursesIdList = $this->getCoursesId( $xpathObj );
 
     $result = $this->outputTeacherDetailsJson( $name, $photo, $detailedList, $coursesImageList, $coursesTitleList, $coursesIdList );
-
+   
     return $result;
+
   }
 
   private function outputTeacherDetailsJson( $name, $photo, $detailedList, $coursesImageList, $coursesTitleList, $coursesIdList )
   {
-    $retStart = '{' . $this->resultOptions['SUCCEED'] . ',';
+    $retStart = '{' . $this->resultOptions['SUCCEED']. ',';
+
+   //var_dump($description);
+   // die;
 
     list($major, $item, $description) = $detailedList;
-    
-    $description = WebJson::strRemoveSpace($description);
+ 
+     $description = WebJson::strRemoveSpace($description);
 
     // $string = htmlentities($description, null, 'utf-8');
     // $content = str_replace("&nbsp;", "", $string);
@@ -69,6 +81,7 @@ class ApiMobileTeacher extends ApiMobileMode
     $content = sprintf('"result":{"id":"%s","name":"%s","work_exp":"6","major":"%s","photo":"%s","valid":"true","description":"%s",%s}',
                         $this->itemId, $name, $major, $photo, $description, $categoriesJson
                       );
+
 
     $retEnd = '}';
 
@@ -176,7 +189,6 @@ class ApiMobileTeacher extends ApiMobileMode
     foreach ($nodes as $node) {
       $retArray[] = $node->nodeValue;
     }
-
     return $retArray;
   }
 
@@ -253,7 +265,7 @@ class ApiMobileTeacher extends ApiMobileMode
     $resultList = $result->{'list'};
     
     $em = $this->container->get('doctrine')->getManager();
-    $repository = $em->getRepository('AcmeMobileBundle:Teacher');
+    $repository = $em->getRepository('AppBundle:Teacher');
 
     $retResult .= 'total - ' . count($resultList) . ' hits. </br>';
     foreach ($resultList as $item) {
@@ -291,26 +303,37 @@ class ApiMobileTeacher extends ApiMobileMode
   {
     $retResult = 'Update Teachers: ';
     $em = $this->container->get('doctrine')->getManager();
-    $repository = $em->getRepository('AcmeMobileBundle:Teacher');
+    $repository = $em->getRepository('AppBundle:Teacher');
     $courseRepo = $em->getRepository('AppBundle:Course');
 
     $teachers = $repository->findAll();
     $retResult .= count($teachers) . ' hits</br>';
 
+    //echo $retResult;
+
     foreach ($teachers as $index => $teacher) {
       $this->itemId = $teacher->getAbleskyId();
+      // echo "id:" . $this->itemId;
       $content = $this->getResponse();
       $json = WebJson::stringToJson($content);
 
-      if ( !is_object($json) && !isset($json->{'result'}) && !isset($json->{'result'}->{'categories'}) && !isset($json->{'result'}->{'categories'}->{'list'}) ) {        
+     // var_dump($json->{'result'});
+      // var_dump($json->{'result'}->{'categories'});
+      // die;
+
+     if ( !is_object($json) && !isset($json->{'result'}) && !isset($json->{'result'}->{'categories'}) && !isset($json->{'result'}->{'categories'}->{'list'}) ) {        
+        
         $retResult .= 'error: json formate incorrect!';
+
         continue;
       }
 
+    
       // $teacher = $repository->findOneBy( array( 'ablesky_id' => $item->getAbleskyId() ) );
-
+      // print_r($json);
+  
       $courseList = $json->{'result'}->{'categories'}->{'list'};
-
+      
       $retResult .= sprintf('Teacher id: %s, name: %s </br>', $teacher->getAbleskyId(), $teacher->getName() );
       // $retResult .= sprintf('Course count: %s </br>', count( $teacher->getCourses() ));
 
@@ -320,7 +343,7 @@ class ApiMobileTeacher extends ApiMobileMode
         $coursePhoto = $item->{'photo'};
 
         $course = $courseRepo->findOneBy( array('ablesky_id' => $courseId) );
-
+     
         if( $course ){
           $retResult .= 'update: ';
         } else {

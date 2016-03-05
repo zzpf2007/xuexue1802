@@ -1,0 +1,23 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+  {% block content %}
+
+  {{ form_start(new_form) }}
+
+      <div class="cont">
+         <div class="new_form">
+
+            <label for="new_form.title" class="lab">合作加盟添加标题</label>
+            {{ form_widget(new_form.title,{'attr': {'class': 'inp'}}) }}
+
+            <label for="new_form.link" class="lab">关于我们添加链接</label>
+            {{ form_widget(new_form.link,{'attr': {'class': 'inp'}}) }}
+                   
+           </div>
+       </div>  
+
+                <input type="submit" value="添加" style="margin-left:280px;margin-top:30px;width:100px;height:30px;">
+
+    {{ form_end(new_form) }}
+
+ {% endblock %}

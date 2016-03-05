@@ -21,15 +21,128 @@ class UserController extends Controller
      */
     public function profileAction(Request $request)
     {
+         //var_dump($this->getUser());die;
 
+       $user = $this->getUser();
+       $name=$user->getUsername();
+       $password=$user->getPassword();
+       $mobile=$user->getMobile();
+       $email=$user->getEmail();
+       return array( 'user' => $user);
+
+    }
+
+       /**
+     * @Template()
+     */
+    public function personAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->find($id);
+
+        $delete_form = $this->createDeleteForm($user);
+
+        $edit_form = $this->createFormBuilder($user)
+                ->add('username', null)
+                ->add('mobile', null)
+                ->add('email', null)         
+                ->getForm();
+
+        $edit_form->handleRequest($request);
+
+        if ($edit_form->isSubmitted() && $edit_form->isValid()) {
+            // ... perform some action, such as saving the task to the database
+            // $data = $edit_form->getData();
+
+            // if ( '' !== $data->getPassword() ) {
+            //     $user->setPassword($this->encodePassword($user, $data->getPassword()));
+            // }
+
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('fos_user_registration_confirmed');
+        }
+
+        return array(            
+            'edit_form' => $edit_form->createView(),
+            'delete_form' => $delete_form->createView()
+        );
+
+        // return array( 'camera' => $camera );
+    }
+
+     /**
+     * @Template()
+     */
+    public function completeAction(Request $request)
+    {
+      if($_POST){
+
+          if($_POST['username']=="admin" && $_POST['password']=="admin"){
+
+               $session = $request->getSession();
+               $session->set('value', '1');
+
+             return $this->redirect($this->generateUrl('user_index_path'));
+          }
+
+          else if($_POST['username']=="admin" && $_POST['password']!="admin"){
+            return "密码错误，请重新输入";
+          }
+
+          else if($_POST['username']!="admin" && $_POST['password']=="admin"){
+            return "用户名错误，请重新输入";
+          }
+
+          else{
+            return "输入错误，请重新输入";
+          }
+           
+      }
+       
     }
 
     /**
      * @Template()
      */
-    public function indexAction(Request $request)
+    public function searchAction(Request $request)
     {
 
+
+        $delete_form = $this->createFormBuilder()
+                      ->setMethod('DELETE')
+                      ->getForm();
+
+         if($_GET){
+
+            // var_dump($_GET['username']);
+            //die;
+
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(   
+             'SELECT u FROM AppBundle:User u WHERE u.username LIKE :username ORDER BY u.id DESC'   
+             )->setParameter('username','%'.$_GET['username'].'%');   
+           
+             $results = $query->getResult(); 
+             //$em->flush();
+
+             //return $query->getArrayResult();
+            // var_dump($result);
+             //die;
+            }
+            
+           return array('results'=>$results,'delete_form' => $delete_form->createView());
+    }
+
+    /**
+     * @Template()
+     */
+
+    public function indexAction(Request $request)
+    {
+       // $name=$_SESSION['_sf2_attributes']['value'];
+       // echo $name;
+       // die;
         $em = $this->getDoctrine()->getManager();
 
         $delete_form = $this->createFormBuilder()
@@ -37,8 +150,19 @@ class UserController extends Controller
                       ->getForm();
 
         $users = $em->getRepository('AppBundle:User')->findAll();
+       // echo "<pre>";
+       // var_dump($users);
+       //echo "</pre>";
+       // die;
+  
+        $qb = $em->getRepository('AppBundle:User')->createQueryBuilder('n');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),5);
 
-        return array( 'users' => $users,'delete_form' => $delete_form->createView());
+          
+        return array('pagination' => $pagination,'users' => $users,'delete_form' => $delete_form->createView());
+    
+      
     }
 
    

@@ -34,11 +34,16 @@ class Login extends UserMode
     // $result = $this->parseRequestData();
 
    $result = $this->requestData;
+
    //$result = array();
    //$username= $this->parseRequestData()['username'];
-   $password = $this->parseRequestData()['password'];
-
+   //$password = $this->parseRequestData()['password'];
    
+    $em = $this->getDoctrine()->getManager();
+    $products = $repository->findBy(
+    array('username' => 'foo'),
+    array('password' => 'ASC')
+    );
 
    // $result = '{"type":"login","username":"xuekaotong09","email":"xuekaotong03@126.com","password":"12345678"}'
   // $result = json_decode('{"type":"login","username":"xuekaotong09","email":"xuekaotong03@126.com","password":"12345678"}');

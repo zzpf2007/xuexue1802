@@ -1,0 +1,53 @@
+{% extends "AcmeWebUIBundle::layouts/person.html.twig" %}
+
+{% block content %}
+
+    <div class="personn">
+		   {{ form_start(edit_form) }}
+
+		      <div class="cont">
+				<div class="new_form">
+			 
+					<label for="form_username" class="lab">用户名</label>
+					{{ form_widget( edit_form.username,{'attr': {'class': 'inp'}} ) }}
+
+			      	<label for="form_mobile" class="lab">电话</label>
+				  	{{ form_widget( edit_form.mobile,{'attr': {'class': 'inp'}} ) }}
+
+		            <label for="form_email" class="lab">邮箱</label>
+			        {{ form_widget( edit_form.email,{'attr': {'class': 'inp'}} ) }}
+
+		        </div>
+		      </div>
+		       <input type="submit" value="修改" style="margin-left:270px;margin-top:20px;width:100px;height:30px;">
+		   {{ form_end(edit_form) }}
+	 </div>	   
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+{% block content %}
+
+   <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户组明细表</strong></div>
+        </div>
+    <table border=1 class="bor" style="margin-left:10px;"> 
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>操作</th>
+             </tr>
+
+          {% for access in accesss %}
+       
+	           <tr> 
+	             <td>
+	               <input type="checkbox" style="width:15px;height:15px;">
+	             </td>
+	             <td>{{ access.id }}</td>
+               <td></td>                  
+	           </tr>
+
+          {% endfor %}
+
+         </table>
+
+{% endblock %}

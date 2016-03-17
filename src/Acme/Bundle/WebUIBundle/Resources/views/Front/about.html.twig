@@ -1,85 +1,40 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title>学考通，让学习考试更轻松 关于我们</title>
-  <meta name="keywords" content="学考通" />
-  <meta name="description" content="学考通" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+{% extends "AcmeWebUIBundle::layouts/homebase.html.twig" %}
+
+{% block title %}学考通，让学习考试更轻松 关于我们{% endblock %}
+
+{% block stylesheet %}
   <link rel="stylesheet" href="assets/css/pc/cui.css" />
   <link rel="stylesheet" href="assets/css/pc/lib.css" />
   <link rel="stylesheet" href="assets/css/pc/style.css" />
-</head>
-<body>
+  <link rel="stylesheet" href="assets/css/pc/jquery.fancybox.css">
+{% endblock %}
 
-  <div id="top">
-    <div class="wp">
-      <div class="top-r">
-        <a href="http://xuekaotong.net/login.do?fromurl=http%3A%2F%2Fwww.xuekaotong.cn">登录</a>
-        <a href="http://xuekaotong.net/registerRedirect.do?action=toRegister&fromurl=http%3A%2F%2Fwww.xuekaotong.cn">注册</a>
-        <a href="http://fir.im/xr53" target="_blank" class="a-app">下载app</a>
-        <a href="">帮助中心</a>
-      </div>
-    </div>
-  </div>
+{% block script %}
+     
+    <script>
+        $(document).ready(function() {
+          $('.tz-list4 li:odd').addClass('odd');
+        });
+    </script>
 
-  <div id="hd">
-    <div class="wp">
-      <a href="" class="logo"><img src="assets/images/pc/logo.png" alt=""></a>
-      <div class="hdr">
-        <ul class="g-webInfo">
-          <li>
-            <a href=""><img src="assets/images/pc/ico1.png" alt="" class="ico"></a>
-            <div class="txt">58918 门课程<br>给你更强能力</div>
-          </li>
-          <li>
-            <a href=""><img src="assets/images/pc/ico2.png" alt="" class="ico"></a>
-            <div class="txt">18918 位名师<br>任你选择</div>
-          </li>
-          <li>
-            <a href=""><img src="assets/images/pc/ico3.png" alt="" class="ico"></a>
-            <div class="txt">892365 名学员<br>与你同学</div>
-          </li>
-        </ul>
-        <div class="searchBox">
-          <form action="">
-          <input type="text" class="so-inp" placeholder="搜索贴子、用户或课程..." value="">
-          <input type="submit" class="so-btn" value="">
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+    <script>
+        $(document).ready(function() {
+          // 登陆注册-弹出
+          $('.login-fancybox').fancybox({
+            padding:0,
+              width:460,
+              height:328
+          });
+          $('.reg-fancybox').fancybox({
+            padding:0,
+              width:460,
+              height:629
+          });
+        });
+  </script>
+{% endblock %}
 
-  <div id="nv">
-    <div class="wp">
-      <div id="mainNav">
-        <a href="javascript:void(0);" class="mainNavBtn">全部课程分类</a>
-        <ul class="mainNavBox">
-          {% for entry in categories %}
-            <li>
-              <a href="" class="v1">{{ entry.categoryName }}</a>
-              <dl>
-              {% for child in entry.children %}
-                <dd>
-                  <a href="">{{ child.categoryName }}</a>
-                </dd>
-              {% endfor %}
-              <dl>
-            </li>
-
-          {% endfor %}
-        </ul>
-      </div>
-      <ul class="nav">
-        <li><a href="/">网站首页</a></li>
-        <li><a href="/teachers">入驻名师</a></li>
-        <li><a href="/courses">视频课程</a></li>
-        <li><a href="http://xuekaotong.net/org/8778/exam" target="_blank">试题库</a></li>
-        <li class="on"><a href="/about">关于我们</a></li>
-      </ul>
-    </div>
-  </div>
+{% block content %}
 
   <div id="ban" style="background-image: url(assets/images/pc/ban-about.jpg);">
     <div class="wp">
@@ -99,8 +54,8 @@
           </div>
         </li>
         <li>
-          <div class="pic"><img src="assets/images/pc/img2.jpg" alt=""></div>
-          <div class="txt">
+          <div class="picc"><img src="assets/images/pc/img2.jpg" alt=""></div>
+          <div class="txtt">
             <h3>业内顶尖的管理团队和技术专家</h3>
             <p>学考通具有卓越的教育服务战略能力和丰富的互联网商业运营实战经验。凭借先进的技术革新实力和一流的市场开拓能力，我们怀揣梦想以推动中国互联网教育平台进步为己任，依托互联网载体，为学生和老师提供最具价值的教育平台和服务。</p>
           </div>
@@ -113,8 +68,8 @@
           </div>
         </li>
         <li>
-          <div class="pic"><img src="assets/images/pc/img4.jpg" alt=""></div>
-          <div class="txt">
+          <div class="picc"><img src="assets/images/pc/img4.jpg" alt=""></div>
+          <div class="txtt">
             <h3>学考通---帮助老师、学生更直接</h3>
             <p>更快速学习、沟通，让老师、学生价值最大化，让学习考试更轻松！</p>
           </div>
@@ -130,38 +85,59 @@
     </div>
   </div>
 
-  <div id="fd">
+{% endblock %}
+
+{% block footer %}
+
+    <div id="fd">
     <div class="wp">
       <div class="ftop">
         <div class="fnav">
           <dl class="fm1">
             <dt><a href="">关于我们</a></dt>
-            <dd><a href="">关于我们</a></dd>
-            <dd><a href="">加入我们</a></dd>
-            <dd><a href="">联系我们</a></dd>
+        
+              {% for friendly in friendlys %}
+                  <dd><a href="{{ friendly.link }}"> {{ friendly.title }} </a></dd>                 
+              {% endfor %}
+            
+           {#} <dd><a href="">加入我们</a></dd>
+            <dd><a href="">联系我们</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">学习资讯</a></dt>
-            <dd><a href="">课程学习</a></dd>
-            <dd><a href="">就业指南</a></dd>
-            <dd><a href="">认证考证</a></dd>
+
+            {% for learn in learns %}
+                <dd><a href="{{ learn.link }}">{{ learn.title }}</a></dd>
+            {% endfor %}
+            {#<dd><a href="">就业指南</a></dd>
+            <dd><a href="">认证考证</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">帮助中心</a></dt>
-            <dd><a href="">VIP学员特权</a></dd>
-            <dd><a href="">积分规则</a></dd>
+
+            {% for help in helps %}
+              <dd><a href="{{ help.link }}">{{ help.title }}</a></dd>
+            {% endfor %}
+            {#
+            <dd><a href="">积分规则</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">合作加盟</a></dt>
-            <dd><a href="">推广加盟</a></dd>
-            <dd><a href="">渠道加盟</a></dd>
-            <dd><a href="">名师加盟</a></dd>
+
+            {% for partner in partners %}
+                <dd><a href="{{ partner.link }}">{{ partner.title }}</a></dd>
+            {% endfor %}
+           {#} <dd><a href="">渠道加盟</a></dd>
+            <dd><a href="">名师加盟</a></dd>#}
           </dl>
           <dl class="fm1">
             <dt><a href="">下载中心</a></dt>
-            <dd><a href="">客户端</a></dd>
-            <dd><a href="">表情包</a></dd>
-            <dd><a href="">桌面壁纸</a></dd>
+
+            {% for down in downs %}
+               <dd><a href="{{ down.link }}">{{ down.title }}</a></dd>
+            {% endfor %}
+           {#} <dd><a href="">表情包</a></dd>
+            <dd><a href="">桌面壁纸</a></dd>#}
           </dl>
         </div>
         <div class="fdr">
@@ -181,32 +157,14 @@
     </div>
   </div>
 
-  <script src="asset/js/pc/jquery.js"></script>
-  <script src="asset/js/pc/lib.js"></script>
-  <script>
-  $(document).ready(function() {
-    $('.tz-list4 li:odd').addClass('odd');
-  });
-  </script>
+{% endblock %}
 
-  <link rel="stylesheet" href="assets/css/pc/jquery.fancybox.css">
-  <script src="asset/js/pc/jquery.fancybox.pack.js"></script>
-  <script>
-  $(document).ready(function() {
-    // 登陆注册-弹出
-    $('.login-fancybox').fancybox({
-      padding:0,
-        width:460,
-        height:328
-    });
-    $('.reg-fancybox').fancybox({
-      padding:0,
-        width:460,
-        height:629
-    });
-  });
-  </script>
+{% block javascript %}
 
+  <script src="assets/js/pc/jquery.js"></script>
+  <script src="assets/js/pc/lib.js"></script>
+  <script src="assets/js/pc/jquery.js"></script>
+  <script src="assets/js/pc/lib.js"></script>
+  <script src="assets/js/pc/jquery.fancybox.pack.js"></script>
 
-</body>
-</html>
+{% endblock %}

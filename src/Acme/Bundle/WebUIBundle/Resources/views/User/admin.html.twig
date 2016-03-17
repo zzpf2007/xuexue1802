@@ -1,0 +1,31 @@
+
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+{% block content %}
+
+{{ form_start(form) }}
+	
+	 <div class="cont">
+		<div class="new_form">
+
+	<label for="form_username" class="required">Username</label>
+	{{ form_widget(form.username,{'attr': {'class': 'inp'}} ) }}
+	<label for="form_password" class="required">Password</label>
+    {{ form_widget(form.password,{'attr': {'class': 'inp'}} ) }}
+	<label for="form_rePassword" class="required">Re password</label>
+	{{ form_widget(form.rePassword,{'attr': {'class': 'inp'}} ) }}
+
+	  </div>
+    </div>
+
+	<input type="submit" value="修改" style="margin-left:270px;margin-top:20px;width:100px;height:30px;">
+
+{{ form_end(form)}}
+
+{% endblock %}
+
+
+{#{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<input type="submit" value="修改">
+{{ form_end(form)}}#}

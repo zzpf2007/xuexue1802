@@ -1,0 +1,63 @@
+
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+{% block content %}
+
+   <form name="form" method="post" action="{{ path('coin_edit_path', { id : user_id })  }} " >
+
+      <div class="cont">
+		<div class="new_form">
+	 
+			<label for="form_number" class="lab">学币数量</label>
+			{{ form_widget( edit_form.number,{'attr': {'class': 'inp'}} ) }}
+	
+		    <label for="form_balance" class="lab">余额</label>
+			{{ form_widget( edit_form.balance,{'attr': {'class': 'inp'}} ) }}
+
+        </div>
+      </div>
+       <input type="submit" value="修改" style="margin-left:270px;margin-top:20px;width:100px;height:30px;">
+  {{ form_end(edit_form) }}
+
+  {#  	{{ form_start(edit_form, {'action': path('coin_edit_path', { id : user_id }), 'method': 'POST'}) }}
+		<div class="cont">
+		<div class="new_form">
+	 
+			<label for="form_number" class="lab">学币数量</label>
+			{{ form_widget( edit_form.number,{'attr': {'class': 'inp'}} ) }}
+	
+		    <label for="form_balance" class="lab">余额</label>
+			{{ form_widget( edit_form.balance,{'attr': {'class': 'inp'}} ) }}
+
+        </div>
+      	</div>
+	{{ form_end(edit_form) }}#}
+ 
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

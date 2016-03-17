@@ -1,0 +1,36 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+{% block content %}
+
+   <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">轮播图</strong></div>
+        </div>
+    <table border=1 class="bor" style="margin-left:10px;"> 
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>图片</th>
+                <th>操作</th>
+             </tr>
+
+          {% for picture in pictures %}
+       
+	           <tr> 
+	             <td>
+	               <input type="checkbox" style="width:15px;height:15px;">
+	             </td>
+	             <td>{{ picture.id }}</td>
+	             <td>{{ picture.photo }}</td> 
+               <td>
+                        {{ form_start(delete_form, {'action': path('pictures_delete_path',{'id' : picture.id})}) }}                    
+                        {{ form_widget(delete_form ) }}  
+                             <input type="submit" value="删除" />
+                        {{ form_end(delete_form) }}
+               </td>     
+	           </tr>
+
+          {% endfor %}
+
+         </table>
+
+{% endblock %}

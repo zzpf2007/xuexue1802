@@ -1,12 +1,11 @@
-ï»¿
 $(document).ready(function($) {
 
-	// ç”¨æˆ·ä¸­å¿ƒ
+	// ÓÃ»§ÖÐÐÄ
 	$('.g-user').hover(function() {
 		$(this).find('ul').stop().slideToggle();
 	});
 
-	// å¯¼èˆª
+	// µ¼º½
 	$('#mainNav').hover(function(e) {
 		$(this).find('.mainNavBox').stop().slideDown();
 	},function(){

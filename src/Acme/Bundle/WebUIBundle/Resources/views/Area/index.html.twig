@@ -1,0 +1,46 @@
+
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+{% block content %}
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">省份列表</strong></div>
+        </div>
+        
+
+    <ul>
+          {% for area in areas %}
+            <li>
+             <img src="/assets/images/pc/flag.png" style="width:20px;height:20px;"> {{ area.id }} -- {{ area.name }}
+
+             {{ form_start( delete_form, { 'action': path( 'area_delete_path', { 'id' : area.id } ) } ) }}
+        
+             {{ form_widget( delete_form ) }}  
+             <input type="submit" value="删除" style="margin-top:-55px;margin-left:130px;" />
+
+             {{ form_end(delete_form) }}
+
+              <ul>
+                {% for camera in area.cameras %}
+                  <li class="size">
+                    <img src="/assets/images/pc/came.png" style="width:20px;height:20px;"> ~~ {{ camera.devId }} -- {{ camera.devDesc }} -- {{ camera.devStatus }} -- {{ camera.devStreanId }} 
+
+                     {{ form_start( delete_form, { 'action': path( 'camera_delete_path', { 'id' : camera.id } ) } ) }}
+        
+                     {{ form_widget( delete_form ) }}  
+                     <input type="submit" value="删除" style="margin-top:-50px;margin-left:500px;" />
+
+                     {{ form_end(delete_form) }}
+
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+    </ul>
+
+         
+  </div>
+
+  
+{% endblock %}

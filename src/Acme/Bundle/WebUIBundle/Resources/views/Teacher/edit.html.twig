@@ -1,0 +1,53 @@
+
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+{% block content %}
+
+   {{ form_start(edit_form) }}
+
+      <div class="cont">
+		<div class="new_form">
+	 
+			<label for="form_name" class="lab">name</label>
+			{{ form_widget( edit_form.name,{'attr': {'class': 'inp'}} ) }}
+
+	      	<label for="form_major" class="lab">major</label>
+		  	{{ form_widget( edit_form.major,{'attr': {'class': 'inp'}} ) }}
+
+            <label for="form_photo" class="lab">photo</label>
+	        {{ form_widget( edit_form.photo,{'attr': {'class': 'inp'}} ) }}
+
+        </div>
+      </div>
+       <input type="submit" value="修改" style="margin-left:270px;margin-top:20px;width:100px;height:30px;">
+   {{ form_end(edit_form) }}
+
+ 
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

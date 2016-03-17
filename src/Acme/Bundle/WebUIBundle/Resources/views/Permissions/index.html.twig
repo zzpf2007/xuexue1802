@@ -1,0 +1,52 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+{% block content %}
+
+   <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户组表</strong></div>
+        </div>
+    <table border=1 class="bor" style="margin-left:10px;"> 
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>名称</th>
+                <th>规则</th>
+                <th>用户ID</th>
+                <th>状态</th>
+                <th>操作</th>
+             </tr>
+
+          {% for group in groups %}
+       
+	           <tr> 
+	             <td>
+	               <input type="checkbox" style="width:15px;height:15px;">
+	             </td>
+	             <td>{{ group.id }}</td>
+	             <td>{{ group.title }}</td> 
+               <td>{{ group.rules }}</td>
+               <td>{{ group.uid}}</td>
+               <td>{{ group.status }}</td>  
+               <td>
+                  <a href=" {{ path('authgroup_edit_path', { id : group.id })  }} ">
+                  <img src="/assets/images/pc/8.png" style="width:17px;height:17px;">修改</a>
+
+                  <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;">
+                    <div class="del">
+                      {{ form_start( delete_form, { 'action': path( 'authgroup_delete_path', { 'id' : group.id } ) } ) }}                    
+                      {{ form_widget( delete_form ) }}  
+                             <input type="submit" value="删除" />
+                      {{ form_end(delete_form) }}
+                    </div> 
+                    <div class="uid">
+                          <a href="{{ path('authgroup_alter_path', { id : group.id })}}">
+                          <img src="/assets/images/pc/8.png" style="width:17px;height:17px;"><span>修改用户ID</span></a>
+                    </div>
+               </td>                  
+	           </tr>
+
+          {% endfor %}
+
+         </table>
+
+{% endblock %}

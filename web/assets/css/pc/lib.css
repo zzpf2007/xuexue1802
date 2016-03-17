@@ -1,7 +1,7 @@
-ï»¿
-/*-----------------[åˆå§‹åŒ–]--------------*/
+
+/*-----------------[³õÊ¼»¯]--------------*/
 body{color: #999;font-size: 12px;line-height: 1.5;
-    font-family:"å¾®è½¯é›…é»‘","Microsoft Yahei";min-width: 1180px;
+    font-family:"Î¢ÈíÑÅºÚ","Microsoft Yahei";min-width: 1180px;
 }
 a{color: #515a63;}
 a:hover{color: #3391ea;}
@@ -13,7 +13,7 @@ img{max-width: 100%;
     -o-transition: .3s;
 }
 input,textarea,select{font-size: 12px;color: #999;border:0;
-    font-family:"å¾®è½¯é›…é»‘","Microsoft Yahei";outline: 0;
+    font-family:"Î¢ÈíÑÅºÚ","Microsoft Yahei";outline: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
@@ -32,7 +32,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     -o-transition: .3s;
 }
 
-/*å¸ƒå±€*/
+/*²¼¾Ö*/
 .wp{width: 100%;max-width: 1180px;margin: 0 auto;}
 .h30{height: 30px;clear: both;overflow: hidden;}
 .h40{height: 40px;clear: both;overflow: hidden;}
@@ -41,7 +41,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 
 
 /*******************************
-  -------[=å¤´éƒ¨]-------
+  -------[=Í·²¿]-------
 ********************************/
 #top{height: 31px;line-height: 31px;background-color: #f7f7f7;border-bottom: 1px solid #eee;}
 .top-r{float: right;}
@@ -75,8 +75,16 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
     background:#3a9fff url(../../../assets/images/pc/i-so.png) no-repeat center center;
 }
 
+.search{margin-left:580px;width: 300px;height: 30px;border: 2px solid gray;border-radius: 20px;}
+.search .textt{ margin-left:10px;font-size:15px;}
+.search .submitt{ margin-left:75px; margin-top:-3px;border-radius:6px;}
+
+.searchh{margin-left:900px;width: 300px;height: 30px;border: 2px solid gray;border-radius: 20px;}
+.searchh .textt{ margin-left:10px;font-size:15px;}
+.searchh .submitt{ margin-left:75px; margin-top:-3px;border-radius:6px;}
+
 /*******************************
-    -------[=å¯¼èˆª]-------
+    -------[=µ¼º½]-------
 ********************************/
 #nv{height: 50px;background-color: #efefef;}
 
@@ -115,7 +123,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 #banner .slider .bd li{overflow:hidden;width: 1180px;height: 460px;}
 #banner .slider .bd li img{display:block; width:1180px; height:460px;}
 #banner .slider .tempWrap{overflow:visible !important;}
-#banner .slider .tempWrap ul{margin-left:-1180px !important; /*å¼ºåˆ¶ä½ç½®*/  }
+#banner .slider .tempWrap ul{margin-left:-1180px !important; /*Ç¿ÖÆÎ»ÖÃ*/  }
 
 #banner .slider .pnBtn{position:absolute; z-index:1; top:0; width:100%;  height:460px; cursor:pointer;   }
 #banner .slider .prev{ left:-50%; margin-left:-590px;}
@@ -139,7 +147,7 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 
 
 /*******************************
-  -------[=åº•éƒ¨]-------
+  -------[=µ×²¿]-------
 ********************************/
 #fd{background-color: #2f383d;color: #d2d2d2;}
 
@@ -164,27 +172,34 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 .fcopy{padding: 15px 0;line-height: 30px;border-top: 1px solid #3a4247;color: #697074;}
 
 /*******************************
-    -------[=æ­£æ–‡]-------
+    -------[=ÕıÎÄ]-------
 ********************************/
 #bd{overflow: hidden;}
 
 
 /*******************************
-    -------[=ç™»é™†æ³¨å†Œ-å¼¹å‡º]-------
+    -------[=µÇÂ½×¢²á-µ¯³ö]-------
 ********************************/
-#frameBox{}
-#frameBox .head{height: 40px;line-height: 40px;background-color: #1966b8;color: #fff;padding: 0 20px;}
-#frameBox .head h3{font-size: 16px;font-weight: normal;font-family: 'é»‘ä½“',"å¾®è½¯é›…é»‘","Microsoft Yahei";}
-#frameBox .cont{padding: 30px 60px;font-size: 13px;font-family: 'å®‹ä½“';}
+#img{width:600px;}
+#img .img1{margin-left:80px;margin-top:30px;}
+#img .img2{margin-left:150px;margin-top:80px;}
+#frameBox{width:500px;border:solid 2px #E1E1E1;margin-left:650px;margin-top:-400px;}
+#frameBox .head{height: 40px;line-height: 40px;padding: 0 20px;}
+#frameBox .head h3{font-size: 20px;font-weight: normal;font-family: 'ºÚÌå',"Î¢ÈíÑÅºÚ","Microsoft Yahei";}
+#frameBox .cont{padding: 30px 60px;font-size: 13px;font-family: 'ËÎÌå';}
 #frameBox .foot{padding: 20px 60px;border-top: 1px solid #e1e1e1;
     background-color: #f5f5f5;text-align: right;
 }
 
+.copyright{text-align:center;margin-top:50px;}
+
+#foote{margin-left:200px;margin-top:100px;}
 .loginBox{}
 .loginBox .inp{display: block;border: 1px solid #d9d9d9;height: 40px;
     line-height: 40px \9;width: 100%;padding: 0 10px;margin: 20px 0;
 }
 .loginBox .inp-c{position: relative;top: 2px;margin-right: 5px;}
+
 
 .regBox{line-height: 35px;}
 .regBox .inp{display: block;border: 1px solid #d9d9d9;height: 40px;
@@ -194,18 +209,17 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 .regBox .yzmBox .inp{width: 100px;display: inline-block;vertical-align: middle;}
 .regBox .yzmBox .yzm{display: inline-block;vertical-align: middle;height: 35px;width: 90px;}
 
-
-/*æŒ‰é’®*/
+/*°´Å¥*/
 .sbtn1{display: inline-block;width: 65px;line-height: 28px;text-align: center;border-radius: 5px;
     background-color: #9a9a9a;color: #fff;font-size: 12px;
 }
 .sbtn1:hover{color: #fff;}
 .btn-blue{background-color: #1966b8;}
 
-/*é¢œè‰²*/
+/*ÑÕÉ«*/
 .fc_green{color: #418256;}
 
-/*æ ‡é¢˜*/
+/*±êÌâ*/
 .tit{color: #3391ea;font-size: 22px;padding: 30px 0;font-weight: normal;}
 .tit a{font-size: 18px;color: #999;float: right;font-weight: normal;}
 

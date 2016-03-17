@@ -1,0 +1,44 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+{% block content %}
+
+  <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加试题</strong>
+          </div>
+        </div>
+
+	      <div class="admin-content">
+            <div class="am-g">
+               <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+               </div>
+
+      <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+        <form class="am-form am-form-horizontal">
+          <div class="am-form-group">
+            <label for="user-name" class="am-u-sm-3 am-form-label">试题名 / Test</label>
+            <div class="am-u-sm-9">
+              <input type="text" id="user-name" placeholder="试题名 / Test">
+              <small>输入试题的名字</small>
+          </div>
+      </div>
+		  
+		  <div class="am-form-group">
+            <label for="user-password" class="am-u-sm-3 am-form-label">试题内容 / Test</label>
+            <div class="am-u-sm-9">
+              <input type="file" id="user-password" >
+			        <small>不要忘了添加试题哦</small>
+            </div>
+      </div>
+		  
+          <div class="am-form-group">
+            <div class="am-u-sm-9 am-u-sm-push-3">
+              <button type="button" class="am-btn am-btn-primary">添加</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

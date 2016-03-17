@@ -1,11 +1,11 @@
 <?php
-// src/AppBundle/Entity/Category.php
 namespace AppBundle\Entity;
 
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\BaseModel;
-use Acme\Bundle\MobileBundle\Entity;
+//use Acme\Bundle\MobileBundle\Entity;
+use AppBundle\Entity\Teacher;
 
 /**
   * @ORM\Entity
@@ -35,9 +35,14 @@ class Course extends BaseModel
     */
     protected $duration;
 
+   /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $tcVideoUrl;
+
 
     /**
-      * @ORM\ManyToOne(targetEntity="\Acme\Bundle\MobileBundle\Entity\Teacher", inversedBy="courses")
+      * @ORM\ManyToOne(targetEntity="Teacher", inversedBy="courses")
       * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
       */
     protected $teacher;
@@ -60,14 +65,25 @@ class Course extends BaseModel
         $this->isSave = true;
     }
 
+     /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * Set teacher
      *
-     * @param \Acme\Bundle\MobileBundle\Entity\Teacher $teacher
+     * @param \AppBUndle\Entity\Teacher $teacher
      *
      * @return Course
      */
-    public function setTeacher(\Acme\Bundle\MobileBundle\Entity\Teacher $teacher = null)
+    public function setTeacher(Teacher $teacher = null)
+
     {
         $this->teacher = $teacher;
 
@@ -154,5 +170,54 @@ class Course extends BaseModel
     public function getDuration()
     {
         return $this->duration;
+    }
+
+  
+    /**
+     * Set tcVideoUrl
+     *
+     * @param string $tcVideoUrl
+     *
+     * @return Course
+     */
+    public function setTcVideoUrl($tcVideoUrl)
+    {
+        $this->tcVideoUrl = $tcVideoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get tcVideoUrl
+     *
+     * @return string
+     */
+    public function getTcVideoUrl()
+    {
+        return $this->tcVideoUrl;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Course
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

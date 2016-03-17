@@ -1,0 +1,43 @@
+{% extends "AcmeWebUIBundle::layouts/person.html.twig" %}
+
+{% block content %}
+
+    <div class="personn">
+         
+         <h4>账户信息</h4>
+         <table border=1 class="bor" style="margin-left:10px;"> 
+            
+          <thead>
+             <tr>
+                <th></th>         
+                <th>头像</th>
+                <th>昵称</th>
+                <th>个性签名</th>
+                <th>手机绑定</th>
+                <th>账号绑定</th>
+                <th>操作</th>
+             </tr>  
+          </thead> 
+
+          <tbody>       
+         
+             <tr> 
+               <th>
+                   <input type="checkbox" style="width:15px;height:15px;">
+                    </th>
+                    <td>{{ user.account ? user.account.photo : ""}}</td>
+                    <td>{{ user.account ? user.account.name : ""}}</td>
+                    <td>{{ user.account ? user.account.signature : ""}}</td>
+                    <td>{{ user.account ? user.account.phonenumber : ""}}</td>
+                    <td>{{ user.account ? user.account.othernumber : ""}}</td>
+                    <td>
+                      <a href=" {{ path('account_modify_path', { id : user.id })  }} ">修改</a> 
+                    </td>
+                 </tr>
+    
+            </tbody>
+            
+         </table>
+  </div>
+
+{% endblock %}

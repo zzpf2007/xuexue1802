@@ -1,11 +1,13 @@
 <?php
-namespace Acme\Bundle\MobileBundle\Entity;
+// src/AppBundle/Entity/Teacher.php
+namespace AppBundle\Entity;
 
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\BaseModel;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Course;
+
 
 /**
   * @ORM\Entity

@@ -3,6 +3,8 @@
 namespace AppBundle\Utility\WebApi\User;
 
 use AppBundle\Utility\WebUtility\WebAuto;
+use AppBundle\Entity\User;
+use AppBundle\Entity\Account;
 
 abstract class UserMode
 {
@@ -28,7 +30,7 @@ abstract class UserMode
   {
     $retArray = array();
     $retArray['data'] = json_encode( $data );
-    print $retArray['data'];
+    //print $retArray['data'];
 
     list( $timestamp, $accessToken ) = $this->getTimestampAccessToken( $retArray['data'] );
     
@@ -43,7 +45,7 @@ abstract class UserMode
     $retArray = '';
     // $succArray = array( 'code' => 0, 'message' => '请求成功' );
     // $dataString = json_encode( $succArray, JSON_UNESCAPED_UNICODE );
-    $dataString = "{ message:'请求成功', code:0 }";
+    $dataString = '{ "message":"请求成功", "code":0 }';
     // $retArray['result'] = $dataString;
 
     list( $timestamp, $accessToken ) = $this->getTimestampAccessToken( $dataString );
@@ -52,7 +54,10 @@ abstract class UserMode
     $retArray['accessToken'] = $accessToken;
 
     // return json_encode( $retArray );
-    return sprintf("{ result: %s, timestamp: %s, accessToken: %s}", $dataString, $timestamp, $accessToken);
+
+   return sprintf('{ "result": %s}', $dataString);
+
+   //return sprintf("{ result: %s, timestamp: %s, accessToken: %s}", $dataString, $timestamp, $accessToken);
     // return '{"result":' . $dataString . ', "timestamp":' . $timestamp . ', "accessToken":' . $accessToken . '}';
   }
 
@@ -88,5 +93,13 @@ abstract class UserMode
       $em->persist( $item );
       $em->flush();
     }
+  }
+
+  protected function encodePassword(User $user, $plainPassword)
+  {
+    $encoder = $this->container->get('security.encoder_factory')
+        ->getEncoder($user)
+    ;
+    return $encoder->encodePassword($plainPassword, $user->getSalt());
   }
 }

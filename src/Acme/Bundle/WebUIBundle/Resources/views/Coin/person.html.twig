@@ -1,0 +1,33 @@
+{% extends "AcmeWebUIBundle::layouts/person.html.twig" %}
+
+{% block content %}
+
+    <div class="personn">
+         
+         <h4>学币余额</h4>
+         <table border=1 class="bor" style="margin-left:10px;"> 
+            
+          <thead>
+             <tr>
+                <th></th>         
+                <th>学币</th>
+                <th>余额</th>
+             </tr>  
+          </thead> 
+
+          <tbody>       
+         
+             <tr> 
+               <th>
+                   <input type="checkbox" style="width:15px;height:15px;">
+                    </th>
+                    <td>{{ user.coin ? user.coin.number : ""}}</td>
+                    <td>{{ user.coin ? user.coin.balance : ""}}</td>
+                 </tr>
+    
+            </tbody>
+            
+         </table>
+  </div>
+
+{% endblock %}

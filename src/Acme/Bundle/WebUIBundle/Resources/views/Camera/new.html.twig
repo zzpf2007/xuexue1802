@@ -1,0 +1,35 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+  {% block content %}
+
+	{{ form_start(new_form) }}
+
+		  <div class="cont">
+		     <div class="new_form">
+
+                    <label for="new_form.area" class="lab">省份ID</label>
+					{{form_widget(new_form.area,{'attr': {'class': 'inp'}})}}
+
+					 <label for="new_form.devId" class="lab">设备ID</label>
+				    {{ form_widget(new_form.devId,{'attr': {'class': 'inp'}}) }}
+
+				    <label for="new_form.devDesc" class="lab">摄像头名称</label>
+				    {{ form_widget(new_form.devDesc,{'attr': {'class': 'inp'}}) }}
+
+				    <label for="new_form.devStatus" class="lab">摄像头状态</label>
+				    {{ form_widget(new_form.devStatus,{'attr': {'class': 'inp'}}) }}
+
+				    <label for="new_form.devStreanId" class="lab">摄像头摄像头流</label>
+				    {{ form_widget(new_form.devStreanId,{'attr': {'class': 'inp'}}) }}
+
+				    <label for="new_form.devThumbnail" class="lab">摄像头缩略图</label>
+				    {{ form_widget(new_form.devThumbnail,{'attr': {'class': 'inp'}}) }}
+                   
+		       </div>
+		   </div>  
+
+                <input type="submit" value="添加" style="margin-left:280px;margin-top:30px;width:100px;height:30px;">
+
+    {{ form_end(new_form) }}
+
+ {% endblock %}

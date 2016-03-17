@@ -1,0 +1,20 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+
+  {% block content %}
+
+	 {{ form_start(edit_form) }}
+
+		  <div class="cont">
+		     <div class="new_form">
+
+					 <label for="edit_form.devId" class="lab">设备ID</label>
+				    {{ form_widget(edit_form.devId,{'attr': {'class': 'inp'}}) }}
+				    
+		       </div>
+		   </div>  
+
+                <input type="submit" value="修改" style="margin-left:280px;margin-top:30px;width:100px;height:30px;">
+
+    {{ form_end(edit_form) }}
+
+ {% endblock %}

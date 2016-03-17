@@ -13,7 +13,12 @@
   body{min-width: 0;}
   </style>
 </head>
-<body>
+<body style="background-color:#F1F1F1;">
+
+  <div id="img">
+     <img src="/assets/images/pc/logo.png" class="img1">
+     <img src="/assets/images/pc/left.png" class="img2">
+  </div>
 
   <div id="frameBox">
       
@@ -26,5 +31,12 @@
   <script type="text/javascript" src="/assets/js/pc/jquery.js"></script>
   <script type="text/javascript" src="/assets/js/pc/lib.js"></script>
 
+  {% block javascript %}
+
+  {% endblock %}
+  <div class="copyright">
+      <span>关于我们 | 学考通动态 | 资质 | 帮助中心 | 招贤纳士 | 联系我们</span><br><br>
+      Copyright@2008-2038中建瑞通版权所有京ICP备15000560号-1 京ICP证080808号
+  </div>
 </body>
 </html>

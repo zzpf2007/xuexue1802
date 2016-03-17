@@ -1,0 +1,16 @@
+{% for text in texts %}
+ 
+
+       <td>{{ text.id }}</td>
+              <td>{{ text.name }}</td>
+              <td>{{ text.title }}</td>
+              <td>{{ text.age }}</td>
+
+      {{ form_start( delete_form, { 'action': path( 'test_delete_path', { 'id' : text.id } ) } ) }}
+        
+        {{ form_widget( delete_form ) }}  
+        <input type="submit" value="删除" />
+
+      {{ form_end(delete_form) }}
+
+{% endfor %}

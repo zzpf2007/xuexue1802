@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf8">
+   <title></title>
+   <link rel="stylesheet" href="/assets/css/pc/style.css" />
+</head>
+<body>
+         <table border=1 class="bor1"> 
+             <tr>
+                <h2 class="topp">摄像头列表</h2>
+                 <div class="ss">
+                    <form action="{{ path('camera_search_path')}}" method="post">
+                      <input type="text" name="devDesc" placeholder="请输入要搜索的摄像头名称...">
+                      <input type="submit" class="submitt" value="搜索">
+                    </form>
+                 </div>
+             </tr>
+             <tr>
+                <th></th>         
+                <th>设备</th>
+                <th>名称</th>
+                <th>状态</th>
+                <th>省份ID</th>
+                <th>所属省份</th>
+                <th>摄像头流</th>
+                <th>缩略图</th>
+                <th>操作</th>
+             </tr>
+              {% for camera in pagination %}
+                 <tr class="font"> 
+                    <th>
+                       <input type="checkbox" style="width:15px;height:15px;">
+                    </th>
+                    <td>{{ camera.devId }}</td>
+                    <td>{{ camera.devDesc }}</td>
+                    <td>{{ camera.devStatus }}</td>
+                    <td>
+                      {% if camera.area != null %}
+                      {{ camera.area.id }}
+                      {% endif%}
+                    </td>
+                    <td>
+                      {% if camera.area != null %}
+                      {{ camera.area.name }}
+                      {% endif%}
+                    </td>
+                    <td>{{ camera.devStreanId }}</td>
+                    <td>{{ camera.devthumbnail }}</td>
+                    <td>
+
+                      <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;">
+                      <div class="del">
+                        {{ form_start( delete_form, {'action': path( 'camera_delete_path', {'id' : camera.id})}) }}                    
+                        {{ form_widget( delete_form ) }}  
+                             <input type="submit" style="margin-left:-50px;margin-top:11px;background:#DDDDDD;border:#DDDDDD;" value="删除" />
+                        {{ form_end(delete_form) }}
+                      </div>
+
+                    </td>
+                 </tr>
+              {% endfor %}
+               <tr>
+                  <td colspan="8">
+                     {{ knp_pagination_render(pagination) }} 
+                   </td>
+              </tr>
+         </table>
+
+</body>
+</html>

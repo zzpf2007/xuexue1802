@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf8">
+   <title></title>
+   <link rel="stylesheet" href="/assets/css/pc/style.css" />
+   <link rel="stylesheet" href="/assets/css/pc/cui.css" />
+   <link rel="stylesheet" href="/assets/css/pc/lib.css" />
+   <link rel="stylesheet" href="/assets/css/pc/style.css" />
+   <link rel="stylesheet" href="/assets/css/pc/amazeui.css" />
+   <link rel="stylesheet" href="/assets/css/pc/admin.css" />
+</head>
+<body>
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">课程列表</strong></div>
+        </div>
+ 
+         <table border=1 class="bor2" style="margin-top:40px;"> 
+          
+          <thead>
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>title</th>
+                <th>photo</th>
+                <th>duration</th>
+                <th>tcVideoUrl</th>
+                <th>teacher</th>
+                <th>major</th>
+                <th>操作</th>
+             </tr>  
+          </thead> 
+
+          <tbody>
+              {% for course in results %}        
+         
+                 <tr> 
+                    <th>
+                       <input type="checkbox" style="width:15px;height:15px;">
+                    </th>
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.photo }}</td>
+                    <td>{{ course.duration }}</td>
+                    <td>{{ course.tcVideoUrl }}</td> 
+                    <td>{{ course.teacher ? course.teacher.name}}</td>
+                    <td>{{ course.teacher ? course.teacher.major}}</td>
+                    <td>
+                      <a href=" {{ path('course_edit_path', { id : course.id })  }} ">
+                      <img src="/assets/images/pc/8.png" style="width:17px;height:17px;">修改</a> 
+                      <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;">
+
+                     <div class="del">
+                        {{ form_start( delete_form, { 'action': path( 'course_delete_path', { 'id' : course.id } ) } ) }}                    
+                        {{ form_widget( delete_form ) }}  
+                             <input type="submit" value="删除" />
+                        {{ form_end(delete_form) }}
+                      </div>
+
+                    </td>
+                 </tr>
+    
+              {% endfor %}
+            </tbody>
+            
+         </table>
+  </div>
+</body>
+</html>

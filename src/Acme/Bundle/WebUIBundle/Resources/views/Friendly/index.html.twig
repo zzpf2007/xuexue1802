@@ -1,0 +1,202 @@
+{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
+{% block content %}
+
+   <div class="admin-content">
+        <div class="am-cf am-padding">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">友情链接列表</strong></div>
+        </div>
+    <table border=1 class="bor" style="margin-left:10px;">
+            <tr>
+              <th colspan=5 style="text-align:center;">
+                 关于我们列表
+              </th>
+            </tr>
+                
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>标题</th>
+                <th>链接地址</th>
+                <th>操作</th>
+             </tr>
+        
+                {% for friendly in friendlys %}
+	                 <tr> 
+	                    <td>
+	                       <input type="checkbox" style="width:15px;height:15px;">
+	                    </td>
+	                    <td>{{ friendly.id }}</td>
+                        <td>{{ friendly.title }}</td>
+                        <td>{{ friendly.link }}</td>
+	                    <td>
+                         <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;margin-top:7px;">
+                         <div class="del">
+                            {{ form_start( delete_form, {'action': path( 'friendly_delete_path', {'id' : friendly.id})}) }}                    
+                            {{ form_widget( delete_form ) }}  
+                              <input type="submit" style="margin-left:-50px;margin-top:11px;background:#DDDDDD;border:#DDDDDD;" value="删除" />
+                            {{ form_end(delete_form) }}
+                        </div>
+
+                        </td>
+	                 </tr>
+                {% endfor %}
+
+         </table>
+
+         <hr>
+
+    <table border=1 class="bor" style="margin-left:10px;">
+            <tr>
+              <th colspan=5 style="text-align:center;">
+                 学习资讯列表
+              </th>
+            </tr>
+                
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>标题</th>
+                <th>链接地址</th>
+                <th>操作</th>
+             </tr>
+        
+            {% for learn in learns %}
+                <tr> 
+                  <td>
+                     <input type="checkbox" style="width:15px;height:15px;">
+                     </td>
+                     <td>{{ learn.id }}</td>
+                     <td>{{ learn.title }}</td>
+                     <td>{{ learn.link }}</td>
+                     <td>
+                         <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;margin-top:7px;">
+                         <div class="del">
+                            {{ form_start( delete_form, {'action': path( 'learn_delete_path', {'id' : learn.id})}) }}                    
+                            {{ form_widget( delete_form ) }}  
+                              <input type="submit" style="margin-left:-50px;margin-top:11px;background:#DDDDDD;border:#DDDDDD;" value="删除" />
+                            {{ form_end(delete_form) }}
+                        </div>
+                     </td>
+                </tr>
+            {% endfor %}
+
+    </table>
+
+    <hr>
+
+    <table border=1 class="bor" style="margin-left:10px;">
+            <tr>
+              <th colspan=5 style="text-align:center;">
+                 帮助中心列表
+              </th>
+            </tr>
+                
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>标题</th>
+                <th>链接地址</th>
+                <th>操作</th>
+             </tr>
+        
+            {% for help in helps %}
+                <tr> 
+                  <td>
+                     <input type="checkbox" style="width:15px;height:15px;">
+                     </td>
+                     <td>{{ help.id }}</td>
+                     <td>{{ help.title }}</td>
+                     <td>{{ help.link }}</td>
+                     <td>
+                         <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;margin-top:7px;">
+                         <div class="del">
+                            {{ form_start( delete_form, {'action': path( 'help_delete_path', {'id' : help.id})}) }}                    
+                            {{ form_widget( delete_form ) }}  
+                              <input type="submit" style="margin-left:-50px;margin-top:11px;background:#DDDDDD;border:#DDDDDD;" value="删除" />
+                            {{ form_end(delete_form) }}
+                        </div>
+                     </td>
+                </tr>
+            {% endfor %}
+
+    </table>
+
+    <hr>
+
+    <table border=1 class="bor" style="margin-left:10px;">
+            <tr>
+              <th colspan=5 style="text-align:center;">
+                 合作加盟列表
+              </th>
+            </tr>
+                
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>标题</th>
+                <th>链接地址</th>
+                <th>操作</th>
+             </tr>
+        
+            {% for partner in partners %}
+                <tr> 
+                  <td>
+                     <input type="checkbox" style="width:15px;height:15px;">
+                     </td>
+                     <td>{{ partner.id }}</td>
+                     <td>{{ partner.title }}</td>
+                     <td>{{ partner.link }}</td>
+                     <td>
+                        <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;margin-top:7px;">
+                         <div class="del">
+                            {{ form_start( delete_form, {'action': path( 'partner_delete_path', {'id' : partner.id})}) }}                    
+                            {{ form_widget( delete_form ) }}  
+                              <input type="submit" style="margin-left:-50px;margin-top:11px;background:#DDDDDD;border:#DDDDDD;" value="删除" />
+                            {{ form_end(delete_form) }}
+                        </div>
+                     </td>
+                </tr>
+            {% endfor %}
+
+    </table>
+
+     <hr>
+
+    <table border=1 class="bor" style="margin-left:10px;">
+            <tr>
+              <th colspan=5 style="text-align:center;">
+                 下载列表
+              </th>
+            </tr>
+                
+             <tr>
+                <th></th>         
+                <th>ID</th>
+                <th>标题</th>
+                <th>链接地址</th>
+                <th>操作</th>
+             </tr>
+        
+            {% for down in downs %}
+                <tr> 
+                  <td>
+                     <input type="checkbox" style="width:15px;height:15px;">
+                     </td>
+                     <td>{{ down.id }}</td>
+                     <td>{{ down.title }}</td>
+                     <td>{{ down.link }}</td>
+                     <td>
+                         <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;margin-top:7px;">
+                         <div class="del">
+                            {{ form_start( delete_form, {'action': path( 'down_delete_path', {'id' : down.id})}) }}                    
+                            {{ form_widget( delete_form ) }}  
+                              <input type="submit" style="margin-left:-50px;margin-top:11px;background:#DDDDDD;border:#DDDDDD;" value="删除" />
+                            {{ form_end(delete_form) }}
+                        </div>
+                     </td>
+                </tr>
+            {% endfor %}
+
+    </table>
+
+{% endblock %}

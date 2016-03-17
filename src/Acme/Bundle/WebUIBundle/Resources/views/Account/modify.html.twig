@@ -1,0 +1,58 @@
+
+{% extends "AcmeWebUIBundle::layouts/person.html.twig" %}
+
+{% block content %}
+
+   <form name="form" method="post" action="{{ path('account_modify_path', { id : user_id })  }} ">
+      <div class="cont">
+		<div class="new_form">
+			
+			<label for="form_photo" class="lab">照片</label>
+			{{ form_widget( edit_form.photo,{'attr': {'class': 'inp'}} ) }}
+	
+		    <label for="form_name" class="lab">昵称</label>
+			{{ form_widget( edit_form.name,{'attr': {'class': 'inp'}} ) }}
+
+			<label for="form_signature" class="lab">个性签名</label>
+			{{ form_widget( edit_form.signature,{'attr': {'class': 'inp'}} ) }}
+
+	      	<label for="form_phonenumber" class="lab">手机绑定</label>
+		  	{{ form_widget( edit_form.phonenumber,{'attr': {'class': 'inp'}} ) }}
+
+            <label for="form_othernumber" class="lab">账号绑定</label>
+	        {{ form_widget( edit_form.othernumber,{'attr': {'class': 'inp'}} ) }}
+
+        </div>
+      </div>
+       <input type="submit" value="修改" style="margin-left:270px;margin-top:20px;width:100px;height:30px;">
+   {{ form_end(edit_form) }}
+
+ 
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

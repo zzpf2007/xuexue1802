@@ -1,0 +1,134 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>学考通</title>
+  <meta name="description" content="学考通">
+  <meta name="keywords" content="学考通">
+
+  {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/cui.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/lib.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/style.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/amazeui.css' ) }}" />
+        <link rel="stylesheet" href="{{ asset( 'assets/css/pc/admin.css' ) }}" />
+  {% endblock %}
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+
+  <div class="am-topbar-brand">
+    <small>个人中心</small>
+  </div>
+
+</header>
+
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+
+        <li class="admin-parent">
+
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+            <img style="width:20px;height:20px;margin-top:-5px;" src="/assets/images/pc/5.png">
+               会员管理 
+            <span class="am-icon-angle-right am-fr am-margin-right"></span>
+          </a>
+
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+
+            <li>
+              <a href="/account/profile" class="am-cf">
+                <img style="width:17px;height:17px;margin-top:-5px;" src="/assets/images/pc/7.png">
+                  基本资料
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('account_person_path')}}" class="am-cf">
+                <img style="width:17px;height:17px;margin-top:-5px;" src="/assets/images/pc/7.png">
+                   账号详情信息
+                <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="{{ path('coin_person_path')}}">
+            <img style="width:18px;height:18px;margin-top:-5px;" src="/assets/images/pc/local.png">
+                学币余额
+          </a>
+        </li>
+
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+
+          <p>
+            <span class="am-icon-bookmark"></span> 
+              公告
+          </p>
+
+          <p>学如逆水行舟，不进则退。—— 学考通</p>
+
+        </div>
+
+      </div>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+
+          <p>
+            <span class="am-icon-tag"></span> 
+               xuekaotong
+          </p>
+
+          <p>Welcome to the xuekaotong!</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+
+   {% block content %}
+   
+   {% endblock %}
+  <!-- content end -->
+  </div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/assets/js/pc/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/assets/js/pc/amazeui.min.js"></script>
+<script src="/assets/js/pc/app.js"></script>
+</body>
+</html>

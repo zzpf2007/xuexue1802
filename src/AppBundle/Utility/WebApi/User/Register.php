@@ -22,7 +22,7 @@ class Register extends UserMode
   
   public function getResult()
   {
-    // $result = $this->postAbleSkyResponse( $this->buildPayloadData() );
+    $result = $this->postAbleSkyResponse( $this->buildPayloadData() );
     // $this->checkResponseValidAndSaveUser( $result );
 
     $this->buildPayloadData();
@@ -54,7 +54,7 @@ class Register extends UserMode
 
 
     $this->createUser( $retArray['username'], $retArray['password'], $retArray['email'], $retArray['mobile'] );
-    return $retArray;
+    //return $retArray;
   }
 
   private function parseRequestData()
@@ -74,7 +74,7 @@ class Register extends UserMode
   {
     $newUser = new User();
     $newUser->setUsername( $username );
-    $newUser->setPassword( $username );
+    $newUser->setPassword( $this->encodePassword( $newUser, $password ) );
     $newUser->setEmail( $email );
     $newUser->setMobile( $mobile );
 
@@ -89,7 +89,7 @@ class Register extends UserMode
       if ( isset( $retJson->{'result'}->{'code'} ) ) {
         $code = $retJson->{'result'}->{'code'};
         if ( $code == '0' ) {
-          $this->saveToDB( $this->user );
+          // $this->saveToDB( $this->user );
         }
       }
     }

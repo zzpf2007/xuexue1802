@@ -289,6 +289,13 @@
 
 .bor{border:double 2px #d9d9d9; margin-left:50px;width:100%;height:30px;line-height:30px;color:#545454;font-size:15px;}
 .bor a{font-size:15px;}
+.td{ width:200px;word-wrap:break-word; word-break:break-all;}
+.bor2{border:double 2px #d9d9d9; margin-left:50px;width:1200px;height:30px;line-height:30px;color:#545454;font-size:15px;}
+.bor2 a{font-size:15px;}
+.bor3{border:double 2px #d9d9d9; margin-left:10px;width:1200px;height:30px;line-height:30px;color:#545454;font-size:15px;}
+.bor3 a{font-size:15px;}
+
+
 
 .del{margin-left:80px;margin-top:-31px;}
 
@@ -318,7 +325,7 @@
 .account ol{list-style-type:none;font-size:13px;}
 .account ol li span{font-weight:bold;}
 .personn{ margin-top:50px;margin-left:50px;}
-
+.ss{margin-left:1000px;}
 
 /*******************************
 	-------[=mg-end]-------

@@ -13,6 +13,32 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CameraController extends Controller
 {
+
+     /**
+     * @Template()
+     */
+    public function searchAction(Request $request)
+    {
+
+
+        $delete_form = $this->createFormBuilder()
+                      ->setMethod('DELETE')
+                      ->getForm();
+
+         if($_POST){
+
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(   
+             'SELECT u FROM AppBundle:Camera u WHERE u.devDesc LIKE :devDesc ORDER BY u.id DESC'   
+             )->setParameter('devDesc','%'.$_POST['devDesc'].'%');   
+           
+             $results = $query->getResult(); 
+            }
+            
+           return array('results'=>$results,'delete_form' => $delete_form->createView());
+    }
+
+
     /**
      * @Template()
      */
@@ -33,8 +59,6 @@ class CameraController extends Controller
 
 
         return array('pagination' => $pagination,'cameras' => $cameras,'delete_form' => $delete_form->createView() );
-
-        // return array( 'cameras' => $cameras );
     }
 
     /**
@@ -89,11 +113,6 @@ class CameraController extends Controller
             'new_form' => $new_form->createView()
         );
     }
-
-    // public function showAction(Request $request, $id)
-    // {
-        
-    // }
 
     public function createAction(Request $request)
     {

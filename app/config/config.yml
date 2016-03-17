@@ -95,8 +95,6 @@ fos_user:
     registration:
         form:
             type: app_user_registration
-    group:
-        group_class: AppBundle\Entity\Group
 
 # mobile_detect:
 #     redirect:

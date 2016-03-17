@@ -8,7 +8,7 @@
           <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员列表</strong></div>
 
             <div class="search">
-                  <form action="{{ path('user_search_path')}}" method="get">
+                  <form action="{{ path('user_search_path')}}" method="post">
                     <input type="text" class="textt" name="username" placeholder="请输入要搜索的用户...">
                     <input type="submit" class="submitt" value="搜索">
                   </form>
@@ -52,13 +52,12 @@
                       <img src="/assets/images/pc/8.png" style="width:17px;height:17px;">修改</a> 
                       <img src="/assets/images/pc/13.png" style="width:17px;height:17px;margin-left:10px;">
 
-                      <div class="del">
+                     <div class="del">
                         {{ form_start( delete_form, { 'action': path( 'user_delete_path', { 'id' : user.id } ) } ) }}                    
                         {{ form_widget( delete_form ) }}  
                              <input type="submit" value="删除" />
                         {{ form_end(delete_form) }}
                       </div>
-
                       <div class="update">
                       <a href=" {{ path('user_create_path', { id : user.id })  }} ">
                       <img src="/assets/images/pc/key.png" style="width:18px;height:18px;">密码重置</a>

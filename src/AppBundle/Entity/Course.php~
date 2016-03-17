@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Entity/Category.php
 namespace AppBundle\Entity;
 
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -37,7 +36,7 @@ class Course extends BaseModel
     protected $duration;
 
    /**
-    * @ORM\Column(type="string")
+    * @ORM\Column(type="string", nullable=true)
     */
     protected $tcVideoUrl;
 
@@ -79,11 +78,11 @@ class Course extends BaseModel
     /**
      * Set teacher
      *
-     * @param \Acme\Bundle\MobileBundle\Entity\Teacher $teacher
+     * @param \AppBUndle\Entity\Teacher $teacher
      *
      * @return Course
      */
-    public function setTeacher(\AppBundle\Entity\Teacher $teacher = null)
+    public function setTeacher(Teacher $teacher = null)
 
     {
         $this->teacher = $teacher;
@@ -196,5 +195,29 @@ class Course extends BaseModel
     public function getTcVideoUrl()
     {
         return $this->tcVideoUrl;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Course
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

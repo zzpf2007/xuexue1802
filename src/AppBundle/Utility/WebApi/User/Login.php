@@ -33,24 +33,38 @@ class Login extends UserMode
     // $result = array();
     // $result = $this->parseRequestData();
 
-   $result = $this->requestData;
+    $result = $this->requestData;
 
    //$result = array();
-   //$username= $this->parseRequestData()['username'];
-   //$password = $this->parseRequestData()['password'];
-   
-    $em = $this->getDoctrine()->getManager();
-    $products = $repository->findBy(
-    array('username' => 'foo'),
-    array('password' => 'ASC')
-    );
+    $username= $this->parseRequestData()['username'];
+    $password = $this->parseRequestData()['password'];
 
+    //$password =$this->encodePassword($this->parseRequestData()['password']);
+
+    $repository = $this->getDoctrine()
+                ->getRepository('AppBundle:User');
+
+    $user = $repository->findOneBy(
+        array('username' => $username)
+    );
+    
+    $encodePassword = $this->encodePassword( $user, $password );
+
+ 
    // $result = '{"type":"login","username":"xuekaotong09","email":"xuekaotong03@126.com","password":"12345678"}'
-  // $result = json_decode('{"type":"login","username":"xuekaotong09","email":"xuekaotong03@126.com","password":"12345678"}');
+   // $result = json_decode('{"type":"login","username":"xuekaotong09","email":"xuekaotong03@126.com","password":"12345678"}');
    //var_dump($result->username);  
    // var_dump( $result);
    // $username = $result->username;
    // $password = $result->password;
+    if( $encodePassword == $user->getPassword()){
+    
+       return '{"result":{"code":0}}';
+       
+    }else{
+
+      return '{"result":{"code":1}}';
+    }
 
  
    $this->logger->debug( date('Y-m-d H:i:s') );
@@ -62,8 +76,8 @@ class Login extends UserMode
 
     // $result = "{result:{code:0} }";
     // $result = "username";
-
-    return $password;
+ 
+  
   }
 
   private function buildPayloadData()

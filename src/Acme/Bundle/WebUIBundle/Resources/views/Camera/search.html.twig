@@ -10,12 +10,6 @@
          <table border=1 class="bor1"> 
              <tr>
                 <h2 class="topp">摄像头列表</h2>
-                 <div class="ss">
-                    <form action="{{ path('camera_search_path')}}" method="post">
-                      <input type="text" name="devDesc" placeholder="请输入要搜索的摄像头名称...">
-                      <input type="submit" class="submitt" value="搜索">
-                    </form>
-                 </div>
              </tr>
              <tr>
                 <th></th>         
@@ -28,7 +22,7 @@
                 <th>缩略图</th>
                 <th>操作</th>
              </tr>
-              {% for camera in pagination %}
+              {% for camera in results %}
                  <tr class="font"> 
                     <th>
                        <input type="checkbox" style="width:15px;height:15px;">
@@ -61,11 +55,7 @@
                     </td>
                  </tr>
               {% endfor %}
-               <tr>
-                  <td colspan="8">
-                     {{ knp_pagination_render(pagination) }} 
-                   </td>
-              </tr>
+               
          </table>
 
 </body>

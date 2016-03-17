@@ -11,6 +11,31 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class CourseController extends Controller
 {
+
+    /**
+     * @Template()
+     */
+    public function searchAction(Request $request)
+    {
+
+
+        $delete_form = $this->createFormBuilder()
+                      ->setMethod('DELETE')
+                      ->getForm();
+
+         if($_POST){
+
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(   
+             'SELECT u FROM AppBundle:Course u WHERE u.title LIKE :title ORDER BY u.id DESC'   
+             )->setParameter('title','%'.$_POST['title'].'%');   
+           
+             $results = $query->getResult(); 
+            }
+            
+           return array('results'=>$results,'delete_form' => $delete_form->createView());
+    }
+
     /**
      * @Template()
      */
@@ -22,9 +47,13 @@ class CourseController extends Controller
        $delete_form = $this->createFormBuilder()
                       ->setMethod('DELETE')
                       ->getForm();
+       
+        $qb = $em->getRepository('AppBundle:Course')->createQueryBuilder('n')->orderby('n.id','asc');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),5);
 
 
-       return array('courses' => $courses,'delete_form' => $delete_form->createView());
+       return array('pagination' => $pagination,'courses' => $courses,'delete_form' => $delete_form->createView());
     }
 
     /**
@@ -55,7 +84,6 @@ class CourseController extends Controller
             'edit_form' => $edit_form->createView()
         );
 
-        // return array( 'camera' => $camera );
     }
 
     /**
@@ -102,8 +130,6 @@ class CourseController extends Controller
             $attr[$teacher->getId()]=$teacher->getName();
         }
 
-       // var_dump($attr);
-       // die;
         $course = new Course();
         // See http://symfony.com/doc/current/book/forms.html#submitting-forms-with-multiple-buttons
         $new_form = $this->createFormBuilder($course)

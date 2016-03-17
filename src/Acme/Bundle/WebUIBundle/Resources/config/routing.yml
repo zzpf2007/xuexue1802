@@ -2,62 +2,12 @@ n acme_web_ui_homepage:
     path:     /hello/{name}
     defaults: { _controller: AcmeWebUIBundle:Default:index }
 
-#Group
-group_index_path:
-  path: '/account/group/index'
-  defaults: { _controller: AcmeWebUIBundle:Group:index }
-
-#权限管理
-
-authrule_index_path:
-  path: '/account/authrule/index'
-  defaults: { _controller: AcmeWebUIBundle:Permission:index }
-
-authrule_new_path:
-  path: '/account/authrule/new'
-  defaults: { _controller: AcmeWebUIBundle:Permission:new }
-
-authrule_edit_path:
-  path: '/account/authrule/{id}/edit'
-  defaults: { _controller: AcmeWebUIBundle:Permission:edit }
-
-authrule_alter_path:
-  path: '/account/authrule/{id}/alter'
-  defaults: { _controller: AcmeWebUIBundle:Permission:alter }
-
-authrule_delete_path:
-  path: '/account/authrule/{id}'
-  defaults: { _controller: AcmeWebUIBundle:Permission:delete }
-  requirements:
-      _method:  DELETE
-
-authgroup_index_path:
-  path: '/account/authgroup/index'
-  defaults: { _controller: AcmeWebUIBundle:Permissions:index }
-
-authgroup_alter_path:
-  path: '/account/authgroup/{id}/alter'
-  defaults: { _controller: AcmeWebUIBundle:Permissions:alter }
-
-authgroup_new_path:
-  path: '/account/authgroup/new'
-  defaults: { _controller: AcmeWebUIBundle:Permissions:new }
-
-authgroup_edit_path:
-  path: '/account/authgroup/{id}/edit'
-  defaults: { _controller: AcmeWebUIBundle:Permissions:edit }
-
-authgroup_delete_path:
-  path: '/account/authgroup/{id}'
-  defaults: { _controller: AcmeWebUIBundle:Permissions:delete }
-  requirements:
-      _method:  DELETE
-
-authgroupaccess_index_path:
-  path: '/account/authgroupaccess/index'
-  defaults: { _controller: AcmeWebUIBundle:Permissionss:index }
-
 #教师
+
+teacher_search_path:
+  path: '/account/teacher/search'
+  defaults: { _controller: AcmeWebUIBundle:Teacher:search }
+
 teacher_index_path:
   path: '/account/teacher/index'
   defaults: { _controller: AcmeWebUIBundle:Teacher:index }
@@ -202,6 +152,10 @@ area_index_path:
 
 #摄像头管理
 
+camera_search_path:
+  path: '/account/camera/search'
+  defaults: { _controller: AcmeWebUIBundle:Camera:search }
+
 camerauser_edit_path:
   path: '/account/camerauser/{id}/edit'
   defaults: { _controller: AcmeWebUIBundle:Camerauser:edit }
@@ -221,6 +175,10 @@ camera_delete_path:
         _method:  DELETE
 
 #课程管理
+
+course_search_path:
+  path: '/account/course/search'
+  defaults: { _controller: AcmeWebUIBundle:Course:search }
 
 course_index_path:
   path: '/account/course'

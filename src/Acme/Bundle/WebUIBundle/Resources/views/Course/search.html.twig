@@ -15,13 +15,6 @@
         <div class="am-cf am-padding">
           <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">课程列表</strong></div>
         </div>
-
-        <div class="searchh">
-          <form action="{{ path('course_search_path')}}" method="post">
-               <input type="text" class="textt" name="title" placeholder="请输入要搜索的课程...">
-               <input type="submit" class="submitt" value="搜索">
-          </form>
-        </div>
  
          <table border=1 class="bor2" style="margin-top:40px;"> 
           
@@ -40,7 +33,7 @@
           </thead> 
 
           <tbody>
-              {% for course in pagination %}        
+              {% for course in results %}        
          
                  <tr> 
                     <th>
@@ -48,9 +41,9 @@
                     </th>
                     <td>{{ course.id }}</td>
                     <td>{{ course.title }}</td>
-                    <td class="td">{{ course.photo }}</td>
+                    <td>{{ course.photo }}</td>
                     <td>{{ course.duration }}</td>
-                    <td class="td">{{ course.tcVideoUrl }}</td> 
+                    <td>{{ course.tcVideoUrl }}</td> 
                     <td>{{ course.teacher ? course.teacher.name}}</td>
                     <td>{{ course.teacher ? course.teacher.major}}</td>
                     <td>
@@ -70,11 +63,7 @@
     
               {% endfor %}
             </tbody>
-              <tr>
-                  <td colspan="8">
-                     {{ knp_pagination_render(pagination) }} 
-                   </td>
-              </tr>
+            
          </table>
   </div>
 </body>

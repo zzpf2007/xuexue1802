@@ -20,7 +20,6 @@ class AreaController extends Controller
     {     
 
         $em = $this->getDoctrine()->getManager();
-        // $cameras = $em->getRepository('AppBundle:Camera')->findAll();
 
         $delete_form = $this->createFormBuilder()
                       ->setMethod('DELETE')
@@ -29,8 +28,6 @@ class AreaController extends Controller
         $areas = $em->getRepository('AppBundle:Area')->findAll();
         $cameras = $em->getRepository('AppBundle:Camera')->findAll();
         return array( 'areas' => $areas, 'cameras' => $cameras, 'delete_form' => $delete_form->createView());
-
-        // return array( 'cameras' => $cameras );
     }
 
    /**
@@ -43,20 +40,13 @@ class AreaController extends Controller
 
       $delete_form = $this->createDeleteForm($camera);
     }
-
-    // public function showAction(Request $request, $id)
-    // {
-        
-    // }
     
     /**
      * @Template()
      */
-
      public function newAction(Request $request)
      {
         $area = new Area();
-        // See http://symfony.com/doc/current/book/forms.html#submitting-forms-with-multiple-buttons
         $new_form = $this->createFormBuilder($area)
                     ->add('name', null)         
                     ->getForm();

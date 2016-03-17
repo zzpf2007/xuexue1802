@@ -21,7 +21,6 @@ class UserController extends Controller
      */
     public function profileAction(Request $request)
     {
-         //var_dump($this->getUser());die;
 
        $user = $this->getUser();
        $name=$user->getUsername();
@@ -32,7 +31,7 @@ class UserController extends Controller
 
     }
 
-       /**
+    /**
      * @Template()
      */
     public function personAction(Request $request, $id)
@@ -51,12 +50,6 @@ class UserController extends Controller
         $edit_form->handleRequest($request);
 
         if ($edit_form->isSubmitted() && $edit_form->isValid()) {
-            // ... perform some action, such as saving the task to the database
-            // $data = $edit_form->getData();
-
-            // if ( '' !== $data->getPassword() ) {
-            //     $user->setPassword($this->encodePassword($user, $data->getPassword()));
-            // }
 
             $em->persist($user);
             $em->flush();
@@ -68,7 +61,6 @@ class UserController extends Controller
             'delete_form' => $delete_form->createView()
         );
 
-        // return array( 'camera' => $camera );
     }
 
      /**
@@ -113,22 +105,14 @@ class UserController extends Controller
                       ->setMethod('DELETE')
                       ->getForm();
 
-         if($_GET){
-
-            // var_dump($_GET['username']);
-            //die;
+         if($_POST){
 
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery(   
              'SELECT u FROM AppBundle:User u WHERE u.username LIKE :username ORDER BY u.id DESC'   
-             )->setParameter('username','%'.$_GET['username'].'%');   
+             )->setParameter('username','%'.$_POST['username'].'%');   
            
              $results = $query->getResult(); 
-             //$em->flush();
-
-             //return $query->getArrayResult();
-            // var_dump($result);
-             //die;
             }
             
            return array('results'=>$results,'delete_form' => $delete_form->createView());
@@ -140,24 +124,18 @@ class UserController extends Controller
 
     public function indexAction(Request $request)
     {
-       // $name=$_SESSION['_sf2_attributes']['value'];
-       // echo $name;
-       // die;
+
         $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findAll();
+ 
+        $qb = $em->getRepository('AppBundle:User')->createQueryBuilder('n')->orderby('n.id','asc');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),5);
+
 
         $delete_form = $this->createFormBuilder()
                       ->setMethod('DELETE')
                       ->getForm();
-
-        $users = $em->getRepository('AppBundle:User')->findAll();
-       // echo "<pre>";
-       // var_dump($users);
-       //echo "</pre>";
-       // die;
-  
-        $qb = $em->getRepository('AppBundle:User')->createQueryBuilder('n');
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),5);
 
           
         return array('pagination' => $pagination,'users' => $users,'delete_form' => $delete_form->createView());
@@ -186,14 +164,10 @@ class UserController extends Controller
             
             $data = $new_form->getData();
 
-            //var_dump($data->getUsername());
-           // exit;
-
             $user = new User();
             $user->setUsername($data->getUsername());
             $user->setEmail($data->getEmail());
             $user->setMobile($data->getMobile());
-            $user->setMobile($data->getDevId());
             $user->setPassword($this->encodePassword($user, $data->getPassword()));
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -267,13 +241,7 @@ class UserController extends Controller
         $edit_form->handleRequest($request);
 
         if ($edit_form->isSubmitted() && $edit_form->isValid()) {
-            // ... perform some action, such as saving the task to the database
-            // $data = $edit_form->getData();
-
-            // if ( '' !== $data->getPassword() ) {
-            //     $user->setPassword($this->encodePassword($user, $data->getPassword()));
-            // }
-
+  
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('user_index_path');
@@ -284,35 +252,6 @@ class UserController extends Controller
             'delete_form' => $delete_form->createView()
         );
 
-        // return array( 'camera' => $camera );
-    }
-
-
-    /**
-     * @Template()
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('AppBundle:User')->find($id);
-
-        $form = $this->createDeleteForm($users);
-
-        $form->handleRequest($request);
-
-        $em->remove($users);
-        $em->flush();
-
-        return $this->redirectToRoute('user_index_path');
-    }
-
-    private function createDeleteForm($users)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete_path', array('id' => $users->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 
 
@@ -347,13 +286,45 @@ class UserController extends Controller
                 var_dump( $adminChangePwd->getResult() );
             }
 
-            // return $this->redirectToRoute('user_index_path');
         }
 
         return array(            
             'form' => $form->createView()
         );
         
+    }
+
+    /**
+     * @Template()
+     */
+    public function deleteAction(Request $request, $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->find($id);
+
+
+
+        $form = $this->createDeleteForm($user);
+
+        $form->handleRequest($request);
+
+      
+
+        $em->remove($user);
+        $em->flush();
+
+
+        return $this->redirectToRoute('user_index_path');
+    }
+
+    private function createDeleteForm($user)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete_path', array('id' => $user->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
     }
 }
 

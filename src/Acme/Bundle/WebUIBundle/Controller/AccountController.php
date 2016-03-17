@@ -25,7 +25,7 @@ class AccountController extends Controller
 
         $users = $em->getRepository('AppBundle:User')->findAll();
 
-        $qb = $em->getRepository('AppBundle:User')->createQueryBuilder('n');
+        $qb = $em->getRepository('AppBundle:User')->createQueryBuilder('n')->orderby('n.id','asc');
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),5);
 
@@ -63,6 +63,7 @@ class AccountController extends Controller
         $edit_form = $this->createFormBuilder($account)
                 ->add('photo', null)
                 ->add('name', null)
+                ->add('signature',null)
                 ->add('phonenumber', null)
                 ->add('othernumber', null)         
                 ->getForm();
@@ -105,6 +106,7 @@ class AccountController extends Controller
         $edit_form = $this->createFormBuilder($account)
                 ->add('photo', null)
                 ->add('name', null)
+                ->add('signature',null)
                 ->add('phonenumber', null)
                 ->add('othernumber', null)         
                 ->getForm();

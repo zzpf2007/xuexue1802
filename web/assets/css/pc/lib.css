@@ -79,6 +79,9 @@ input[type='submit'],input[type='reset'],input[type='button'],button{cursor: poi
 .search .textt{ margin-left:10px;font-size:15px;}
 .search .submitt{ margin-left:75px; margin-top:-3px;border-radius:6px;}
 
+.searchh{margin-left:900px;width: 300px;height: 30px;border: 2px solid gray;border-radius: 20px;}
+.searchh .textt{ margin-left:10px;font-size:15px;}
+.searchh .submitt{ margin-left:75px; margin-top:-3px;border-radius:6px;}
 
 /*******************************
     -------[=µ¼º½]-------

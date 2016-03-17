@@ -12,6 +12,7 @@
                 <th></th>         
                 <th>头像</th>
                 <th>昵称</th>
+                <th>个性签名</th>
                 <th>手机绑定</th>
                 <th>账号绑定</th>
                 <th>操作</th>
@@ -26,6 +27,7 @@
                     </th>
                     <td>{{ user.account ? user.account.photo : ""}}</td>
                     <td>{{ user.account ? user.account.name : ""}}</td>
+                    <td>{{ user.account ? user.account.signature : ""}}</td>
                     <td>{{ user.account ? user.account.phonenumber : ""}}</td>
                     <td>{{ user.account ? user.account.othernumber : ""}}</td>
                     <td>

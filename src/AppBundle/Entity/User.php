@@ -11,9 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Account;
 use AppBundle\Entity\Coin;
 use AppBundle\Entity\Camerauser;
-use AppBundle\Entity\Authrole;
-use AppBundle\Entity\Authgroup;
-
+use AppBundle\Entity\Usercoupon;
 
 /**
  * @ORM\Entity
@@ -47,15 +45,7 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Group")
-     * @ORM\JoinTable(name="fos_user_user_group",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-     * )
-     */
-    protected $groups;
-
+  
     public function __construct()
     {
         parent::__construct();
@@ -89,6 +79,10 @@ class User extends BaseUser
      */
     protected $camerauser;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Usercoupon", mappedBy="user", cascade={"persist", "remove"})
+     */
+    protected $usercoupon;
 
     /**
      * Set mobile
@@ -214,4 +208,73 @@ class User extends BaseUser
 
   
   
+
+    /**
+     * Add course
+     *
+     * @param \AppBundle\Entity\Course $course
+     *
+     * @return User
+     */
+    public function addCourse(\AppBundle\Entity\Course $course)
+    {
+        $this->course[] = $course;
+
+        return $this;
+    }
+
+    /**
+     * Remove course
+     *
+     * @param \AppBundle\Entity\Course $course
+     */
+    public function removeCourse(\AppBundle\Entity\Course $course)
+    {
+        $this->course->removeElement($course);
+    }
+
+    /**
+     * Get course
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourse()
+    {
+        return $this->course;
+    }
+
+
+    /**
+     * Add usercoupon
+     *
+     * @param \AppBundle\Entity\Usercoupon $usercoupon
+     *
+     * @return User
+     */
+    public function addUsercoupon(\AppBundle\Entity\Usercoupon $usercoupon)
+    {
+        $this->usercoupon[] = $usercoupon;
+
+        return $this;
+    }
+
+    /**
+     * Remove usercoupon
+     *
+     * @param \AppBundle\Entity\Usercoupon $usercoupon
+     */
+    public function removeUsercoupon(\AppBundle\Entity\Usercoupon $usercoupon)
+    {
+        $this->usercoupon->removeElement($usercoupon);
+    }
+
+    /**
+     * Get usercoupon
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsercoupon()
+    {
+        return $this->usercoupon;
+    }
 }

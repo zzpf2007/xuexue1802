@@ -11,6 +11,31 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class TeacherController extends Controller
 {
+
+       /**
+     * @Template()
+     */
+    public function searchAction(Request $request)
+    {
+
+
+        $delete_form = $this->createFormBuilder()
+                      ->setMethod('DELETE')
+                      ->getForm();
+
+         if($_POST){
+
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(   
+             'SELECT u FROM AppBundle:Teacher u WHERE u.name LIKE :name ORDER BY u.id DESC'   
+             )->setParameter('name','%'.$_POST['name'].'%');   
+           
+             $results = $query->getResult(); 
+            }
+            
+           return array('results'=>$results,'delete_form' => $delete_form->createView());
+    }
+
     /**
      * @Template()
      */
@@ -25,7 +50,11 @@ class TeacherController extends Controller
                       ->setMethod('DELETE')
                       ->getForm();
 
-        return array('teachers' => $teachers,'delete_form' => $delete_form->createView());
+        $qb = $em->getRepository('AppBundle:Teacher')->createQueryBuilder('n');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $request->query->getInt('page', 1),5);
+
+        return array('pagination' => $pagination,'teachers' => $teachers,'delete_form' => $delete_form->createView());
     }
 
        /**
@@ -48,9 +77,6 @@ class TeacherController extends Controller
         if ($new_form->isSubmitted() && $new_form->isValid()) {
 
             $data = $new_form->getData();
-
-            //var_dump($data->getTitle());
-            //exit;
 
             $teacher = new Teacher();
             $teacher->setName($data->getName());
@@ -97,7 +123,6 @@ class TeacherController extends Controller
             'edit_form' => $edit_form->createView()
         );
 
-        // return array( 'camera' => $camera );
     }
 
 

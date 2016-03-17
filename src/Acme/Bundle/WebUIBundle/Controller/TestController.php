@@ -58,10 +58,6 @@ class TestController extends Controller
 
      }
 
-    // public function showAction(Request $request, $id)
-    // {
-        
-    // }
 
      /**
      * @Template()

@@ -27,14 +27,13 @@ class CourseController extends Controller
       $teacher = $course->getTeacher();
 
       $id = $course->getId();
-      $title = $course->getTitle();
+      $title = $course->getTitle() ? $course->getTitle() : '';
 
-      $name = $teacher->getName();
-      $photo = $teacher->getPhoto();
+      $name = $teacher && $teacher->getName() ? $teacher->getName() : '';
+      $photo = $teacher && $teacher->getPhoto() ? $teacher->getPhoto() : '';
       //$photo = $course->getPhoto();
       //$duration = $course->getDuration();
-      $tcVideoUrl= $course->gettcVideoUrl();
-
+      $tcVideoUrl= $course->gettcVideoUrl() ? $course->gettcVideoUrl() : '';
 
       $content = sprintf('{"code":0,"message":"succeed!","result":{"list":[ {"id":"%s","title":"%s","name":"%s","photo":"%s","tcVideoUrl":"%s"} ]}}'
                          ,$id, $title,$name,$photo,$tcVideoUrl);

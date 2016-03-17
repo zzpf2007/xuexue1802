@@ -32,6 +32,11 @@ class Account
     /**
     * @ORM\Column(type="string")
     */
+    protected $signature;
+
+    /**
+    * @ORM\Column(type="string")
+    */
     protected $phonenumber;
 
     /**
@@ -39,14 +44,16 @@ class Account
     */
     protected $othernumber;
 
-
+    /**
+    * @ORM\Column(type="integer")
+    */
+    protected $signin;
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="account")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;   
-
 
     /**
      * Get id
@@ -178,5 +185,61 @@ class Account
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param string $signature
+     *
+     * @return Account
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return string
+     */
+    public function getSignature()
+    {
+        return $this->signature;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->goods = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Set signin
+     *
+     * @param integer $signin
+     *
+     * @return Account
+     */
+    public function setSignin($signin)
+    {
+        $this->signin = $signin;
+
+        return $this;
+    }
+
+    /**
+     * Get signin
+     *
+     * @return integer
+     */
+    public function getSignin()
+    {
+        return $this->signin;
     }
 }

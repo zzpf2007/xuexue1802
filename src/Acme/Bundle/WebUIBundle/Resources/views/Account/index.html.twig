@@ -1,11 +1,21 @@
-{% extends "AcmeWebUIBundle::layouts/accountbase.html.twig" %}
-{% block content %}
-
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf8">
+   <title></title>
+   <link rel="stylesheet" href="/assets/css/pc/style.css" />
+   <link rel="stylesheet" href="/assets/css/pc/cui.css" />
+   <link rel="stylesheet" href="/assets/css/pc/lib.css" />
+   <link rel="stylesheet" href="/assets/css/pc/style.css" />
+   <link rel="stylesheet" href="/assets/css/pc/amazeui.css" />
+   <link rel="stylesheet" href="/assets/css/pc/admin.css" />
+</head>
+<body>
    <div class="admin-content">
         <div class="am-cf am-padding">
           <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">账号信息详情</strong></div>
         </div>
-    <table border=1 class="bor" style="margin-left:10px;"> 
+    <table border=1 class="bor3"> 
              <tr>
                 <th></th>         
                 <th>ID</th>
@@ -15,6 +25,8 @@
                 <th>邮箱</th>
                 <th>头像</th>
                 <th>昵称</th>
+                <th>个性签名</th>
+                <th>签到</th>
                 <th>手机绑定</th>
                 <th>账号绑定</th>
                 <th>学币数量</th>
@@ -34,8 +46,10 @@
                         <td>{{ user.password }}</td>
                         <td>{{ user.mobile }}</td>
                         <td>{{ user.email }}</td>
-                        <td>{{ user.account ? user.account.photo : "" }}</td>
+                        <td class="td">{{ user.account ? user.account.photo : "" }}</td>
                         <td>{{ user.account ? user.account.name : "" }}</td>
+                        <td>{{ user.account ? user.account.signature : "" }}</td>
+                        <td>{{ user.account ? user.account.signin : 0}}</td>
                         <td>{{ user.account ? user.account.phonenumber : "" }}</td>
                         <td>{{ user.account ? user.account.othernumber : "" }}</td>
                         <td>{{ user.coin ? user.coin.number : "" }}</td>
@@ -71,4 +85,5 @@
 
          </table>
 
-{% endblock %}
+</body>
+</html>

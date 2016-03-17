@@ -1,18 +1,16 @@
 <?php
-
 namespace AppBundle\Utility\WebApi\User;
-
 use AppBundle\Utility\WebApi\User\UserMode;
 use AppBundle\Utility\WebApi\User\UserApiUtil;
 use AppBundle\Utility\WebUtility\WebAuto;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Account;
 
-class Register extends UserMode
+class ChangePhoto extends UserMode
 {
   private $requestData;
   private $user;
   private $logger;
-
   public function __construct( $container, $data )
   {
     parent::__construct( $container );
@@ -24,67 +22,53 @@ class Register extends UserMode
   {
     $result = $this->postAbleSkyResponse( $this->buildPayloadData() );
     // $this->checkResponseValidAndSaveUser( $result );
-
     $this->buildPayloadData();
     $result = $this->saveUserResult();
 
     $this->logger->debug( date('Y-m-d H:i:s') );
     $this->logger->debug( $result );
 
+
     return $result;
   }
+
 
   private function buildPayloadData()
   {
     $retArray = array();
-
     // list( $username, $password, $email ) = $this->parseRequestData();
     $retData = $this->parseRequestData();
     // var_dump( $retData );
-
-    $retArray['type'] = 'register';
+    $retArray['type'] = 'changePhoto';
     $retArray['orgId'] = WebAuto::ORG_ID;
     $retArray['username'] = $retData['username'];
-    $retArray['password'] = $retData['password'];
-    $retArray['email'] = $retData['email'];
-    $retArray['mobile'] = $retData['mobile'];
+    $retArray['photo'] = $retData['photo'];
+    $retArray['newPhoto'] = $retData['newPhoto'];
+    //$retArray['password'] = $retData['password'];
+    //$retArray['newPassword'] = $retData['newPassword'];
     // $retArray['username'] = 'test_webschool_01';
     // $retArray['password'] = 'password1802';
     // $retArray['email'] = 'test_webschool_01@test.com';
-
-
-    $this->createUser( $retArray['username'], $retArray['password'], $retArray['email'], $retArray['mobile'] );
-    //return $retArray;
+    // $this->createUser( $retArray['username'], $retArray['password'], $retArray['email'], $retArray['mobile'] );
+    return $retArray;
   }
 
   private function parseRequestData()
   {
-    $retArray = array( 'username' => 'empty', 'password' => 'empty', 'email' => '', 'mobile' => '');
+    $retArray = array( 'username' => 'empty', 'password' => 'empty', 'email' => '', 'mobile' => '','photo'=> '');
     $jsonObj = json_decode($this->requestData);
-
     if ( isset($jsonObj->{'username'}) ) $retArray['username'] = $jsonObj->{'username'};
-    if ( isset($jsonObj->{'password'}) ) $retArray['password'] = $jsonObj->{'password'};
-    if ( isset($jsonObj->{'email'}) ) $retArray['email'] = $jsonObj->{'email'};
-    if ( isset($jsonObj->{'mobile'}) ) $retArray['mobile'] = $jsonObj->{'mobile'};
-
+    if ( isset($jsonObj->{'photo'}) ) $retArray['photo'] = $jsonObj->{'photo'};
+    if ( isset($jsonObj->{'newPhoto'}) ) $retArray['newPhoto'] = $jsonObj->{'newPhoto'};
+   //if ( isset($jsonObj->{'password'}) ) $retArray['password'] = $jsonObj->{'password'};
+    //if ( isset($jsonObj->{'newPassword'}) ) $retArray['newPassword'] = $jsonObj->{'newPassword'};
+    // if ( isset($jsonObj->{'email'}) ) $retArray['email'] = $jsonObj->{'email'};
+    // if ( isset($jsonObj->{'mobile'}) ) $retArray['mobile'] = $jsonObj->{'mobile'};
     return $retArray;
   }
-
-  private function createUser( $username, $password, $email = '', $mobile = '' )
-  {
-    $newUser = new User();
-    $newUser->setUsername( $username );
-    $newUser->setPassword( $this->encodePassword( $newUser, $password ) );
-    $newUser->setEmail( $email );
-    $newUser->setMobile( $mobile );
-
-    $this->user = $newUser;
-  }
-
   private function checkResponseValidAndSaveUser( $result )
   {
     $retJson = json_decode( $result );
-
     if ( isset( $retJson->{'result'} ) ) {
       if ( isset( $retJson->{'result'}->{'code'} ) ) {
         $code = $retJson->{'result'}->{'code'};
@@ -94,10 +78,24 @@ class Register extends UserMode
       }
     }
   }
-
-  private function saveUserResult()
+   private function saveUserResult()
   {
-    $this->saveToDB( $this->user );
+
+    $username= $this->parseRequestData()['username'];
+    $photo= $this->parseRequestData()['photo'];
+    $newPhoto= $this->parseRequestData()['newPhoto'];
+   
+    $repository = $this->getDoctrine()
+               ->getRepository('AppBundle:User');
+
+    $user = $repository->findOneBy(
+        array('username' => $username)
+    );
+    
+    $account = $user->getAccount();
+
+    $this->saveToDB( $account->setPhoto($newPhoto));
+
     return $this->buildSuccessResponse();
     // return '{ "result" : { "message" : "succeed!", "code" : "0" }  }';
     // return sprintf( 'message: %s', $this->user->getEmail() );    

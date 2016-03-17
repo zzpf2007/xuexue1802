@@ -33,10 +33,10 @@ class ApiMobileTeacher extends ApiMobileMode
     
     if ( isset( $this->itemId ) && $this->itemId !== 0) {
 
-      echo $this->itemId;
+      // echo $this->itemId;
       $content = $this->buildSingleJson( $response->getContent() );
     } else {
-      echo "I am here 01";
+      // echo "I am here 01";
       $content = $this->buildListJson( $response->getContent() );
     }
 

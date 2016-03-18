@@ -38,11 +38,11 @@ class WebApiCourse extends WebApiMode
 
     // $timeExpired = true;
 
-    if ( $this->course && $timeExpired ) {
-      $retResult = $this->getAbleSkyResponse();
-    } else if ( $this->course ) {
-      $retResult = $this->course->getMobileJson();
-    }
+    // if ( $this->course && $timeExpired ) {
+    $retResult = $this->getAbleSkyResponse();
+    // } else if ( $this->course ) {
+    //   $retResult = $this->course->getMobileJson();
+    // }
 
     return $retResult;
   }

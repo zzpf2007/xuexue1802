@@ -96,7 +96,8 @@ class WebApiCourse extends WebApiMode
       if ( !isset( $listId[$i] ) ) $listId[$i] = 'null';
       $title = $listTitle[$i];
       $title = WebJson::strRemoveSpace($title);
-      $ret = sprintf( '{ "id" : "%s", "title" : "%s"},', $listId[$i], $title);
+      $tcUrl = $this->course->getTcVideoUrl();
+      $ret = sprintf( '{ "id" : "%s", "title" : "%s", "tcVideoUrl" : "%s"},', $listId[$i], $title, $tcUrl);
       $retResult = $retResult . $ret;
     }
     return $retResult = rtrim(trim($retResult), ',') . ' ]}';

@@ -24,31 +24,34 @@ class ApiMobileCourse extends ApiMobileMode
 
     $em = $this->container->get('doctrine')->getManager();
     $repo = $em->getRepository('AppBundle:Course');
-    $courses= $repo->findBy(array(), null, 30, null);
+    $courses= $repo->findBy(array(), null, 70, null);
 
     $courselist = '';
     foreach ($courses as $index => $course) {
       // $result .= $index . ',';
       $id = $course->getAbleskyId();
       $title = $course->getTitle();
-      $teacher = $course->getTeacher()->getName();
+      $teacher = "";
+      if ( $course->getTeacher() )
+        $teacher = $course->getTeacher()->getName();      
       $photo = $course->getPhoto();
+      $tcUrl = $course->getTcVideoUrl();
 
       $type = "0";
 
       if ( $index < 8 ) {
         $type = "0";
-        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s"},', $id, $title, $teacher, $photo, $type);
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s","tcVideoUrl":"%s"},', $id, $title, $teacher, $photo, $type, $tcUrl);
       }
 
       if ( $index > 8 && $index < 16 ) {
         $type = "1";
-        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s"},', $id, $title, $teacher, $photo, $type);
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s","tcVideoUrl":"%s"},', $id, $title, $teacher, $photo, $type, $tcUrl);
       }
 
       if ( $index > 16 && $index < 25 ) {
         $type = "2";
-        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s"},', $id, $title, $teacher, $photo, $type);
+        $courselist .= sprintf('{"id":"%s","title":"%s","teacher":"%s","photo":"%s","type":"%s","tcVideoUrl":"%s"},', $id, $title, $teacher, $photo, $type, $tcUrl);
       }
     }
 

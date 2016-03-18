@@ -78,7 +78,7 @@ class WebJson
 
       $course = $courseRepo->findOneBy( array('ablesky_id' => $id) );
       $course_teacher = 'empty';
-      if( $course ) $course_teacher = $course->getTeacher()->getName();
+      if( $course and $course->getTeacher() ) $course_teacher = $course->getTeacher()->getName();
       // $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"description\": \"$description\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\" }, ";
       $ret = $ret . "{ \"id\": $id, \"title\": \"$title\", \"price\": \"$price\", \"contentCount\": \"$contentCount\", \"coursePhoto\": \"$coursePhoto\", \"teacher\": \"$course_teacher\" }, ";
     }

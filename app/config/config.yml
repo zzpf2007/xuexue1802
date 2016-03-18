@@ -96,6 +96,10 @@ fos_user:
         form:
             type: app_user_registration
 
+services:
+    fos_user.doctrine_registry:
+        alias: doctrine
+
 # mobile_detect:
 #     redirect:
 #         # full:
